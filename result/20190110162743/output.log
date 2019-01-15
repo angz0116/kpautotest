@@ -1,0 +1,203 @@
+2019-01-10 16:27:43,735 - INFO - ********TEST START********
+2019-01-10 16:27:43,737 - INFO - --------20001注册接口20001CASE 1 start--------
+2019-01-10 16:27:44,350 - INFO - 检查是否注册成功
+2019-01-10 16:27:44,392 - INFO - 测试通过
+2019-01-10 16:27:44,574 - INFO - 请求报文:{'interfaceNo': '20001', 'loginPwd': 'YG5qde1DVnZnSHmFFyQTWw==', 'mobile': '18211014911', 'userNo': '10017212', 'sysSource': '5', 'transNo': '2019011028378146', 'transTime': '2019-01-10 16:27:43'}
+2019-01-10 16:27:44,575 - INFO - 返回报文:{'errorDesc': '交易成功', 'responseBody': {'couponBag': None, 'managerUserId': '10017212', 'prizeList': None, 'retCode': '0000', 'retMsg': '交易成功', 'sysSource': '5', 'transNo': '2019011028378146', 'transTime': '2018-10-25 16:29:02', 'userRegId': '521325'}, 'retCode': '200'}
+2019-01-10 16:27:44,575 - INFO - 查询SQL:select * from WM_T_USER_REG t where MOBILE = '18211014911'
+2019-01-10 16:27:44,575 - INFO - 返回SQL:(521325, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014911, None, None, datetime.datetime(2018, 10, 25, 16, 29, 2), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 31), None, None, None, '0', None, None, None, '5', None, '1', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 2))
+2019-01-10 16:27:44,575 - INFO - --------20001--CASE1 end--------
+
+
+2019-01-10 16:27:44,575 - INFO - --------20001注册接口20001CASE 2 start--------
+2019-01-10 16:27:44,941 - INFO - 检查是否注册成功
+2019-01-10 16:27:44,981 - INFO - 测试通过
+2019-01-10 16:27:45,152 - INFO - 请求报文:{'interfaceNo': '20001', 'loginPwd': 'YG5qde1DVnZnSHmFFyQTWw==', 'mobile': '18211014912', 'userNo': '10017212', 'sysSource': '5', 'transNo': '2019011027108507', 'transTime': '2019-01-10 16:27:44'}
+2019-01-10 16:27:45,152 - INFO - 返回报文:{'errorDesc': '交易成功', 'responseBody': {'couponBag': None, 'managerUserId': '10017212', 'prizeList': None, 'retCode': '0000', 'retMsg': '交易成功', 'sysSource': '5', 'transNo': '2019011027108507', 'transTime': '2018-10-25 16:29:03', 'userRegId': '521326'}, 'retCode': '200'}
+2019-01-10 16:27:45,152 - INFO - 查询SQL:select * from WM_T_USER_REG t where MOBILE = '18211014912'
+2019-01-10 16:27:45,152 - INFO - 返回SQL:(521326, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014912, None, None, datetime.datetime(2018, 10, 25, 16, 29, 3), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 32), None, None, None, '0', None, None, None, '5', None, '1', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 3))
+2019-01-10 16:27:45,152 - INFO - --------20001--CASE2 end--------
+
+
+2019-01-10 16:27:45,152 - INFO - --------20001注册接口20001CASE 3 start--------
+2019-01-10 16:27:45,529 - INFO - 检查是否注册成功
+2019-01-10 16:27:45,568 - INFO - 测试通过
+2019-01-10 16:27:45,728 - INFO - 请求报文:{'interfaceNo': '20001', 'loginPwd': 'YG5qde1DVnZnSHmFFyQTWw==', 'mobile': '18211014913', 'userNo': '10017212', 'sysSource': '5', 'transNo': '2019011045833510', 'transTime': '2019-01-10 16:27:45'}
+2019-01-10 16:27:45,728 - INFO - 返回报文:{'errorDesc': '交易成功', 'responseBody': {'couponBag': None, 'managerUserId': '10017212', 'prizeList': None, 'retCode': '0000', 'retMsg': '交易成功', 'sysSource': '5', 'transNo': '2019011045833510', 'transTime': '2018-10-25 16:29:04', 'userRegId': '521327'}, 'retCode': '200'}
+2019-01-10 16:27:45,729 - INFO - 查询SQL:select * from WM_T_USER_REG t where MOBILE = '18211014913'
+2019-01-10 16:27:45,729 - INFO - 返回SQL:(521327, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014913, None, None, datetime.datetime(2018, 10, 25, 16, 29, 4), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 32), None, None, None, '0', None, None, None, '5', None, '1', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 4))
+2019-01-10 16:27:45,729 - INFO - --------20001--CASE3 end--------
+
+
+2019-01-10 16:27:45,729 - INFO - --------20001注册接口20001CASE 4 start--------
+2019-01-10 16:27:46,120 - INFO - 检查是否注册成功
+2019-01-10 16:27:46,164 - INFO - 测试通过
+2019-01-10 16:27:46,340 - INFO - 请求报文:{'interfaceNo': '20001', 'loginPwd': 'YG5qde1DVnZnSHmFFyQTWw==', 'mobile': '18211014914', 'userNo': '10017212', 'sysSource': '5', 'transNo': '2019011087528224', 'transTime': '2019-01-10 16:27:45'}
+2019-01-10 16:27:46,340 - INFO - 返回报文:{'errorDesc': '交易成功', 'responseBody': {'couponBag': None, 'managerUserId': '10017212', 'prizeList': None, 'retCode': '0000', 'retMsg': '交易成功', 'sysSource': '5', 'transNo': '2019011087528224', 'transTime': '2018-10-25 16:29:04', 'userRegId': '521328'}, 'retCode': '200'}
+2019-01-10 16:27:46,340 - INFO - 查询SQL:select * from WM_T_USER_REG t where MOBILE = '18211014914'
+2019-01-10 16:27:46,340 - INFO - 返回SQL:(521328, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014914, None, None, datetime.datetime(2018, 10, 25, 16, 29, 4), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 33), None, None, None, '0', None, None, None, '5', None, '1', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 4))
+2019-01-10 16:27:46,340 - INFO - --------20001--CASE4 end--------
+
+
+2019-01-10 16:27:46,341 - INFO - --------20001注册接口20001CASE 5 start--------
+2019-01-10 16:27:46,711 - INFO - 检查是否注册成功
+2019-01-10 16:27:46,752 - INFO - 测试通过
+2019-01-10 16:27:46,920 - INFO - 请求报文:{'interfaceNo': '20001', 'loginPwd': 'YG5qde1DVnZnSHmFFyQTWw==', 'mobile': '18211014915', 'userNo': '10017212', 'sysSource': '5', 'transNo': '2019011076516140', 'transTime': '2019-01-10 16:27:46'}
+2019-01-10 16:27:46,920 - INFO - 返回报文:{'errorDesc': '交易成功', 'responseBody': {'couponBag': None, 'managerUserId': '10017212', 'prizeList': None, 'retCode': '0000', 'retMsg': '交易成功', 'sysSource': '5', 'transNo': '2019011076516140', 'transTime': '2018-10-25 16:29:05', 'userRegId': '521329'}, 'retCode': '200'}
+2019-01-10 16:27:46,920 - INFO - 查询SQL:select * from WM_T_USER_REG t where MOBILE = '18211014915'
+2019-01-10 16:27:46,920 - INFO - 返回SQL:(521329, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014915, None, None, datetime.datetime(2018, 10, 25, 16, 29, 5), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 33), None, None, None, '0', None, None, None, '5', None, '1', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 5))
+2019-01-10 16:27:46,920 - INFO - --------20001--CASE5 end--------
+
+
+2019-01-10 16:27:46,920 - INFO - --------20001注册接口20001CASE 6 start--------
+2019-01-10 16:27:47,299 - INFO - 检查是否注册成功
+2019-01-10 16:27:47,342 - INFO - 测试通过
+2019-01-10 16:27:47,537 - INFO - 请求报文:{'interfaceNo': '20001', 'loginPwd': 'YG5qde1DVnZnSHmFFyQTWw==', 'mobile': '18211014916', 'userNo': '10017212', 'sysSource': '5', 'transNo': '2019011081276856', 'transTime': '2019-01-10 16:27:46'}
+2019-01-10 16:27:47,537 - INFO - 返回报文:{'errorDesc': '交易成功', 'responseBody': {'couponBag': None, 'managerUserId': '10017212', 'prizeList': None, 'retCode': '0000', 'retMsg': '交易成功', 'sysSource': '5', 'transNo': '2019011081276856', 'transTime': '2018-10-25 16:29:05', 'userRegId': '521330'}, 'retCode': '200'}
+2019-01-10 16:27:47,538 - INFO - 查询SQL:select * from WM_T_USER_REG t where MOBILE = '18211014916'
+2019-01-10 16:27:47,538 - INFO - 返回SQL:(521330, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014916, None, None, datetime.datetime(2018, 10, 25, 16, 29, 5), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 34), None, None, None, '0', None, None, None, '5', None, '1', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 5))
+2019-01-10 16:27:47,538 - INFO - --------20001--CASE6 end--------
+
+
+2019-01-10 16:27:47,538 - INFO - --------20001注册接口20001CASE 7 start--------
+2019-01-10 16:27:48,017 - INFO - 检查是否注册成功
+2019-01-10 16:27:48,057 - INFO - 测试通过
+2019-01-10 16:27:48,223 - INFO - 请求报文:{'interfaceNo': '20001', 'loginPwd': 'YG5qde1DVnZnSHmFFyQTWw==', 'mobile': '18211014917', 'userNo': '10017212', 'sysSource': '5', 'transNo': '2019011058701856', 'transTime': '2019-01-10 16:27:47'}
+2019-01-10 16:27:48,223 - INFO - 返回报文:{'errorDesc': '交易成功', 'responseBody': {'couponBag': None, 'managerUserId': '10017212', 'prizeList': None, 'retCode': '0000', 'retMsg': '交易成功', 'sysSource': '5', 'transNo': '2019011058701856', 'transTime': '2018-10-25 16:29:06', 'userRegId': '521331'}, 'retCode': '200'}
+2019-01-10 16:27:48,223 - INFO - 查询SQL:select * from WM_T_USER_REG t where MOBILE = '18211014917'
+2019-01-10 16:27:48,223 - INFO - 返回SQL:(521331, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014917, None, None, datetime.datetime(2018, 10, 25, 16, 29, 6), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 35), None, None, None, '0', None, None, None, '5', None, '1', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 6))
+2019-01-10 16:27:48,223 - INFO - --------20001--CASE7 end--------
+
+
+2019-01-10 16:27:48,223 - INFO - --------20001注册接口20001CASE 8 start--------
+2019-01-10 16:27:48,598 - INFO - 检查是否注册成功
+2019-01-10 16:27:48,641 - INFO - 测试通过
+2019-01-10 16:27:48,820 - INFO - 请求报文:{'interfaceNo': '20001', 'loginPwd': 'YG5qde1DVnZnSHmFFyQTWw==', 'mobile': '18211014918', 'userNo': '10017212', 'sysSource': '5', 'transNo': '2019011054837137', 'transTime': '2019-01-10 16:27:48'}
+2019-01-10 16:27:48,820 - INFO - 返回报文:{'errorDesc': '交易成功', 'responseBody': {'couponBag': None, 'managerUserId': '10017212', 'prizeList': None, 'retCode': '0000', 'retMsg': '交易成功', 'sysSource': '5', 'transNo': '2019011054837137', 'transTime': '2018-10-25 16:29:07', 'userRegId': '521332'}, 'retCode': '200'}
+2019-01-10 16:27:48,820 - INFO - 查询SQL:select * from WM_T_USER_REG t where MOBILE = '18211014918'
+2019-01-10 16:27:48,820 - INFO - 返回SQL:(521332, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014918, None, None, datetime.datetime(2018, 10, 25, 16, 29, 7), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 35), None, None, None, '0', None, None, None, '5', None, '1', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 7))
+2019-01-10 16:27:48,820 - INFO - --------20001--CASE8 end--------
+
+
+2019-01-10 16:27:48,820 - INFO - --------20001注册接口20001CASE 9 start--------
+2019-01-10 16:27:49,192 - INFO - 检查是否注册成功
+2019-01-10 16:27:49,232 - INFO - 测试通过
+2019-01-10 16:27:49,395 - INFO - 请求报文:{'interfaceNo': '20001', 'loginPwd': 'YG5qde1DVnZnSHmFFyQTWw==', 'mobile': '18211014919', 'userNo': '10017212', 'sysSource': '5', 'transNo': '2019011061251777', 'transTime': '2019-01-10 16:27:48'}
+2019-01-10 16:27:49,396 - INFO - 返回报文:{'errorDesc': '交易成功', 'responseBody': {'couponBag': None, 'managerUserId': '10017212', 'prizeList': None, 'retCode': '0000', 'retMsg': '交易成功', 'sysSource': '5', 'transNo': '2019011061251777', 'transTime': '2018-10-25 16:29:07', 'userRegId': '521333'}, 'retCode': '200'}
+2019-01-10 16:27:49,396 - INFO - 查询SQL:select * from WM_T_USER_REG t where MOBILE = '18211014919'
+2019-01-10 16:27:49,396 - INFO - 返回SQL:(521333, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014919, None, None, datetime.datetime(2018, 10, 25, 16, 29, 7), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 36), None, None, None, '0', None, None, None, '5', None, '1', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 7))
+2019-01-10 16:27:49,396 - INFO - --------20001--CASE9 end--------
+
+
+2019-01-10 16:27:49,396 - INFO - --------20001注册接口20001CASE 10 start--------
+2019-01-10 16:27:49,730 - INFO - 检查是否注册成功
+2019-01-10 16:27:49,822 - ERROR - 测试失败
+2019-01-10 16:27:50,011 - INFO - 请求报文:{'interfaceNo': '20001', 'loginPwd': 'YG5qde1DVnZnSHmFFyQTWw==', 'mobile': '18211014910', 'userNo': '10017212', 'sysSource': '5', 'transNo': '201901103022205', 'transTime': '2019-01-10 16:27:49'}
+2019-01-10 16:27:50,011 - INFO - 返回报文:{'errorDesc': '手机号码已经存在！', 'responseBody': {'retCode': 'E10001001', 'retMsg': '手机号码已经存在！', 'sysSource': '5', 'transNo': '201901103022205', 'transTime': '2018-10-25 16:29:08'}, 'retCode': '200'}
+2019-01-10 16:27:50,011 - INFO - 查询SQL:select * from WM_T_USER_REG t where MOBILE = '18211014910'
+2019-01-10 16:27:50,011 - INFO - 返回SQL:(521324, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014910, None, '440601198708192931', datetime.datetime(2018, 10, 25, 16, 28, 3), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 26, 31), None, None, datetime.datetime(2018, 10, 25, 16, 28, 9), '1', 'CR19011000000082', 531157, None, '5', datetime.datetime(2018, 10, 25, 16, 28, 9), '0', None, None, None, datetime.datetime(2018, 10, 25, 16, 28, 3))
+2019-01-10 16:27:50,011 - INFO - --------20001--CASE10 end--------
+
+
+2019-01-10 16:27:50,011 - INFO - --------20005实名认证接口20005CASE 1 start--------
+2019-01-10 16:27:51,177 - INFO - 检查是否实名认证成功
+2019-01-10 16:27:51,227 - INFO - 测试通过
+2019-01-10 16:27:51,528 - INFO - 请求报文:{'interfaceNo': '20005', 'mobile': '18211014911', 'cardNo': '610730198611282067', 'custName': '傅滢壮', 'managerUserId': '10017212', 'trustChannelCode': '02', 'isTrust': '2', 'isAppFlg': '1', 'openAccountSid': '16584111547108870032', 'isOpenInwardAccount': '01', 'sysSource': '5', 'transTime': '2019-01-10 16:27:50', 'transNo': '2019011064582160'}
+2019-01-10 16:27:51,528 - INFO - 返回报文:{'errorDesc': '处理成功!', 'responseBody': {'accOpenStatus': '0', 'accountNo': '92000000000000000001772709', 'activityFlag': '1', 'couponBag': None, 'customerType': '1', 'depository': None, 'ecifId': 'CR19011000000083', 'isNoActivity': None, 'mobile': '18211014911', 'openAccountSid': '16584111547108870032', 'prizeList': None, 'retCode': '0000', 'retMsg': '处理成功!', 'sysSource': '5', 'transNo': '2019011064582160', 'transTime': '2018-10-25 16:29:09', 'validStatus': '1'}, 'retCode': '200'}
+2019-01-10 16:27:51,529 - INFO - 查询SQL:select * from WM_T_USER_REG t where identify_number = '610730198611282067'
+2019-01-10 16:27:51,529 - INFO - 返回SQL:(521325, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014911, None, '610730198611282067', datetime.datetime(2018, 10, 25, 16, 29, 2), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 31), None, None, datetime.datetime(2018, 10, 25, 16, 29, 9), '1', 'CR19011000000083', 531158, None, '5', datetime.datetime(2018, 10, 25, 16, 29, 9), '0', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 2))
+2019-01-10 16:27:51,529 - INFO - --------20005--CASE1 end--------
+
+
+2019-01-10 16:27:51,529 - INFO - --------20005实名认证接口20005CASE 2 start--------
+2019-01-10 16:27:52,692 - INFO - 检查是否实名认证成功
+2019-01-10 16:27:52,733 - INFO - 测试通过
+2019-01-10 16:27:53,028 - INFO - 请求报文:{'interfaceNo': '20005', 'mobile': '18211014912', 'cardNo': '451101198001171972', 'custName': '卫行敬', 'managerUserId': '10017212', 'trustChannelCode': '02', 'isTrust': '2', 'isAppFlg': '1', 'openAccountSid': '4975641547108871549', 'isOpenInwardAccount': '01', 'sysSource': '5', 'transTime': '2019-01-10 16:27:51', 'transNo': '2019011083262136'}
+2019-01-10 16:27:53,028 - INFO - 返回报文:{'errorDesc': '处理成功!', 'responseBody': {'accOpenStatus': '0', 'accountNo': '92000000000000000001772710', 'activityFlag': '1', 'couponBag': None, 'customerType': '1', 'depository': None, 'ecifId': 'CR19011000000084', 'isNoActivity': None, 'mobile': '18211014912', 'openAccountSid': '4975641547108871549', 'prizeList': None, 'retCode': '0000', 'retMsg': '处理成功!', 'sysSource': '5', 'transNo': '2019011083262136', 'transTime': '2018-10-25 16:29:11', 'validStatus': '1'}, 'retCode': '200'}
+2019-01-10 16:27:53,028 - INFO - 查询SQL:select * from WM_T_USER_REG t where identify_number = '451101198001171972'
+2019-01-10 16:27:53,029 - INFO - 返回SQL:(521326, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014912, None, '451101198001171972', datetime.datetime(2018, 10, 25, 16, 29, 3), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 32), None, None, datetime.datetime(2018, 10, 25, 16, 29, 11), '1', 'CR19011000000084', 531159, None, '5', datetime.datetime(2018, 10, 25, 16, 29, 11), '0', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 3))
+2019-01-10 16:27:53,029 - INFO - --------20005--CASE2 end--------
+
+
+2019-01-10 16:27:53,029 - INFO - --------20005实名认证接口20005CASE 3 start--------
+2019-01-10 16:27:54,150 - INFO - 检查是否实名认证成功
+2019-01-10 16:27:54,206 - INFO - 测试通过
+2019-01-10 16:27:54,584 - INFO - 请求报文:{'interfaceNo': '20005', 'mobile': '18211014913', 'cardNo': '230126199008132773', 'custName': '黄琼瑶', 'managerUserId': '10017212', 'trustChannelCode': '02', 'isTrust': '2', 'isAppFlg': '1', 'openAccountSid': '5695021547108873053', 'isOpenInwardAccount': '01', 'sysSource': '5', 'transTime': '2019-01-10 16:27:53', 'transNo': '2019011057840095'}
+2019-01-10 16:27:54,584 - INFO - 返回报文:{'errorDesc': '处理成功!', 'responseBody': {'accOpenStatus': '0', 'accountNo': '92000000000000000001772711', 'activityFlag': '1', 'couponBag': None, 'customerType': '1', 'depository': None, 'ecifId': 'CR19011000000085', 'isNoActivity': None, 'mobile': '18211014913', 'openAccountSid': '5695021547108873053', 'prizeList': None, 'retCode': '0000', 'retMsg': '处理成功!', 'sysSource': '5', 'transNo': '2019011057840095', 'transTime': '2018-10-25 16:29:12', 'validStatus': '1'}, 'retCode': '200'}
+2019-01-10 16:27:54,584 - INFO - 查询SQL:select * from WM_T_USER_REG t where identify_number = '230126199008132773'
+2019-01-10 16:27:54,585 - INFO - 返回SQL:(521327, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014913, None, '230126199008132773', datetime.datetime(2018, 10, 25, 16, 29, 4), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 32), None, None, datetime.datetime(2018, 10, 25, 16, 29, 12), '1', 'CR19011000000085', 531160, None, '5', datetime.datetime(2018, 10, 25, 16, 29, 12), '0', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 4))
+2019-01-10 16:27:54,585 - INFO - --------20005--CASE3 end--------
+
+
+2019-01-10 16:27:54,585 - INFO - --------20005实名认证接口20005CASE 4 start--------
+2019-01-10 16:27:55,681 - INFO - 检查是否实名认证成功
+2019-01-10 16:27:55,721 - INFO - 测试通过
+2019-01-10 16:27:56,010 - INFO - 请求报文:{'interfaceNo': '20005', 'mobile': '18211014914', 'cardNo': '32030519870925194X', 'custName': '皮涛承', 'managerUserId': '10017212', 'trustChannelCode': '02', 'isTrust': '2', 'isAppFlg': '1', 'openAccountSid': '15518111547108874605', 'isOpenInwardAccount': '01', 'sysSource': '5', 'transTime': '2019-01-10 16:27:54', 'transNo': '201901109673887'}
+2019-01-10 16:27:56,010 - INFO - 返回报文:{'errorDesc': '处理成功!', 'responseBody': {'accOpenStatus': '0', 'accountNo': '92000000000000000001772712', 'activityFlag': '1', 'couponBag': None, 'customerType': '1', 'depository': None, 'ecifId': 'CR19011000000086', 'isNoActivity': None, 'mobile': '18211014914', 'openAccountSid': '15518111547108874605', 'prizeList': None, 'retCode': '0000', 'retMsg': '处理成功!', 'sysSource': '5', 'transNo': '201901109673887', 'transTime': '2018-10-25 16:29:14', 'validStatus': '1'}, 'retCode': '200'}
+2019-01-10 16:27:56,010 - INFO - 查询SQL:select * from WM_T_USER_REG t where identify_number = '32030519870925194X'
+2019-01-10 16:27:56,010 - INFO - 返回SQL:(521328, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014914, None, '32030519870925194X', datetime.datetime(2018, 10, 25, 16, 29, 4), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 33), None, None, datetime.datetime(2018, 10, 25, 16, 29, 14), '1', 'CR19011000000086', 531161, None, '5', datetime.datetime(2018, 10, 25, 16, 29, 14), '0', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 4))
+2019-01-10 16:27:56,010 - INFO - --------20005--CASE4 end--------
+
+
+2019-01-10 16:27:56,010 - INFO - --------20005实名认证接口20005CASE 5 start--------
+2019-01-10 16:27:57,130 - INFO - 检查是否实名认证成功
+2019-01-10 16:27:57,175 - INFO - 测试通过
+2019-01-10 16:27:57,480 - INFO - 请求报文:{'interfaceNo': '20005', 'mobile': '18211014915', 'cardNo': '420701198910052985', 'custName': '李贞芸', 'managerUserId': '10017212', 'trustChannelCode': '02', 'isTrust': '2', 'isAppFlg': '1', 'openAccountSid': '15240851547108876030', 'isOpenInwardAccount': '01', 'sysSource': '5', 'transTime': '2019-01-10 16:27:56', 'transNo': '2019011044096961'}
+2019-01-10 16:27:57,481 - INFO - 返回报文:{'errorDesc': '处理成功!', 'responseBody': {'accOpenStatus': '0', 'accountNo': '92000000000000000001772713', 'activityFlag': '1', 'couponBag': None, 'customerType': '1', 'depository': None, 'ecifId': 'CR19011000000087', 'isNoActivity': None, 'mobile': '18211014915', 'openAccountSid': '15240851547108876030', 'prizeList': None, 'retCode': '0000', 'retMsg': '处理成功!', 'sysSource': '5', 'transNo': '2019011044096961', 'transTime': '2018-10-25 16:29:15', 'validStatus': '1'}, 'retCode': '200'}
+2019-01-10 16:27:57,481 - INFO - 查询SQL:select * from WM_T_USER_REG t where identify_number = '420701198910052985'
+2019-01-10 16:27:57,481 - INFO - 返回SQL:(521329, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014915, None, '420701198910052985', datetime.datetime(2018, 10, 25, 16, 29, 5), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 33), None, None, datetime.datetime(2018, 10, 25, 16, 29, 15), '1', 'CR19011000000087', 531162, None, '5', datetime.datetime(2018, 10, 25, 16, 29, 15), '0', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 5))
+2019-01-10 16:27:57,481 - INFO - --------20005--CASE5 end--------
+
+
+2019-01-10 16:27:57,481 - INFO - --------20005实名认证接口20005CASE 6 start--------
+2019-01-10 16:27:58,599 - INFO - 检查是否实名认证成功
+2019-01-10 16:27:58,640 - INFO - 测试通过
+2019-01-10 16:27:58,937 - INFO - 请求报文:{'interfaceNo': '20005', 'mobile': '18211014916', 'cardNo': '340501198003181774', 'custName': '许致清', 'managerUserId': '10017212', 'trustChannelCode': '02', 'isTrust': '2', 'isAppFlg': '1', 'openAccountSid': '17672121547108877500', 'isOpenInwardAccount': '01', 'sysSource': '5', 'transTime': '2019-01-10 16:27:57', 'transNo': '2019011017402568'}
+2019-01-10 16:27:58,937 - INFO - 返回报文:{'errorDesc': '处理成功!', 'responseBody': {'accOpenStatus': '0', 'accountNo': '92000000000000000001772714', 'activityFlag': '1', 'couponBag': None, 'customerType': '1', 'depository': None, 'ecifId': 'CR19011000000088', 'isNoActivity': None, 'mobile': '18211014916', 'openAccountSid': '17672121547108877500', 'prizeList': None, 'retCode': '0000', 'retMsg': '处理成功!', 'sysSource': '5', 'transNo': '2019011017402568', 'transTime': '2018-10-25 16:29:17', 'validStatus': '1'}, 'retCode': '200'}
+2019-01-10 16:27:58,937 - INFO - 查询SQL:select * from WM_T_USER_REG t where identify_number = '340501198003181774'
+2019-01-10 16:27:58,937 - INFO - 返回SQL:(521330, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014916, None, '340501198003181774', datetime.datetime(2018, 10, 25, 16, 29, 5), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 34), None, None, datetime.datetime(2018, 10, 25, 16, 29, 17), '1', 'CR19011000000088', 531163, None, '5', datetime.datetime(2018, 10, 25, 16, 29, 17), '0', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 5))
+2019-01-10 16:27:58,938 - INFO - --------20005--CASE6 end--------
+
+
+2019-01-10 16:27:58,938 - INFO - --------20005实名认证接口20005CASE 7 start--------
+2019-01-10 16:28:00,059 - INFO - 检查是否实名认证成功
+2019-01-10 16:28:00,099 - INFO - 测试通过
+2019-01-10 16:28:00,398 - INFO - 请求报文:{'interfaceNo': '20005', 'mobile': '18211014917', 'cardNo': '370827198203063006', 'custName': '花思哲', 'managerUserId': '10017212', 'trustChannelCode': '02', 'isTrust': '2', 'isAppFlg': '1', 'openAccountSid': '5128101547108878960', 'isOpenInwardAccount': '01', 'sysSource': '5', 'transTime': '2019-01-10 16:27:58', 'transNo': '201901108215548'}
+2019-01-10 16:28:00,398 - INFO - 返回报文:{'errorDesc': '处理成功!', 'responseBody': {'accOpenStatus': '0', 'accountNo': '92000000000000000001772715', 'activityFlag': '1', 'couponBag': None, 'customerType': '1', 'depository': None, 'ecifId': 'CR19011000000089', 'isNoActivity': None, 'mobile': '18211014917', 'openAccountSid': '5128101547108878960', 'prizeList': None, 'retCode': '0000', 'retMsg': '处理成功!', 'sysSource': '5', 'transNo': '201901108215548', 'transTime': '2018-10-25 16:29:18', 'validStatus': '1'}, 'retCode': '200'}
+2019-01-10 16:28:00,398 - INFO - 查询SQL:select * from WM_T_USER_REG t where identify_number = '370827198203063006'
+2019-01-10 16:28:00,399 - INFO - 返回SQL:(521331, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014917, None, '370827198203063006', datetime.datetime(2018, 10, 25, 16, 29, 6), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 35), None, None, datetime.datetime(2018, 10, 25, 16, 29, 18), '1', 'CR19011000000089', 531164, None, '5', datetime.datetime(2018, 10, 25, 16, 29, 18), '0', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 6))
+2019-01-10 16:28:00,399 - INFO - --------20005--CASE7 end--------
+
+
+2019-01-10 16:28:00,399 - INFO - --------20005实名认证接口20005CASE 8 start--------
+2019-01-10 16:28:01,493 - INFO - 检查是否实名认证成功
+2019-01-10 16:28:01,537 - INFO - 测试通过
+2019-01-10 16:28:01,829 - INFO - 请求报文:{'interfaceNo': '20005', 'mobile': '18211014918', 'cardNo': '130434198902181244', 'custName': '霍琳香', 'managerUserId': '10017212', 'trustChannelCode': '02', 'isTrust': '2', 'isAppFlg': '1', 'openAccountSid': '14769751547108880420', 'isOpenInwardAccount': '01', 'sysSource': '5', 'transTime': '2019-01-10 16:28:00', 'transNo': '2019011044860157'}
+2019-01-10 16:28:01,829 - INFO - 返回报文:{'errorDesc': '处理成功!', 'responseBody': {'accOpenStatus': '0', 'accountNo': '92000000000000000001772716', 'activityFlag': '1', 'couponBag': None, 'customerType': '1', 'depository': None, 'ecifId': 'CR19011000000090', 'isNoActivity': None, 'mobile': '18211014918', 'openAccountSid': '14769751547108880420', 'prizeList': None, 'retCode': '0000', 'retMsg': '处理成功!', 'sysSource': '5', 'transNo': '2019011044860157', 'transTime': '2018-10-25 16:29:20', 'validStatus': '1'}, 'retCode': '200'}
+2019-01-10 16:28:01,829 - INFO - 查询SQL:select * from WM_T_USER_REG t where identify_number = '130434198902181244'
+2019-01-10 16:28:01,829 - INFO - 返回SQL:(521332, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014918, None, '130434198902181244', datetime.datetime(2018, 10, 25, 16, 29, 7), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 35), None, None, datetime.datetime(2018, 10, 25, 16, 29, 20), '1', 'CR19011000000090', 531165, None, '5', datetime.datetime(2018, 10, 25, 16, 29, 20), '0', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 7))
+2019-01-10 16:28:01,829 - INFO - --------20005--CASE8 end--------
+
+
+2019-01-10 16:28:01,830 - INFO - --------20005实名认证接口20005CASE 9 start--------
+2019-01-10 16:28:03,073 - INFO - 检查是否实名认证成功
+2019-01-10 16:28:03,118 - INFO - 测试通过
+2019-01-10 16:28:03,404 - INFO - 请求报文:{'interfaceNo': '20005', 'mobile': '18211014919', 'cardNo': '530423198106132551', 'custName': '毛咏黛', 'managerUserId': '10017212', 'trustChannelCode': '02', 'isTrust': '2', 'isAppFlg': '1', 'openAccountSid': '7287981547108881849', 'isOpenInwardAccount': '01', 'sysSource': '5', 'transTime': '2019-01-10 16:28:01', 'transNo': '2019011087226279'}
+2019-01-10 16:28:03,405 - INFO - 返回报文:{'errorDesc': '处理成功!', 'responseBody': {'accOpenStatus': '0', 'accountNo': '92000000000000000001772717', 'activityFlag': '1', 'couponBag': None, 'customerType': '1', 'depository': None, 'ecifId': 'CR19011000000091', 'isNoActivity': None, 'mobile': '18211014919', 'openAccountSid': '7287981547108881849', 'prizeList': None, 'retCode': '0000', 'retMsg': '处理成功!', 'sysSource': '5', 'transNo': '2019011087226279', 'transTime': '2018-10-25 16:29:21', 'validStatus': '1'}, 'retCode': '200'}
+2019-01-10 16:28:03,405 - INFO - 查询SQL:select * from WM_T_USER_REG t where identify_number = '530423198106132551'
+2019-01-10 16:28:03,405 - INFO - 返回SQL:(521333, 'YG5qde1DVnZnSHmFFyQTWw==', 18211014919, None, '530423198106132551', datetime.datetime(2018, 10, 25, 16, 29, 7), None, 'SAPP001', 10017212, 10017212, None, datetime.datetime(2019, 1, 10, 16, 27, 36), None, None, datetime.datetime(2018, 10, 25, 16, 29, 21), '1', 'CR19011000000091', 531166, None, '5', datetime.datetime(2018, 10, 25, 16, 29, 21), '0', None, None, None, datetime.datetime(2018, 10, 25, 16, 29, 7))
+2019-01-10 16:28:03,405 - INFO - --------20005--CASE9 end--------
+
+
+2019-01-10 16:28:03,405 - INFO - --------20005实名认证接口20005CASE 10 start--------
+2019-01-10 16:28:03,889 - INFO - 检查是否实名认证成功
+2019-01-10 16:28:03,952 - INFO - 测试通过
+2019-01-10 16:28:04,239 - INFO - 请求报文:{'interfaceNo': '20005', 'mobile': '18211014910', 'cardNo': '340621198002111855', 'custName': '平顺致', 'managerUserId': '10017212', 'trustChannelCode': '02', 'isTrust': '2', 'isAppFlg': '1', 'openAccountSid': '15919201547108883425', 'isOpenInwardAccount': '01', 'sysSource': '5', 'transTime': '2019-01-10 16:28:03', 'transNo': '201901101654576'}
+2019-01-10 16:28:04,240 - INFO - 返回报文:{'errorDesc': '交易成功', 'responseBody': {'accOpenStatus': '1', 'accountNo': None, 'activityFlag': None, 'couponBag': None, 'customerType': '2', 'depository': '02', 'ecifId': 'CR19011000000082', 'isNoActivity': '1', 'mobile': '18211014910', 'openAccountSid': None, 'prizeList': None, 'retCode': '0000', 'retMsg': '交易成功', 'sysSource': '5', 'transNo': '201901101654576', 'transTime': '2018-10-25 16:29:22', 'validStatus': '1'}, 'retCode': '200'}
+2019-01-10 16:28:04,240 - INFO - 查询SQL:select * from WM_T_USER_REG t where identify_number = '340621198002111855'
+2019-01-10 16:28:04,240 - INFO - 返回SQL:None
+2019-01-10 16:28:04,240 - INFO - --------20005--CASE10 end--------
+
+
+2019-01-10 16:28:04,241 - INFO - *********TEST END*********
+2019-01-10 16:28:04,241 - INFO - 不能发送邮件，因为on_off = 'off'

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<page>
+		<database name="LCDB">
+			<table name="WM_T_USER_REG">
+				<sql id="mobile">
+					select * from WM_T_USER_REG t where MOBILE = '%s'
+				</sql>
+				<sql id="identify_number">
+					select * from WM_T_USER_REG t where identify_number = '%s'
+				</sql>
+			</table>
+			<table name="wm_t_customer_info">
+				<sql id="custCode">
+					select t.customer_id,t.depository from wm_t_customer_info t where t.customer_code ='%s'
+				</sql>
+			</table>
+            <table name="wm_t_bank_info">
+				<sql id="customerID">
+					select * from wm_t_bank_info t where t.customer_id ='%s'
+				</sql>
+			</table>
+			<table name="wm_t_invest_info">
+				<sql id="customerID">
+					select t.invest_num,t.real_invest_amount,t.real_invest_date,t.expire_date,t.depository,t.tran_success_time
+					from wm_t_invest_info t WHERE t.customer_id='%s'
+				</sql>
+			</table>
+			<table name="wms_t_wealth_plan">
+				<sql id="planNo">
+					update wms_t_wealth_plan t set t.ONLINE_TIME=to_date('%s','yyyy-mm-dd hh24:mi:ss'),t.SALE_TIME=to_date('%s','yyyy-mm-dd hh24:mi:ss') where t.PLAN_NO='%s'
+				</sql>
+				<sql id="createtime">
+					select * from wms_t_wealth_plan t where t.create_time between date'%s' and date'%s' and t.auth_status='01' and t.plan_status is null
+				</sql>
+			</table>
+	</database>
+
+	<database name="COREDB">
+		<table name="t_c_at_account">
+			<sql id="custCode">
+				select * from  t_c_at_account tb where tb.master_id='%s'
+			</sql>
+		</table>
+		<table name="T_C_WH_DESPOSITORY_WITHDRAW">
+			<sql id="custCode">
+				select * from T_C_WH_DESPOSITORY_WITHDRAW az where az.cust_code='%s'
+			</sql>
+		</table>
+		<table name="t_c_cd_repay_reg">
+			<sql id="CREDIT_ID">
+				select * from t_c_cd_repay_reg t where t.CREDIT_ID = '%s' and REQ_SN = '%s'
+			</sql>
+		</table>
+		<table name="t_c_dp_cust_oper">
+			<sql id="custCode">
+				select t.JY_ACCT_ID,t.DP_ACCT_ID,t.REQ_BUSI_PARAM,t.STATUS from t_c_dp_cust_oper t,t_c_dp_cust t1 where t.jy_acct_id=t1.jy_acct_id and t.oper_type='14'
+				and t1.jy_cust_cd = '%s'
+			</sql>
+		</table>
+		<table name="t_c_cl_appinfo">
+			<sql id="intoappId">
+				select t.loan_status from t_c_cl_appinfo t where t.into_app_id='%s'
+			</sql>
+		</table>
+	</database>
+	<database name="LOANDB">
+		<table name="lb_t_into_info">
+			<sql id ="intoappId">
+				select * from lb_t_into_info t  where t.into_app_id='%s'
+			</sql>
+		</table>
+	</database>
+</page>
