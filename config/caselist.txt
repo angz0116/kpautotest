@@ -1,2 +1,3 @@
-bindbank_20053
-recharge_20057
+register
+getMobileStatus
+login

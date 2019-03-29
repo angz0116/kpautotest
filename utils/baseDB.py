@@ -1,9 +1,7 @@
 # -*- coding:utf-8 -*-
-
-import cx_Oracle
 import utils.readConfig as readConfig
 from utils.baseLog import MyLog as Log
-
+import py_mysql
 
 Config = readConfig.ReadConfig()
 
@@ -21,13 +19,13 @@ class ConfigDB:
 		password = Config.get_db(self.dbname, "password")
 		port = Config.get_db(self.dbname, "port")
 		database = Config.get_db(self.dbname, "database")
-		dns = cx_Oracle.makedsn(str(host), int(port), database)
+		dns = py_mysql.makedsn(str(host), int(port), database)
 
 		try:
-			self.db = cx_Oracle.connect(username, password, dns)
+			self.db = py_mysql.connect(username, password, dns)
 			self.cursor = self.db.cursor()
 			#print("数据库连接成功")
-		except cx_Oracle.DatabaseError:
+		except py_mysql.DatabaseError:
 			self.logger.error("账号密码错误，数据库登录失败")
 		except ConnectionError as ex:
 			self.logger.error(str(ex))

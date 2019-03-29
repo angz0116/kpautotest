@@ -2,7 +2,6 @@
 
 import os
 from xlrd import open_workbook
-import cx_Oracle
 from xlutils.copy import copy
 import requests
 import json

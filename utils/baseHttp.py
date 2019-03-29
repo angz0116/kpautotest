@@ -17,35 +17,16 @@ class ConfigHttp:
 		self.url = None
 		self.files = {}
 		self.moduletype = None
+
 	#接口时用该url
 	def set_url(self, url):
 		host = Config.get_http(self.httpname, "url")
-		if self.httpname == "LCJC1":
-			if self.moduletype == "CT":
-				port = "10059"
-			elif self.moduletype == "AC":
-				port = "10039"
-			elif self.moduletype == "WP":
-				port = "10079"
-			elif self.moduletype == "BI":
-				port = "10049"
-			elif self.moduletype == "MK":
-				port = "10029"
-			elif self.moduletype == "MS":
-				port = "10069"
-		else:
-			port = Config.get_http(self.httpname, "port")
-		self.url = host + ":" + port + url
-	'''
-	#打开页面需要用该url
-	def set_url(self, url):
-		host = Config.get_http(self.httpname, "url")
-		port = Config.get_http(self.httpname, "port")
-		self.url = host + ":" + port + url
-	'''
+		#port = Config.get_http(self.httpname, "port")
+		#self.url = host + ":" + port + url
+		self.url = host + url
 
-	def set_headers(self, header):
-		self.headers = header
+	def set_headers(self):
+		self.headers = {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
 
 	def set_params(self, param):
 		self.params = param
@@ -58,10 +39,31 @@ class ConfigHttp:
 
 	def post(self):
 		timeout = Config.get_http(self.httpname, "timeout")
-		try:
-			response = requests.post(self.url, headers=self.headers, data=json.dumps(self.data), files=self.files, timeout=float(timeout))
+		try: #json格式时json.dumps(self.data)，form表单的是self.data
+			response = requests.post(self.url, headers=self.headers, data=self.data, files=self.files, timeout=float(timeout))
 			res = json.loads(response.content)
 			return res
 		except requests.exceptions.ReadTimeout:
 			self.logger.error("发送接口请求超时，请修改timeout时间")
 			return None
+
+	def getyz(self,url):
+		#timeout = Config.get_http(self.httpname, "timheaders=self.headers,eout")
+		try: #json格式时json.dumps(self.data)，form表单的是self.data
+			response = requests.get(url, headers=self.headers, params=self.data)
+			res = json.loads(response.content)
+			return res
+		except requests.exceptions.ReadTimeout:
+			self.logger.error("发送接口请求超时，请修改timeout时间")
+			return None
+
+	def get(self):
+		#timeout = Config.get_http(self.httpname, "timheaders=self.headers,eout")
+		try: #json格式时json.dumps(self.data)，form表单的是self.data
+			response = requests.get(self.url, headers=self.headers, params=self.data)
+			res = json.loads(response.content)
+			return res
+		except requests.exceptions.ReadTimeout:
+			self.logger.error("发送接口请求超时，请修改timeout时间")
+			return None
+

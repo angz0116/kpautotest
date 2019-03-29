@@ -52,7 +52,7 @@ class Template_mixin(object):
 
 	DEFAULT_TITLE = '接口测试报告'
 	DEFAULT_DESCRIPTION = '接口测试'
-	DEFAULT_TESTER='捷越测试部'
+	DEFAULT_TESTER='科猫测试部'
 
 	# ------------------------------------------------------------------------
 	# HTML Template
@@ -218,7 +218,7 @@ table       { font-size: 100%; }
 </p>
 <table id='result_table' class="table table-condensed table-bordered table-hover">
 <colgroup>
-<col align='left' />
+<col align='right' />
 <col align='right' />
 <col align='right' />
 <col align='right' />
@@ -525,7 +525,7 @@ class HTMLTestRunner(Template_mixin):
 			if cls.__module__ == "__main__":
 				name = cls.__name__
 			else:
-				name = "%s.%s" % (cls.__module__, cls.__name__)
+				name = "%s" % (cls.__name__)
 			doc = cls.__doc__ and cls.__doc__.split("\n")[0] or ""
 			desc = doc and '%s: %s' % (name, doc) or name
 

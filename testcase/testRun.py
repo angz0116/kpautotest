@@ -61,7 +61,7 @@ class mytestRun:
 			if suit is not None:
 				logger.info("********TEST START********")
 				with open(resultPath, 'wb') as fp:
-					runner = HTMLTestRunner(stream=fp, title='向前金服接口测试报告', description='详细测试用例结果', tester='赵爱')
+					runner = HTMLTestRunner(stream=fp, title='科猫接口测试报告', description='详细测试用例结果', tester='赵爱')
 					runner.run(suit)
 			else:
 				logger.info("没有添加一个用例")
