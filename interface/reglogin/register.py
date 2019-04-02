@@ -18,12 +18,13 @@ sqldb = ConfigDB()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 注册(unittest.TestCase):
-	def setParameters(self, No, 测试结果, 测试用例, 请求报文, 返回报文,url, mobile, regtype, countrycode, 预期结果):
+	def setParameters(self, No, 测试结果, 测试用例, 请求报文, 返回报文,url, mobile, regtype, countrycode, verifycode, 预期结果):
 		self.No = str(No)
 		self.url = str(url)
 		self.mobile = str(mobile)
 		self.regtype = str(regtype)
 		self.countryCode = str(countrycode)
+		self.verifycode = str(verifycode)
 
 
 	def setUp(self):

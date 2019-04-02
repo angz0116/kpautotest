@@ -16,12 +16,13 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 发送短信验证码(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, type, action, account, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, type, action, account,countrycode, 预期结果):
         self.No = str(No)
         self.url = str(url)
         self.ftype = str(type)
         self.action = str(action)
         self.account = str(account)
+        self.countrycode =str(countrycode)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -40,6 +41,10 @@ class 发送短信验证码(unittest.TestCase):
         self.action = get_excel("action", self.No, interfaceNo)
         # 手机号或邮箱
         self.account = get_excel("account", self.No, interfaceNo)
+        # token
+        self.token = get_excel("token", self.No, "login")
+        # 验证码类型 email，mobile
+        self.countrycode = get_excel("countrycode", self.No, interfaceNo)
         print("发送短信验证码接口__sendverify（account）==" + str(self.account))
         self.data = {
             "type": self.ftype,
@@ -49,12 +54,19 @@ class 发送短信验证码(unittest.TestCase):
             "system": "3",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",
-            "country_code": "86",
+            "country_code": self.countrycode,
             "channel": "5"
         }
-        req.set_url(self.url)
+        if self.token == "":
+            self.urlq = self.url
+            self.logger.info(interfaceNo + ">>>>token为空=====" + self.urlq)
+        else:
+            self.urlq = self.url + "&&token=" + self.token
+            self.logger.info(interfaceNo + ">>>>token=====" + self.urlq)
+        req.set_url(self.urlq)
         req.set_data(self.data)
         self.response = req.post()
+        print(self.response)
         try:
             self.retcode = self.response["code"]
         except Exception:

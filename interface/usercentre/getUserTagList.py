@@ -5,21 +5,20 @@ from utils.baseHttp import ConfigHttp
 from utils.baseUtils import *
 import unittest
 import paramunittest
-
-interfaceNo = "changepass"
-name = "修改密码"
+import datetime
+interfaceNo = "getUserTagList"
+name = "获取用户个性标签"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 修改密码(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url,changetype, oldpass, newpass, 预期结果):
+class 获取用户个性标签(unittest.TestCase):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, tagId, tagName, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.changetype = str(changetype)
-        self.oldpass = str(oldpass)
-        self.newpass = str(newpass)
+        self.tagId = str(tagId)
+        self.tagName = str(tagName)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -27,28 +26,19 @@ class 修改密码(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """修改密码"""
-
+    """获取用户个性标签"""
     def test_body(self):
         req.httpname = "KPTEST"
+        # 获取执行接口的url
         self.url = get_excel("url", self.No, interfaceNo)
-        # 手机号
-        self.changetype = get_excel("changetype", self.No, interfaceNo)
-        # 旧密码
-        self.oldpass = get_excel("oldpass", self.No, interfaceNo)
-        # 新密码
-        self.newpass = get_excel("newpass", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
+
         self.data = {
-            "changetype": self.changetype,
-            "pass_new": self.newpass,
-            "pass_old": self.oldpass,
-            "app_version": "8.0.0",
-            "system": "3",
+            "v": "3.11.0",
+            "system": "5",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",
-            "country_code": "86",
             "channel": "5"
         }
         print(self.data)
@@ -73,7 +63,7 @@ class 修改密码(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否修改/设置密码成功"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否获取用户个性标签"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:
@@ -88,6 +78,14 @@ class 修改密码(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        print(self.retcode)
+        # 查询到有数据的时，则把tag的ID，name都写入excel中
+        if self.retcode==0:
+            self.tagId = self.response["data"][0]["id"]
+            self.tagName = self.response["data"][0]["tag_name"]
+            set_excel(self.tagId , "tagId", self.No, "delusertag")
+            set_excel(self.tagId, "tagId", self.No, interfaceNo)
+            set_excel(self.tagName, "tagName", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

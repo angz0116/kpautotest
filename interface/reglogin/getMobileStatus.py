@@ -42,11 +42,10 @@ class 检测账号是否注册(unittest.TestCase):
         verityCode = getVerifyCode(self.No, "register", self.mobile)
         print("用户注册接口手机号==" + self.mobile)
         self.data = {
-            "username": "18211014921",
+            "username": self.mobile,
             "verify": verityCode,
             "source": "1",
             "country_code":self.countryCode,
-            "token": "5",
             "app_version": "8.0.0",
             "system": "3",
             "device_model": "HUAWEI P10",
@@ -54,17 +53,12 @@ class 检测账号是否注册(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
+        req.set_data(self.data)
         req.set_url(self.url)
         self.response = req.post()
         try:
             print(self.response)
-            if self.response["code"]==0:
-                self.retcode = self.response["status"]
-                self.secretkey = self.response["secret_key"]
-
-            else:
-                self.retcode = 2
-                self.secretkey = ""
+            self.retcode = self.response["code"]
         except Exception:
             self.logger.error("报文返回为空！")
             print("报文返回为空！")
@@ -73,9 +67,18 @@ class 检测账号是否注册(unittest.TestCase):
 
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 1, self.logger.info("注册成功"))
+            self.assertEqual(self.retcode, 0, self.logger.info("注册成功"))
+            if self.retcode==0:
+                self.status = self.response["data"]["status"]
+                # 登录授权码
+                self.secretkey = self.response["data"]["secret_key"]
+            else:
+                self.status = 2
+                self.secretkey = ""
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
+            self.msg = self.response["msg"]
+            self.logger.info(self.msg)
         except AssertionError:
             self.assertEqual(self.retcode, 2, self.logger.info("注册失败"))
             self.assertEqual(self.secretkey, "",self.logger.info("登录授权码为空"))
@@ -85,8 +88,9 @@ class 检测账号是否注册(unittest.TestCase):
     def wr_excel(self):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
-        set_excel(self.retcode, "status", self.No, interfaceNo)
-        set_excel(self.secretkey, "secret_key", self.No, interfaceNo)
+        set_excel(self.status, "status", self.No, interfaceNo)
+        set_excel(self.secretkey, "secretkey", self.No, interfaceNo)
+        set_excel(self.msg, "预期结果", self.No, interfaceNo)
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)
         self.log.build_case_line("返回报文", self.response)

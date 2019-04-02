@@ -16,12 +16,14 @@ sqldb = ConfigDB()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 登录(unittest.TestCase):
-	def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例,url, mobile,logintype, password, token, 预期结果):
+	def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例,url, mobile, logintype, password, uid, verifycode, token, 预期结果):
 		self.No = str(No)
 		self.url = str(url)
 		self.mobile = str(mobile)
 		self.logintype = str(logintype)
 		self.password = str(password)
+		self.uid = str(uid)
+		self.verifycode =str(verifycode)
 		self.token = str(token)
 
 	def setUp(self):
@@ -70,8 +72,13 @@ class 登录(unittest.TestCase):
 		try:
 			self.assertEqual(self.retcode, 0, self.logger.info("检查是否登录成功"))
 			if self.retcode==0:
-				tokenp = self.response["data"]["token"]
-				set_excel(tokenp, "token", self.No, interfaceNo)
+				self.tokenp = self.response["data"]["token"]
+				self.uid = self.response["data"]["uid"]
+				set_excel(self.tokenp, "token", self.No, interfaceNo)
+				set_excel(self.uid, "uid", self.No, interfaceNo)
+				# 写入addusertag sheet页中
+				set_excel(self.uid, "touid", self.No, "addusertag")
+				set_excel(self.tokenp, "token", self.No, "addusertag")
 			set_excel("pass", "测试结果", self.No, interfaceNo)
 			self.logger.info("测试通过")
 		except AssertionError:

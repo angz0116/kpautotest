@@ -24,6 +24,7 @@ class ConfigHttp:
 		#port = Config.get_http(self.httpname, "port")
 		#self.url = host + ":" + port + url
 		self.url = host + url
+		print(self.url)
 
 	def set_headers(self):
 		self.headers = {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
