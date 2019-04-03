@@ -51,7 +51,7 @@ class 搜索组织(unittest.TestCase):
             self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)
-        self.response = req.post()
+        self.response = req.get()
         print(self.response)
         try:
             self.retcode = self.response["code"]

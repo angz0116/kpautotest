@@ -14,10 +14,11 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 会议列表(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url,mtype, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, crowdid, type, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.mtype = str(mtype)
+        self.crowdid = str(crowdid)
+        self.type  =str(type)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -32,11 +33,13 @@ class 会议列表(unittest.TestCase):
         self.url = get_excel("url", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-        # 1.现场会议，2.直播会议
-        self.mtype = get_excel("mtype", self.No, interfaceNo)
-
+        # 1.组织id
+        self.crowdid = get_excel("crowdid", self.No, interfaceNo)
+        # type 1.现场会议，2.直播会议
+        self.type = get_excel("type", self.No, interfaceNo)
         self.data = {
-            "type":self.mtype,
+            "crowd_id":self.crowdid,
+            "type": self.type,
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -52,7 +55,7 @@ class 会议列表(unittest.TestCase):
             self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)
-        self.response = req.post()
+        self.response = req.get()
         print(self.response)
         try:
             self.retcode = self.response["code"]

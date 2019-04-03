@@ -14,9 +14,12 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 自定义资讯列表(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, crowid, menuid, npage, 预期结果):
         self.No = str(No)
         self.url = str(url)
+        self.crowdid = str(crowid)
+        self.menuid = str(menuid)
+        self.npage = str(npage)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -31,8 +34,16 @@ class 自定义资讯列表(unittest.TestCase):
         self.url = get_excel("url", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-
+        # 组织id
+        self.crowdid = get_excel("crowdid", self.No, interfaceNo)
+        # 菜单项id
+        self.menu_id = get_excel("menuid", self.No, interfaceNo)
+        # 页码
+        self.npage = get_excel("npage", self.No, interfaceNo)
         self.data = {
+            "crowd_id": self.crowdid,
+            "menu_id" : self.menuid,
+            "page":self.npage,
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -48,7 +59,7 @@ class 自定义资讯列表(unittest.TestCase):
             self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)
-        self.response = req.post()
+        self.response = req.get()
         print(self.response)
         try:
             self.retcode = self.response["code"]

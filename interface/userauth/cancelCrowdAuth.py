@@ -15,12 +15,10 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 取消学会会员认证(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, realname, idcard, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, authid, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.realname = str(realname)
-        self.idcard = str(idcard)
-
+        self.authid = str(authid)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -40,8 +38,7 @@ class 取消学会会员认证(unittest.TestCase):
         self.token = get_excel("token", self.No, "login")
 
         self.data = {
-            "real_name": self.realname,
-            "id_card": self.idcard,
+            "auth_id": self.authid,
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",

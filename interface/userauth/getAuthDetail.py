@@ -15,12 +15,10 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 获取认证详情(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, realname, idcard, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, adtype, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.realname = str(realname)
-        self.idcard = str(idcard)
-
+        self.adtype = str(adtype)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -33,15 +31,13 @@ class 获取认证详情(unittest.TestCase):
         req.httpname = "KPTEST"
         self.url = get_excel("url", self.No, interfaceNo)
         # 真实的姓名
-        self.realname = get_excel("realname", self.No, interfaceNo)
-        # 身份证号
-        self.idcard = get_excel("idcard", self.No, interfaceNo)
+        self.adtype = get_excel("adtype", self.No, interfaceNo)
+
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
 
         self.data = {
-            "real_name": self.realname,
-            "id_card": self.idcard,
+            "type": self.adtype,
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -57,7 +53,7 @@ class 获取认证详情(unittest.TestCase):
             self.logger.info(interfaceNo + ">>>>token=====" + self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)
-        self.response = req.post()
+        self.response = req.get()
         print(self.response)
         try:
             self.retcode = self.response["code"]

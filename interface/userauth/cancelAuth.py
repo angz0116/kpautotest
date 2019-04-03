@@ -15,12 +15,10 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 取消认证(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, realname, idcard, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, authid, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.realname = str(realname)
-        self.idcard = str(idcard)
-
+        self.authid = str(authid)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -32,16 +30,13 @@ class 取消认证(unittest.TestCase):
     def test_body(self):
         req.httpname = "KPTEST"
         self.url = get_excel("url", self.No, interfaceNo)
-        # 真实的姓名
-        self.realname = get_excel("realname", self.No, interfaceNo)
-        # 身份证号
-        self.idcard = get_excel("idcard", self.No, interfaceNo)
+        # 职业认证ID
+        self.authid = get_excel("authid", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
 
         self.data = {
-            "real_name": self.realname,
-            "id_card": self.idcard,
+            "auth_id": self.authid,
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
