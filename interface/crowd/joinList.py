@@ -5,19 +5,19 @@ from utils.baseHttp import ConfigHttp
 from utils.baseUtils import *
 import unittest
 import paramunittest
-import datetime
-interfaceNo = "index"
-name = "个人主页"
+interfaceNo = "joinList"
+name = "组织参加列表"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 个人主页(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, uid, 预期结果):
+class 组织参加列表(unittest.TestCase):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, type, crowdid, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.uid = str(uid)
+        self.type = str(type)
+        self.crowdid = str(crowdid)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -25,18 +25,21 @@ class 个人主页(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """个人主页"""
+    """组织参加列表"""
     def test_body(self):
         req.httpname = "KPTEST"
         # 获取执行接口的url
         self.url = get_excel("url", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-        # 用户uid
-        self.uid = get_excel("uid", self.No, "login")
-
+        # 1.type=1 下属机构；type=2 已加入的国际组织；type=3 中国科协业务主管的期刊；
+        # type=4 非中国科协业务主管的期刊；type=5 设奖情况
+        self.type = get_excel("type", self.No, interfaceNo)
+        # 1.组织ID
+        self.crowdid = get_excel("crowdid", self.No, interfaceNo)
         self.data = {
-            "uid": self.uid,
+            "type" : self.type,
+            "crowd_id": self.crowdid,
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -65,7 +68,7 @@ class 个人主页(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否获取个人主页信息"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否获取组织参加列表"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:
@@ -80,7 +83,6 @@ class 个人主页(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
-        set_excel(self.uid, "uid", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

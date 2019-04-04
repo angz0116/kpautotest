@@ -5,19 +5,20 @@ from utils.baseHttp import ConfigHttp
 from utils.baseUtils import *
 import unittest
 import paramunittest
-import datetime
-interfaceNo = "index"
-name = "个人主页"
+interfaceNo = "getArticleList"
+name = "获取资讯列表"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 个人主页(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, uid, 预期结果):
+class 获取资讯列表(unittest.TestCase):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, crowdid, page, menuid, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.uid = str(uid)
+        self.crowdid = str(crowdid)
+        self.page = str(page)
+        self.menuid = str(menuid)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -25,18 +26,23 @@ class 个人主页(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """个人主页"""
+    """获取资讯列表"""
     def test_body(self):
         req.httpname = "KPTEST"
         # 获取执行接口的url
         self.url = get_excel("url", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-        # 用户uid
-        self.uid = get_excel("uid", self.No, "login")
-
+        # 页码
+        self.page = get_excel("page", self.No, interfaceNo)
+        # 机构id
+        self.crowdid = get_excel("crowdid", self.No, interfaceNo)
+        # 菜单id
+        self.menuid = get_excel("menuid", self.No, interfaceNo)
         self.data = {
-            "uid": self.uid,
+            "page": self.page,
+            "crowd_id": self.crowdid,
+            "menu_id": self.menuid,
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -65,7 +71,7 @@ class 个人主页(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否获取个人主页信息"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否获取资讯列表"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:
@@ -80,7 +86,6 @@ class 个人主页(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
-        set_excel(self.uid, "uid", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

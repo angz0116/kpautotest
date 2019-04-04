@@ -5,19 +5,21 @@ from utils.baseHttp import ConfigHttp
 from utils.baseUtils import *
 import unittest
 import paramunittest
-import datetime
-interfaceNo = "index"
-name = "个人主页"
+from service.gainName import getFullName
+from service.districtcode import gennerator
+interfaceNo = "ulist"
+name = "获取学会列表"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 个人主页(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, uid, 预期结果):
+class 获取学会列表(unittest.TestCase):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, type, page, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.uid = str(uid)
+        self.type = str(type)
+        self.page = str(page)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -25,18 +27,21 @@ class 个人主页(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """个人主页"""
+    """获取学会列表"""
     def test_body(self):
         req.httpname = "KPTEST"
-        # 获取执行接口的url
         self.url = get_excel("url", self.No, interfaceNo)
+        # 认证类型 1=协会工作者 2=学会会员 3=企业工作者 4=媒体工作者 5=高校工作者 6=学会工作者
+        self.type = get_excel("type", self.No, interfaceNo)
+        # 页码
+        self.page = get_excel("page", self.No, interfaceNo)
+
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-        # 用户uid
-        self.uid = get_excel("uid", self.No, "login")
 
         self.data = {
-            "uid": self.uid,
+            "type": self.type,
+            "page": self.page,
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -44,15 +49,16 @@ class 个人主页(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
-        if self.token=="":
+        if self.token == "":
             self.urlq = self.url
-            self.logger.info(interfaceNo+">>>>token为空====="+self.urlq)
+            self.logger.info(interfaceNo + ">>>>token为空=====" + self.urlq)
         else:
-            self.urlq = self.url+"&&token="+self.token
-            self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
+            self.urlq = self.url + "&&token=" + self.token
+            self.logger.info(interfaceNo + ">>>>token=====" + self.urlq)
+
         req.set_url(self.urlq)
         req.set_data(self.data)
-        self.response = req.get()
+        self.response = req.post()
         print(self.response)
         try:
             self.retcode = self.response["code"]
@@ -65,7 +71,7 @@ class 个人主页(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否获取个人主页信息"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否获取学会列表"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:
@@ -80,7 +86,31 @@ class 个人主页(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
-        set_excel(self.uid, "uid", self.No, interfaceNo)
+
+        # 把认证类型，写入申请认证sheet页中
+        set_excel(self.type, "type", self.No, "certification")
+        if self.retcode == 0:
+            typedata = self.response["data"]["data"]
+            if typedata != "":
+                for i in range(len(typedata)):
+                    self.typeid = typedata[i]["id"]
+                    break
+        else:
+            self.typeid = 0
+        # 组织ID
+        set_excel(self.typeid, "typeid", self.No, "certification")
+
+        '''
+          # 当type=2，学会会员，职位必填
+        if self.type=="2":
+            set_excel(self.job, "job", self.No, "certification")
+        # 当type=3，企业工作者，企业名称必填
+        elif self.type=="3":
+            set_excel(self.typename, "typename", self.No, "certification")
+        else:
+            set_excel("", "job", self.No, "certification")
+            set_excel("", "typename", self.No, "certification")
+        '''
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)
