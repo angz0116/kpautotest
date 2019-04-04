@@ -18,13 +18,14 @@ sqldb = ConfigDB()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 注册(unittest.TestCase):
-	def setParameters(self, No, 测试结果, 测试用例, 请求报文, 返回报文,url, mobile, regtype, countrycode, verifycode, 预期结果):
+	def setParameters(self, No, 测试结果, 测试用例, 请求报文, 返回报文,url, mobile, regtype, countrycode, verifycode, flag, 预期结果):
 		self.No = str(No)
 		self.url = str(url)
 		self.mobile = str(mobile)
 		self.regtype = str(regtype)
 		self.countryCode = str(countrycode)
 		self.verifycode = str(verifycode)
+		self.flag = str(flag)
 
 
 	def setUp(self):
@@ -35,12 +36,15 @@ class 注册(unittest.TestCase):
 	def test_body(self):
 		req.httpname = "KPTEST"
 		self.url = get_excel("url", self.No, interfaceNo)
-		self.mobile = get_excel("mobile", self.No, interfaceNo)
-		if(self.mobile==""):
-			# 获取手机号
+		# flag为1时，则重新生成新手机号；flag为2时，则从excel中读取已存在的
+		self.flag = get_excel("flag", self.No, interfaceNo)
+		# 根据flag进行判断，手机号是否生成新手机号
+		if(self.flag=="1"):
+			# 重新生成新手机号
 			self.telphone = createPhone()
 		else:
-			self.telphone = self.mobile
+			# 从excel中获取手机号
+			self.telphone = get_excel("mobile", self.No, interfaceNo)
 		# 获取姓名
 		self.nick = getFullName()
 		# 注册类型 1=普通密码注册 2=短信验证码
@@ -81,8 +85,10 @@ class 注册(unittest.TestCase):
 		try:
 			self.assertEqual(self.retcode, 0, self.logger.info("检查是否注册成功"))
 			#注册成功后，则把手机号写入“检查是否注册”的接口中
-			if self.retcode==0:
-				set_excel(self.telphone, "mobile", self.No, "getMobileStatus")
+			#if self.retcode==0:
+			#	set_excel(self.telphone, "mobile", self.No, "getMobileStatus")
+			set_excel(self.telphone, "mobile", self.No, "getMobileStatus")
+			set_excel(self.countryCode, "countryCode", self.No, "login")
 			set_excel("pass", "测试结果", self.No, interfaceNo)
 			self.logger.info("测试通过")
 		except AssertionError:

@@ -10,7 +10,7 @@ from utils.baseDB import ConfigDB
 from datadao.verifyCode import getVerifyCode
 
 interfaceNo = "getMobileStatus"
-name = "检测账号是否注册getMobileStatus"
+name = "检测账号是否注册"
 
 req = ConfigHttp()
 sqldb = ConfigDB()
@@ -18,7 +18,7 @@ sqldb = ConfigDB()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 检测账号是否注册(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文,url, mobile, status, secretkey,预期结果):
+    def setParameters(self, No, 测试结果, 测试案例, 请求报文, 返回报文,url, mobile, status, secretkey,预期结果):
         self.No = str(No)
         self.url = str(url)
         self.mobile = str(mobile)

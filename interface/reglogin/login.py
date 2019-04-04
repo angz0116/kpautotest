@@ -16,7 +16,7 @@ sqldb = ConfigDB()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 登录(unittest.TestCase):
-	def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例,url, mobile, logintype, password, uid, verifycode, token, 预期结果):
+	def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例,url, mobile, logintype, password, uid, verifycode, countrycode, token, 预期结果):
 		self.No = str(No)
 		self.url = str(url)
 		self.mobile = str(mobile)
@@ -24,6 +24,7 @@ class 登录(unittest.TestCase):
 		self.password = str(password)
 		self.uid = str(uid)
 		self.verifycode =str(verifycode)
+		self.countrycode =str(countrycode)
 		self.token = str(token)
 
 	def setUp(self):
@@ -41,9 +42,13 @@ class 登录(unittest.TestCase):
 		# 登录凭证类型 1=短信验证码  2=密码登录
 		self.logintype = get_excel("logintype", self.No, interfaceNo)
 		if self.logintype =="1":
-			self.password = getVerifyCode(self.No, "register", self.mobile)
+			self.verifycode = getVerifyCode(self.No, "login", self.mobile)
+			self.password = get_excel("secretkey", self.No, "getMobileStatus")
 		else:
-			self.password = get_excel("password", self.No, "login")
+			self.verifycode = ""
+			self.password = get_excel("password", self.No, interfaceNo)
+		# 国家编码
+		self.countrycode = get_excel("countrycode", self.No, interfaceNo)
 		print("用户登录接口__login手机号==" + str(self.mobile))
 		self.data = {
 			"username": self.mobile,
@@ -53,7 +58,7 @@ class 登录(unittest.TestCase):
 			"system": "3",
 			"device_model": "HUAWEI P10",
 			"system_version": "V1.0.0",
-			"country_code": "86",
+			"country_code": self.countrycode,
 			"channel": "5"
 		}
 
@@ -79,6 +84,7 @@ class 登录(unittest.TestCase):
 				# 写入addusertag sheet页中
 				set_excel(self.uid, "touid", self.No, "addusertag")
 				set_excel(self.tokenp, "token", self.No, "addusertag")
+
 			set_excel("pass", "测试结果", self.No, interfaceNo)
 			self.logger.info("测试通过")
 		except AssertionError:
@@ -93,7 +99,7 @@ class 登录(unittest.TestCase):
 		set_excel(self.response, "返回报文", self.No, interfaceNo)
 		set_excel(self.msg,"预期结果",self.No, interfaceNo)
 		set_excel(self.password, "password", self.No, interfaceNo)
-
+		set_excel(self.verifycode, "verifycode", self.No, interfaceNo)
 	def tearDown(self):
 		self.log.build_case_line("请求报文", self.data)
 		self.log.build_case_line("返回报文", self.response)

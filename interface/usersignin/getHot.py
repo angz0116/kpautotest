@@ -6,18 +6,17 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 import datetime
-interfaceNo = "myinfo"
-name = "我的菜单选项"
+interfaceNo = "getHot"
+name = "已签到获取热点图推荐"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 我的菜单选项(unittest.TestCase):
+class 已签到获取热点图推荐(unittest.TestCase):
     def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, 预期结果):
         self.No = str(No)
         self.url = str(url)
-
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -25,7 +24,7 @@ class 我的菜单选项(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """我的菜单选项"""
+    """已签到获取热点图推荐"""
     def test_body(self):
         req.httpname = "KPTEST"
         self.url = get_excel("url", self.No, interfaceNo)
@@ -60,7 +59,7 @@ class 我的菜单选项(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否获取我的菜单选项"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否已签到获取热点图推荐成功"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:

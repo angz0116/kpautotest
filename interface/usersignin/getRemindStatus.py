@@ -6,18 +6,18 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 import datetime
-interfaceNo = "myinfo"
-name = "我的菜单选项"
+interfaceNo = "getRemindStatus"
+name = "获取签到提醒开关状态"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 我的菜单选项(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, 预期结果):
+class 获取签到提醒开关状态(unittest.TestCase):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文,测试用例, url, remindstauts, 预期结果):
         self.No = str(No)
         self.url = str(url)
-
+        self.remindstauts = str(remindstauts)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -25,7 +25,7 @@ class 我的菜单选项(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """我的菜单选项"""
+    """获取签到提醒开关状态"""
     def test_body(self):
         req.httpname = "KPTEST"
         self.url = get_excel("url", self.No, interfaceNo)
@@ -60,7 +60,7 @@ class 我的菜单选项(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否获取我的菜单选项"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否获取签到提醒开关状态"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:
@@ -75,6 +75,10 @@ class 我的菜单选项(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        if self.retcode==0:
+            # 每日签到提醒开关      1=开启签到提醒 2=关闭签到提醒
+            self.restatus = self.response["data"]["remind_status"]
+            set_excel(self.restatus, "remindstauts", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

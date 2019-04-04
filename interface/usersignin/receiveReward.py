@@ -6,18 +6,18 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 import datetime
-interfaceNo = "myinfo"
-name = "我的菜单选项"
+interfaceNo = "receiveReward"
+name = "领取挑战奖励"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 我的菜单选项(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, 预期结果):
+class 领取挑战奖励(unittest.TestCase):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, daynum, 预期结果):
         self.No = str(No)
         self.url = str(url)
-
+        self.daynum = str(daynum)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -25,13 +25,16 @@ class 我的菜单选项(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """我的菜单选项"""
+    """领取挑战奖励"""
     def test_body(self):
         req.httpname = "KPTEST"
         self.url = get_excel("url", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
+        # 挑战阶段性标准值，可选值：5,15,30,60,100,180
+        self.daynum = get_excel("daynum", self.No, interfaceNo)
         self.data = {
+            "day_num": self.daynum,
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -60,7 +63,7 @@ class 我的菜单选项(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否获取我的菜单选项"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否领取挑战奖励成功"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:
