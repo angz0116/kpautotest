@@ -36,7 +36,7 @@ class 获取资讯列表(unittest.TestCase):
         # 页码
         self.page = get_excel("page", self.No, interfaceNo)
         # 机构id
-        self.crowdid = get_excel("crowdid", self.No, interfaceNo)
+        self.crowdid = get_excel("crowdid", self.No, "addFollow")
         # 菜单id
         self.menuid = get_excel("menuid", self.No, interfaceNo)
         self.data = {

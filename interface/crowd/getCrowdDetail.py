@@ -13,10 +13,10 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 组织主页获取组织信息api(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, pid, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, crowdid, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.pid = str(pid)
+        self.crowdid = str(crowdid)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -32,9 +32,9 @@ class 组织主页获取组织信息api(unittest.TestCase):
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
         # 机构id
-        self.pid = get_excel("pid", self.No, interfaceNo)
+        self.crowdid = get_excel("crowdid", self.No, "addFollow")
         self.data = {
-            "id": self.pid,
+            "id": self.crowdid,
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -50,7 +50,7 @@ class 组织主页获取组织信息api(unittest.TestCase):
             self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)
-        self.response = req.get()
+        self.response = req.post()
         print(self.response)
         try:
             self.retcode = self.response["code"]
@@ -78,6 +78,7 @@ class 组织主页获取组织信息api(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        set_excel(self.crowdid, "crowdid", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

@@ -31,9 +31,8 @@ class 组织主页下属机构分类(unittest.TestCase):
         self.url = get_excel("url", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-        # 1.type=1 下属机构；type=2 已加入的国际组织；type=3 中国科协业务主管的期刊；
-        # type=4 非中国科协业务主管的期刊；type=5 设奖情况
-        self.sid = get_excel("sid", self.No, interfaceNo)
+        # 组织id
+        self.sid = get_excel("crowdid", self.No, "addFollow")
 
         self.data = {
             "id" : self.sid,
@@ -52,7 +51,7 @@ class 组织主页下属机构分类(unittest.TestCase):
             self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)
-        self.response = req.get()
+        self.response = req.post()
         print(self.response)
         try:
             self.retcode = self.response["code"]
@@ -80,6 +79,7 @@ class 组织主页下属机构分类(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        set_excel(self.sid, "sid", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

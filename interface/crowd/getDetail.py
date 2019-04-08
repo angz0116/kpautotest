@@ -32,7 +32,7 @@ class 组织主页获取组织信息api(unittest.TestCase):
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
         # 机构id
-        self.crowdid = get_excel("crowdid", self.No, interfaceNo)
+        self.crowdid = get_excel("crowdid", self.No, "addFollow")
         self.data = {
             "crowd_id": self.crowdid,
             "v": "3.11.0",
@@ -78,6 +78,7 @@ class 组织主页获取组织信息api(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        set_excel(self.crowdid, "crowdid", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

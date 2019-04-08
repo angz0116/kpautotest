@@ -13,9 +13,10 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 关注组织(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, crowdid, 预期结果):
         self.No = str(No)
         self.url = str(url)
+        self.crowdid = str(crowdid)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -49,7 +50,7 @@ class 关注组织(unittest.TestCase):
             self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)
-        self.response = req.get()
+        self.response = req.post()
         print(self.response)
         try:
             self.retcode = self.response["code"]

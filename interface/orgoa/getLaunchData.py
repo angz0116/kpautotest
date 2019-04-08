@@ -80,6 +80,11 @@ class 获取菜单及当前组织信息(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        if self.retcode==0:
+            if(len(self.response["data"]["recommendCrowd"])>0):
+                self.orgid = self.response["data"]["recommendCrowd"][0]["id"]
+                set_excel(self.orgid, "crowdid", self.No, "addFollow")
+                set_excel(self.orgid, "crowdid", self.No, "delFollow")
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)
