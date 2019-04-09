@@ -14,9 +14,12 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 认证审核操作(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, authid, status, pushid,  预期结果):
         self.No = str(No)
         self.url = str(url)
+        self.authid = str(authid)
+        self.status = str(status)
+        self.pushid = str(pushid)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -31,8 +34,16 @@ class 认证审核操作(unittest.TestCase):
         self.url = get_excel("url", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-
+        # 审核ID
+        self.authid = get_excel("authid", self.No, interfaceNo)
+        # 通过1，不通过2
+        self.status = get_excel("status", self.No, interfaceNo)
+        # 推送ID
+        self.pushid = get_excel("pushid", self.No, interfaceNo)
         self.data = {
+            "authid": self.authid,
+            "status": self.status,
+            "pushid": self.pushid,
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",

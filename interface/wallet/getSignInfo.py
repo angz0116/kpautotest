@@ -6,7 +6,7 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 import datetime
-interfaceNo = "getSignInfo"
+interfaceNo = "ordergetSignInfo"
 name = "获取支付宝签名数据"
 
 req = ConfigHttp()
