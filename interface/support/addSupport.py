@@ -6,21 +6,19 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 import datetime
-from datadao.verifyCode import getVerifyCode
-interfaceNo = "bindMobile"
-name = "绑定手机号"
+interfaceNo = "addSupport"
+name = "是否点赞成功"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 绑定手机号(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, countrycode, mobile, password, 预期结果):
+class 是否点赞成功(unittest.TestCase):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, fromid , type, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.countrycode = str(countrycode)
-        self.mobile = str(mobile)
-        self.password = str(password)
+        self.fromid = str(fromid)
+        self.type = str(type)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -28,26 +26,19 @@ class 绑定手机号(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """绑定手机号"""
+    """是否点赞成功"""
     def test_body(self):
         req.httpname = "KPTEST"
         self.url = get_excel("url", self.No, interfaceNo)
-        # 密码
-        self.password = get_excel("password", self.No, interfaceNo)
-        # 国家编码
-        self.countrycode = get_excel("countrycode", self.No, interfaceNo)
-        # 手机号
-        self.mobile = get_excel("mobile", self.No, "login")
-        # 验证码
-        self.verify = getVerifyCode(self.No, "login", self.mobile)
+        # 区域标识
+        self.fromid = get_excel("fromid", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-
+        # 类型
+        self.type = get_excel("type", self.No, interfaceNo)
         self.data = {
-            "mobile": self.mobile,
-            "verify": self.verify,
-            "password": self.password,
-            "country_code": self.countrycode,
+            "fromId":self.fromid,
+            "type" : self.type,
             "system": "5",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",
@@ -75,7 +66,7 @@ class 绑定手机号(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否绑定手机号成功"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否是否点赞成功"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:
@@ -90,7 +81,6 @@ class 绑定手机号(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
-        set_excel(self.mobile, "mobile", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

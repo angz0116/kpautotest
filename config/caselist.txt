@@ -2,7 +2,7 @@ register
 getMobileStatus
 login
 idCardAuth
-getIdCardAuth
+Auth
 changepass
 sendverify
 tourist

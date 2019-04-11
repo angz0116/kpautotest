@@ -44,6 +44,7 @@ class 检测手机号绑定状态(unittest.TestCase):
             "mobile":self.mobile,
             "type": self.type,
             "countrycode": self.countrycode,
+            "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",

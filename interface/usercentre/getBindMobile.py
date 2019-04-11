@@ -32,7 +32,7 @@ class 获取用户绑定的手机号(unittest.TestCase):
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
         self.data = {
-            "v": "2.9",
+            "v": "3.11.2",
             "system": "5",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",
