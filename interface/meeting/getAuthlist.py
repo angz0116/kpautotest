@@ -6,14 +6,14 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 import datetime
-interfaceNo = "backloglist"
-name = "待处理事件一级"
+interfaceNo = "getAuthlist"
+name = "获取待支付会议列表"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 待处理事件一级(unittest.TestCase):
+class 获取待支付会议列表(unittest.TestCase):
     def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, 预期结果):
         self.No = str(No)
         self.url = str(url)
@@ -24,7 +24,7 @@ class 待处理事件一级(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """待处理事件一级"""
+    """获取待支付会议列表"""
     def test_body(self):
         req.httpname = "KPTEST"
         # 获取执行接口的url
@@ -48,7 +48,7 @@ class 待处理事件一级(unittest.TestCase):
             self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)
-        self.response = req.post()
+        self.response = req.get()
         print(self.response)
         try:
             self.retcode = self.response["code"]
@@ -61,7 +61,7 @@ class 待处理事件一级(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否待处理事件一级"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否获取待支付会议列表"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:
@@ -76,6 +76,11 @@ class 待处理事件一级(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        if self.retcode==0:
+            if len(self.response["data"])>0:
+                self.mid = self.response["data"][0]["id"]
+                set_excel(self.mid, "mid", self.No, "mdetail")
+                set_excel(self.mid, "mid", self.No, "getTicketInfo")
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)
