@@ -139,7 +139,7 @@ olist
 odetail
 verifyOrder
 getverifyInfo
-createorder
+#createorder
 getBindList
 bindThird
 #authinfo
@@ -150,5 +150,3 @@ noticeInteractNew
 thirdLogin
 bindMobile
 doMerge
-
-
