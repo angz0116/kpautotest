@@ -37,9 +37,9 @@ class 修改用户隐私信息(unittest.TestCase):
         # 用户id
         self.uid = get_excel("uid", self.No, "login")
         # 获取用户隐私信息
-        self.pritype = get_excel("pritype", self.No, interfaceNo)
+        self.pritype = get_excel("privacytype", self.No, interfaceNo)
         # 修改用户隐私信息
-        self.privalue = get_excel("privalue", self.No, interfaceNo)
+        self.privalue = get_excel("privacyvalue", self.No, interfaceNo)
         self.data = {
             "uid": self.uid,
             "privacy_type": self.pritype,
@@ -98,4 +98,5 @@ class 修改用户隐私信息(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
 

@@ -83,11 +83,9 @@ class 获取用户隐私信息(unittest.TestCase):
         if self.retcode==0:
             if len(self.response["data"])>0:
                 self.pritype = self.response["data"]["information_setup"]["privacy_list"][1]["id"]
-                print(self.pritype)
                 self.privalue = self.response["data"]["msg_setup"]["privacy_value"]
-                print(self.privalue)
-                set_excel(self.pritype, "pritype", self.No, "updateUserPrivacy")
-                set_excel(self.privalue, "privalue", self.No, "updateUserPrivacy")
+                set_excel(self.pritype, "privacytype", self.No, "updateUserPrivacy")
+                set_excel(self.privalue, "privacyvalue", self.No, "updateUserPrivacy")
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)
