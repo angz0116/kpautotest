@@ -1,0 +1,33 @@
+2019-04-12 09:41:23,037 - INFO - --------getSpecialDetailByChildId获取H5专题详情CASE 1 start--------
+2019-04-12 09:41:23,254 - INFO - getSpecialDetailByChildId>>>>token=====/special/getSpecialDetailByChildId?no_check=1 &&token=d849a892-f071-4838-b948-7ca05b716ae6
+2019-04-12 09:41:23,310 - INFO - 是否获取H5专题详情
+2019-04-12 09:41:23,581 - INFO - 测试通过
+2019-04-12 09:41:23,582 - INFO - 成功
+2019-04-12 09:41:24,261 - INFO - 请求报文:{'special_id': '1327', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:41:24,261 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'id': '1327', 'title': '测试封面图裁剪', 'special_type': '1', 'type': '1', 'h5_url': '', 'img_url': ['https://img.scimall.org.cn/2018/11/02/16/image/c24cc7.jpg'], 'description': '测试封面图裁剪', 'status': '1', 'is_subclass': '0', 'bannerArray': [], 'article_list': [{'id': '153565', 'uid': '235', 'title': '测试打印测试打印测试打印测试打印测试打印', 'description': '测试打印测试打印', 'create_time': '2017-09-11 18:45:55', 'img_url': []}, {'id': '153585', 'uid': '235', 'title': '测试审核测试审核测试审核测试审核测试审核测试审核', 'description': '测试审核测试审核测试审核测试审核', 'create_time': '2017-09-12 15:06:31', 'img_url': []}, {'id': '76757', 'uid': '1291', 'title': '测试测试', 'description': '我我我我我我我我', 'create_time': '2017-07-27 17:42:05', 'img_url': ['https://img.scimall.org.cn/article/2017/07/27/20170727174202_af1f23.jpg']}, {'id': '155217', 'uid': '17737', 'title': '测试测试测试测试', 'description': '', 'create_time': '2018-04-12 17:04:27', 'img_url': ['https://img.scimall.org.cn///2018/04/12/20180412170426/article/a448a6.jpg']}, {'id': '76763', 'uid': '1291', 'title': '测试测试测试', 'description': '是多大的多多多', 'create_time': '2017-07-27 18:35:44', 'img_url': ['https://img.scimall.org.cn/article/2017/07/27/20170727183542_e2a8d2.jpg']}]}}
+2019-04-12 09:41:24,269 - INFO - 预期结果:成功
+2019-04-12 09:41:24,269 - INFO - --------getSpecialDetailByChildId--CASE1 end--------
+
+
+2019-04-12 09:41:24,270 - INFO - --------getSpecialDetailByChildId获取H5专题详情CASE 2 start--------
+2019-04-12 09:41:24,478 - INFO - getSpecialDetailByChildId>>>>token=====/special/getSpecialDetailByChildId?no_check=1 &&token=f684035a-1b28-44e7-a7c3-7c5636911b7d
+2019-04-12 09:41:24,508 - INFO - 是否获取H5专题详情
+2019-04-12 09:41:24,748 - ERROR - 测试失败
+2019-04-12 09:41:24,748 - INFO - 该专题不存在
+2019-04-12 09:41:25,772 - INFO - 请求报文:{'special_id': '2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:41:25,773 - INFO - 返回报文:{'code': 92002, 'msg': '该专题不存在'}
+2019-04-12 09:41:25,773 - INFO - 预期结果:该专题不存在
+2019-04-12 09:41:25,773 - INFO - --------getSpecialDetailByChildId--CASE2 end--------
+
+
+2019-04-12 09:41:25,773 - INFO - --------getSpecialDetailByChildId获取H5专题详情CASE 3 start--------
+2019-04-12 09:41:26,004 - INFO - getSpecialDetailByChildId>>>>token为空=====/special/getSpecialDetailByChildId?no_check=1 
+2019-04-12 09:41:26,041 - INFO - 是否获取H5专题详情
+2019-04-12 09:41:26,270 - ERROR - 测试失败
+2019-04-12 09:41:26,270 - INFO - wrong:token 不存在;line:93
+2019-04-12 09:41:26,873 - INFO - 请求报文:{'special_id': '', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:41:26,873 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-12 09:41:26,873 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-12 09:41:26,873 - INFO - --------getSpecialDetailByChildId--CASE3 end--------
+
+

@@ -1,0 +1,33 @@
+2019-04-12 09:51:28,718 - INFO - --------updateUserPrivacy修改用户隐私信息CASE 1 start--------
+2019-04-12 09:51:29,074 - INFO - updateUserPrivacy>>>>token=====/user/updateUserPrivacy?no_check=1&&token=d849a892-f071-4838-b948-7ca05b716ae6
+2019-04-12 09:51:29,138 - INFO - 是否修改用户隐私信息
+2019-04-12 09:51:29,367 - INFO - 测试通过
+2019-04-12 09:51:29,368 - INFO - 成功
+2019-04-12 09:51:30,336 - INFO - 请求报文:{'uid': '516623', 'privacy_type': '2', 'privacy_value': '3', 'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:51:30,336 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'is_success': 1}}
+2019-04-12 09:51:30,336 - INFO - 预期结果:成功
+2019-04-12 09:51:30,336 - INFO - --------updateUserPrivacy--CASE1 end--------
+
+
+2019-04-12 09:51:30,337 - INFO - --------updateUserPrivacy修改用户隐私信息CASE 2 start--------
+2019-04-12 09:51:30,708 - INFO - updateUserPrivacy>>>>token=====/user/updateUserPrivacy?no_check=1&&token=f684035a-1b28-44e7-a7c3-7c5636911b7d
+2019-04-12 09:51:30,737 - INFO - 是否修改用户隐私信息
+2019-04-12 09:51:30,947 - INFO - 测试通过
+2019-04-12 09:51:30,947 - INFO - 成功
+2019-04-12 09:51:31,783 - INFO - 请求报文:{'uid': '516684', 'privacy_type': '2', 'privacy_value': '3', 'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:51:31,783 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'is_success': 1}}
+2019-04-12 09:51:31,783 - INFO - 预期结果:成功
+2019-04-12 09:51:31,783 - INFO - --------updateUserPrivacy--CASE2 end--------
+
+
+2019-04-12 09:51:31,784 - INFO - --------updateUserPrivacy修改用户隐私信息CASE 3 start--------
+2019-04-12 09:51:32,132 - INFO - updateUserPrivacy>>>>token为空=====/user/updateUserPrivacy?no_check=1
+2019-04-12 09:51:32,170 - INFO - 是否修改用户隐私信息
+2019-04-12 09:51:32,404 - ERROR - 测试失败
+2019-04-12 09:51:32,404 - INFO - wrong:token 不存在;line:93
+2019-04-12 09:51:33,237 - INFO - 请求报文:{'uid': '', 'privacy_type': '', 'privacy_value': '', 'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:51:33,237 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-12 09:51:33,237 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-12 09:51:33,237 - INFO - --------updateUserPrivacy--CASE3 end--------
+
+

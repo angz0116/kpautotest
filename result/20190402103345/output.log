@@ -1,0 +1,578 @@
+2019-04-02 10:33:46,607 - INFO - ********TEST START********
+2019-04-02 10:33:46,607 - INFO - --------register用户注册registerCASE 1 start--------
+2019-04-02 10:33:49,901 - INFO - 检查是否注册成功
+2019-04-02 10:33:50,015 - ERROR - 测试失败
+2019-04-02 10:33:50,015 - INFO - 该手机号已经被占用
+2019-04-02 10:33:50,292 - INFO - 请求报文:{'mobile': '13927981608', 'nick': '蔡强蓉', 'reg_type': '成功', 'verify': '0623', 'pass': 'abc123456', 'source': '1', 'country_code': '86', 'yk_token': '5', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:50,292 - INFO - 返回报文:{'code': 10006, 'msg': '该手机号已经被占用'}
+2019-04-02 10:33:50,292 - INFO - 预期结果:该手机号已经被占用
+2019-04-02 10:33:50,292 - INFO - --------register--CASE1 end--------
+
+
+2019-04-02 10:33:50,292 - INFO - --------register用户注册registerCASE 2 start--------
+2019-04-02 10:33:50,537 - INFO - 检查是否注册成功
+2019-04-02 10:33:50,620 - ERROR - 测试失败
+2019-04-02 10:33:50,620 - INFO - 该手机号已经被占用
+2019-04-02 10:33:50,910 - INFO - 请求报文:{'mobile': '13022358773', 'nick': '蔡群勤', 'reg_type': '成功', 'verify': '1418', 'pass': 'abc123456', 'source': '1', 'country_code': '86', 'yk_token': '5', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:50,910 - INFO - 返回报文:{'code': 10006, 'msg': '该手机号已经被占用'}
+2019-04-02 10:33:50,910 - INFO - 预期结果:该手机号已经被占用
+2019-04-02 10:33:50,910 - INFO - --------register--CASE2 end--------
+
+
+2019-04-02 10:33:50,910 - INFO - --------register用户注册registerCASE 3 start--------
+2019-04-02 10:33:51,170 - INFO - 检查是否注册成功
+2019-04-02 10:33:51,262 - ERROR - 测试失败
+2019-04-02 10:33:51,262 - INFO - 该手机号已经被占用
+2019-04-02 10:33:51,558 - INFO - 请求报文:{'mobile': '18211014921', 'nick': '欧阳力奇', 'reg_type': '该手机号已经被占用', 'verify': '1641', 'pass': 'abc123456', 'source': '1', 'country_code': '86', 'yk_token': '5', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:51,558 - INFO - 返回报文:{'code': 10006, 'msg': '该手机号已经被占用'}
+2019-04-02 10:33:51,558 - INFO - 预期结果:该手机号已经被占用
+2019-04-02 10:33:51,558 - INFO - --------register--CASE3 end--------
+
+
+2019-04-02 10:33:51,558 - INFO - --------register用户注册registerCASE 4 start--------
+2019-04-02 10:33:51,843 - INFO - 检查是否注册成功
+2019-04-02 10:33:51,916 - ERROR - 测试失败
+2019-04-02 10:33:51,916 - INFO - 注册失败
+2019-04-02 10:33:52,205 - INFO - 请求报文:{'mobile': '182110166', 'nick': '路晶纨', 'reg_type': '注册失败', 'verify': '5043', 'pass': 'abc123456', 'source': '1', 'country_code': '86', 'yk_token': '5', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:52,205 - INFO - 返回报文:{'code': 10007, 'msg': '注册失败', 'data': {'code': 100000004, 'msg': '参数错误', 'data': {'mobile': '手机号码格式错误'}}}
+2019-04-02 10:33:52,205 - INFO - 预期结果:注册失败
+2019-04-02 10:33:52,205 - INFO - --------register--CASE4 end--------
+
+
+2019-04-02 10:33:52,206 - INFO - --------register用户注册registerCASE 5 start--------
+2019-04-02 10:33:52,518 - INFO - 检查是否注册成功
+2019-04-02 10:33:52,590 - ERROR - 测试失败
+2019-04-02 10:33:52,591 - INFO - 该手机号已经被占用
+2019-04-02 10:33:52,885 - INFO - 请求报文:{'mobile': '13732138080', 'nick': '钟娥月', 'reg_type': '成功', 'verify': '2702', 'pass': 'abc123456', 'source': '1', 'country_code': '90', 'yk_token': '5', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:52,886 - INFO - 返回报文:{'code': 10006, 'msg': '该手机号已经被占用'}
+2019-04-02 10:33:52,886 - INFO - 预期结果:该手机号已经被占用
+2019-04-02 10:33:52,886 - INFO - --------register--CASE5 end--------
+
+
+2019-04-02 10:33:52,886 - INFO - --------getMobileStatus检测账号是否注册getMobileStatusCASE 1 start--------
+2019-04-02 10:33:53,125 - INFO - 注册成功
+2019-04-02 10:33:53,201 - INFO - 测试通过
+2019-04-02 10:33:53,201 - INFO - 成功
+2019-04-02 10:33:53,563 - INFO - 请求报文:{'username': '13927981608', 'verify': '7835', 'source': '1', 'country_code': '86', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:53,563 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'status': 1, 'secret_key': '848871867e3f4fc5a30eeed02f9d47d0'}}
+2019-04-02 10:33:53,563 - INFO - --------getMobileStatus--CASE1 end--------
+
+
+2019-04-02 10:33:53,563 - INFO - --------getMobileStatus检测账号是否注册getMobileStatusCASE 2 start--------
+2019-04-02 10:33:53,777 - INFO - 注册成功
+2019-04-02 10:33:53,853 - INFO - 测试通过
+2019-04-02 10:33:53,853 - INFO - 成功
+2019-04-02 10:33:54,199 - INFO - 请求报文:{'username': '13022358773', 'verify': '5312', 'source': '1', 'country_code': '86', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:54,200 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'status': 1, 'secret_key': '83ff9792eba159065eeca5b2a4b09249'}}
+2019-04-02 10:33:54,200 - INFO - --------getMobileStatus--CASE2 end--------
+
+
+2019-04-02 10:33:54,200 - INFO - --------getMobileStatus检测账号是否注册getMobileStatusCASE 3 start--------
+2019-04-02 10:33:54,425 - INFO - 注册成功
+2019-04-02 10:33:54,496 - INFO - 测试通过
+2019-04-02 10:33:54,497 - INFO - 成功
+2019-04-02 10:33:54,857 - INFO - 请求报文:{'username': '13732138080', 'verify': '2309', 'source': '1', 'country_code': '86', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:54,857 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'status': 2, 'secret_key': '5a95bb24be00f1aed57fc2688bfd3856'}}
+2019-04-02 10:33:54,857 - INFO - --------getMobileStatus--CASE3 end--------
+
+
+2019-04-02 10:33:54,857 - INFO - --------login用户登录CASE 1 start--------
+2019-04-02 10:33:54,991 - INFO - 检查是否登录成功
+2019-04-02 10:33:55,056 - ERROR - 测试失败
+2019-04-02 10:33:55,056 - INFO - 手机号或密码错误,请重新填写
+2019-04-02 10:33:55,339 - INFO - 请求报文:{'username': '18211014921', 'password': 'abc123456', 'login_type': '2', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+2019-04-02 10:33:55,339 - INFO - 返回报文:{'code': 10005, 'msg': '手机号或密码错误,请重新填写'}
+2019-04-02 10:33:55,339 - INFO - 预期结果:手机号或密码错误,请重新填写
+2019-04-02 10:33:55,339 - INFO - --------login--CASE1 end--------
+
+
+2019-04-02 10:33:55,339 - INFO - --------login用户登录CASE 2 start--------
+2019-04-02 10:33:55,477 - INFO - 检查是否登录成功
+2019-04-02 10:33:55,846 - INFO - 测试通过
+2019-04-02 10:33:55,847 - INFO - 成功
+2019-04-02 10:33:56,136 - INFO - 请求报文:{'username': '13658140355', 'password': 'abc123456', 'login_type': '2', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+2019-04-02 10:33:56,136 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'uid': '516684', 'real_name': '赵爱', 'nick_name': '赵爱', 'avatar': 'https://img.scimall.org.cn/default_active.png', 'is_lock': 1, 'id': '516684', 'token': 'e91629ac-0869-4daf-ac6f-6265418e7525', 'expires_in': 1559356434, 'user_secret': 'tIrGo'}}
+2019-04-02 10:33:56,136 - INFO - 预期结果:成功
+2019-04-02 10:33:56,136 - INFO - --------login--CASE2 end--------
+
+
+2019-04-02 10:33:56,136 - INFO - --------login用户登录CASE 3 start--------
+2019-04-02 10:33:56,380 - INFO - 检查是否登录成功
+2019-04-02 10:33:56,450 - ERROR - 测试失败
+2019-04-02 10:33:56,450 - INFO - 参数错误
+2019-04-02 10:33:56,723 - INFO - 请求报文:{'username': '13554682289', 'password': '6142', 'login_type': '1', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+2019-04-02 10:33:56,723 - INFO - 返回报文:{'code': 100000004, 'msg': '参数错误', 'error': {}, 'data': {}}
+2019-04-02 10:33:56,723 - INFO - 预期结果:参数错误
+2019-04-02 10:33:56,723 - INFO - --------login--CASE3 end--------
+
+
+2019-04-02 10:33:56,723 - INFO - --------login用户登录CASE 4 start--------
+2019-04-02 10:33:56,841 - INFO - 检查是否登录成功
+2019-04-02 10:33:56,909 - ERROR - 测试失败
+2019-04-02 10:33:56,909 - INFO - 参数错误
+2019-04-02 10:33:57,202 - INFO - 请求报文:{'username': '', 'password': '', 'login_type': '', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+2019-04-02 10:33:57,202 - INFO - 返回报文:{'code': 100000004, 'msg': '参数错误', 'error': [{'name': 'username', 'value': '手机号或密码错误,请重新填写'}], 'data': {}}
+2019-04-02 10:33:57,202 - INFO - 预期结果:参数错误
+2019-04-02 10:33:57,202 - INFO - --------login--CASE4 end--------
+
+
+2019-04-02 10:33:57,202 - INFO - --------idCardAuth实名认证CASE 1 start--------
+2019-04-02 10:33:57,299 - INFO - idCardAuth>>>>token=====/userauth/idCardAuth?no_check=1&&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:33:57,329 - INFO - 是否实名认证成功
+2019-04-02 10:33:57,405 - ERROR - 测试失败
+2019-04-02 10:33:57,405 - INFO - 身份证号已被认证
+2019-04-02 10:33:57,639 - INFO - 请求报文:{'real_name': '爱诺', 'id_card': '130434198701244843', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:57,639 - INFO - 返回报文:{'code': 10163, 'msg': '身份证号已被认证'}
+2019-04-02 10:33:57,639 - INFO - 预期结果:身份证号已被认证
+2019-04-02 10:33:57,639 - INFO - --------idCardAuth--CASE1 end--------
+
+
+2019-04-02 10:33:57,639 - INFO - --------idCardAuth实名认证CASE 2 start--------
+2019-04-02 10:33:57,732 - INFO - idCardAuth>>>>token=====/userauth/idCardAuth?no_check=1&&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:33:57,761 - INFO - 是否实名认证成功
+2019-04-02 10:33:57,831 - INFO - 测试通过
+2019-04-02 10:33:57,832 - INFO - 成功
+2019-04-02 10:33:58,041 - INFO - 请求报文:{'real_name': '赵爱', 'id_card': '130434198701244843', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:58,041 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': []}
+2019-04-02 10:33:58,041 - INFO - 预期结果:成功
+2019-04-02 10:33:58,041 - INFO - --------idCardAuth--CASE2 end--------
+
+
+2019-04-02 10:33:58,041 - INFO - --------idCardAuth实名认证CASE 3 start--------
+2019-04-02 10:33:58,128 - INFO - idCardAuth>>>>token为空=====/userauth/idCardAuth?no_check=1
+2019-04-02 10:33:58,161 - INFO - 是否实名认证成功
+2019-04-02 10:33:58,242 - ERROR - 测试失败
+2019-04-02 10:33:58,242 - INFO - wrong:token 不存在;line:93
+2019-04-02 10:33:58,454 - INFO - 请求报文:{'real_name': '', 'id_card': '', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:58,454 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-02 10:33:58,454 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-02 10:33:58,454 - INFO - --------idCardAuth--CASE3 end--------
+
+
+2019-04-02 10:33:58,454 - INFO - --------getIdCardAuth获取实名认证信息CASE 1 start--------
+2019-04-02 10:33:58,501 - INFO - getIdCardAuth>>>>token=====/userauth/getIdCardAuth?no_check=1&&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:33:58,535 - INFO - 是否获取实名认证信息
+2019-04-02 10:33:58,602 - INFO - 测试通过
+2019-04-02 10:33:58,602 - INFO - 成功
+2019-04-02 10:33:58,810 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:58,811 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'name_type': 1, 'real_name': '', 'id_card': '', 'create_time': '', 'bind_mobile': 1}}
+2019-04-02 10:33:58,811 - INFO - 预期结果:成功
+2019-04-02 10:33:58,811 - INFO - --------getIdCardAuth--CASE1 end--------
+
+
+2019-04-02 10:33:58,811 - INFO - --------getIdCardAuth获取实名认证信息CASE 2 start--------
+2019-04-02 10:33:58,857 - INFO - getIdCardAuth>>>>token=====/userauth/getIdCardAuth?no_check=1&&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:33:58,905 - INFO - 是否获取实名认证信息
+2019-04-02 10:33:58,971 - INFO - 测试通过
+2019-04-02 10:33:58,971 - INFO - 成功
+2019-04-02 10:33:59,177 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:59,177 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'name_type': 2, 'real_name': '赵爱', 'id_card': '1****************3', 'create_time': '1554169609', 'bind_mobile': 1}}
+2019-04-02 10:33:59,177 - INFO - 预期结果:成功
+2019-04-02 10:33:59,177 - INFO - --------getIdCardAuth--CASE2 end--------
+
+
+2019-04-02 10:33:59,177 - INFO - --------getIdCardAuth获取实名认证信息CASE 3 start--------
+2019-04-02 10:33:59,223 - INFO - getIdCardAuth>>>>token为空=====/userauth/getIdCardAuth?no_check=1
+2019-04-02 10:33:59,241 - INFO - 是否获取实名认证信息
+2019-04-02 10:33:59,311 - ERROR - 测试失败
+2019-04-02 10:33:59,311 - INFO - wrong:token 不存在;line:93
+2019-04-02 10:33:59,558 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:33:59,558 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-02 10:33:59,559 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-02 10:33:59,559 - INFO - --------getIdCardAuth--CASE3 end--------
+
+
+2019-04-02 10:33:59,559 - INFO - --------changepass修改密码CASE 1 start--------
+2019-04-02 10:33:59,676 - INFO - changepass>>>>token=====/ucenter/changepass?no_check=1&&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:33:59,706 - INFO - 是否修改/设置密码成功
+2019-04-02 10:33:59,778 - ERROR - 测试失败
+2019-04-02 10:33:59,778 - INFO - 原始密码错误
+2019-04-02 10:33:59,998 - INFO - 请求报文:{'changetype': '1', 'pass_new': 'Abc#123456', 'pass_old': 'abc123456', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+2019-04-02 10:33:59,998 - INFO - 返回报文:{'code': 10004, 'msg': '原始密码错误', 'data': []}
+2019-04-02 10:33:59,998 - INFO - 预期结果:原始密码错误
+2019-04-02 10:33:59,998 - INFO - --------changepass--CASE1 end--------
+
+
+2019-04-02 10:33:59,998 - INFO - --------changepass修改密码CASE 2 start--------
+2019-04-02 10:34:00,117 - INFO - changepass>>>>token=====/ucenter/changepass?no_check=1&&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:34:00,149 - INFO - 是否修改/设置密码成功
+2019-04-02 10:34:00,259 - ERROR - 测试失败
+2019-04-02 10:34:00,259 - INFO - 参数错误
+2019-04-02 10:34:00,521 - INFO - 请求报文:{'changetype': '1', 'pass_new': 'abc123456', 'pass_old': 'abc123456', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+2019-04-02 10:34:00,521 - INFO - 返回报文:{'code': 100000004, 'msg': '参数错误', 'error': [{'name': 'pass_new', 'value': '新旧密码不能一致'}], 'data': {}}
+2019-04-02 10:34:00,521 - INFO - 预期结果:参数错误
+2019-04-02 10:34:00,521 - INFO - --------changepass--CASE2 end--------
+
+
+2019-04-02 10:34:00,521 - INFO - --------changepass修改密码CASE 3 start--------
+2019-04-02 10:34:00,648 - INFO - changepass>>>>token为空=====/ucenter/changepass?no_check=1
+2019-04-02 10:34:00,675 - INFO - 是否修改/设置密码成功
+2019-04-02 10:34:00,747 - ERROR - 测试失败
+2019-04-02 10:34:00,747 - INFO - wrong:token 不存在;line:93
+2019-04-02 10:34:00,956 - INFO - 请求报文:{'changetype': '2', 'pass_new': '', 'pass_old': '', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+2019-04-02 10:34:00,956 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-02 10:34:00,956 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-02 10:34:00,956 - INFO - --------changepass--CASE3 end--------
+
+
+2019-04-02 10:34:00,957 - INFO - --------changepass修改密码CASE 4 start--------
+2019-04-02 10:34:01,072 - INFO - changepass>>>>token为空=====/ucenter/changepass?no_check=1
+2019-04-02 10:34:01,105 - INFO - 是否修改/设置密码成功
+2019-04-02 10:34:01,172 - ERROR - 测试失败
+2019-04-02 10:34:01,173 - INFO - wrong:token 不存在;line:93
+2019-04-02 10:34:01,382 - INFO - 请求报文:{'changetype': '2', 'pass_new': 'abc12345', 'pass_old': 'abc123456', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+2019-04-02 10:34:01,382 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-02 10:34:01,382 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-02 10:34:01,382 - INFO - --------changepass--CASE4 end--------
+
+
+2019-04-02 10:34:01,382 - INFO - --------sendverify发送短信验证码CASE 1 start--------
+2019-04-02 10:34:01,570 - INFO - sendverify>>>>token=====/account/sendverify?no_check=1 &&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:34:01,598 - INFO - 检查是否发送短信验证码
+2019-04-02 10:34:01,675 - ERROR - 测试失败
+2019-04-02 10:34:01,675 - INFO - 验证码发送失败
+2019-04-02 10:34:02,054 - INFO - 请求报文:{'type': 'email', 'action': 'reg', 'account': 'za@163.com', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '00', 'channel': '5'}
+2019-04-02 10:34:02,055 - INFO - 返回报文:{'code': 10021, 'msg': '验证码发送失败'}
+2019-04-02 10:34:02,055 - INFO - 预期结果:验证码发送失败
+2019-04-02 10:34:02,055 - INFO - --------sendverify--CASE1 end--------
+
+
+2019-04-02 10:34:02,056 - INFO - --------sendverify发送短信验证码CASE 2 start--------
+2019-04-02 10:34:02,489 - INFO - sendverify>>>>token=====/account/sendverify?no_check=1 &&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:34:02,541 - INFO - 检查是否发送短信验证码
+2019-04-02 10:34:02,679 - INFO - 测试通过
+2019-04-02 10:34:02,679 - INFO - 成功
+2019-04-02 10:34:02,966 - INFO - 请求报文:{'type': 'mobile', 'action': 'login', 'account': '18211014921', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+2019-04-02 10:34:02,966 - INFO - 返回报文:{'code': 0, 'msg': '成功'}
+2019-04-02 10:34:02,967 - INFO - 预期结果:成功
+2019-04-02 10:34:02,967 - INFO - --------sendverify--CASE2 end--------
+
+
+2019-04-02 10:34:02,967 - INFO - --------sendverify发送短信验证码CASE 3 start--------
+2019-04-02 10:34:03,096 - INFO - sendverify>>>>token为空=====/account/sendverify?no_check=1 
+2019-04-02 10:34:03,138 - INFO - 检查是否发送短信验证码
+2019-04-02 10:34:03,205 - INFO - 测试通过
+2019-04-02 10:34:03,205 - INFO - 成功
+2019-04-02 10:34:03,411 - INFO - 请求报文:{'type': 'mobile', 'action': 'common', 'account': '18211014921', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '80', 'channel': '5'}
+2019-04-02 10:34:03,411 - INFO - 返回报文:{'code': 0, 'msg': '成功'}
+2019-04-02 10:34:03,411 - INFO - 预期结果:成功
+2019-04-02 10:34:03,411 - INFO - --------sendverify--CASE3 end--------
+
+
+2019-04-02 10:34:03,411 - INFO - --------tourist游客注册登录接口CASE 1 start--------
+2019-04-02 10:34:03,548 - INFO - 游客注册登录
+2019-04-02 10:34:03,628 - ERROR - 测试失败
+2019-04-02 10:34:03,628 - INFO - wrong:Undefined offset: 516692;line:448
+2019-04-02 10:34:03,839 - INFO - 请求报文:{'app_source': '2', 'uuid': '201904025191177', 'app_version': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:03,839 - INFO - 返回报文:{'code': 8, 'msg': 'wrong:Undefined offset: 516692;line:448'}
+2019-04-02 10:34:03,839 - INFO - 预期结果:wrong:Undefined offset: 516692;line:448
+2019-04-02 10:34:03,839 - INFO - --------tourist--CASE1 end--------
+
+
+2019-04-02 10:34:03,839 - INFO - --------tourist游客注册登录接口CASE 2 start--------
+2019-04-02 10:34:03,952 - INFO - 游客注册登录
+2019-04-02 10:34:04,017 - ERROR - 测试失败
+2019-04-02 10:34:04,018 - INFO - wrong:Undefined offset: 516693;line:448
+2019-04-02 10:34:04,226 - INFO - 请求报文:{'app_source': '3', 'uuid': '201904022216618', 'app_version': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:04,226 - INFO - 返回报文:{'code': 8, 'msg': 'wrong:Undefined offset: 516693;line:448'}
+2019-04-02 10:34:04,226 - INFO - 预期结果:wrong:Undefined offset: 516693;line:448
+2019-04-02 10:34:04,226 - INFO - --------tourist--CASE2 end--------
+
+
+2019-04-02 10:34:04,226 - INFO - --------tourist游客注册登录接口CASE 3 start--------
+2019-04-02 10:34:04,311 - INFO - 游客注册登录
+2019-04-02 10:34:04,380 - ERROR - 测试失败
+2019-04-02 10:34:04,380 - INFO - 参数错误
+2019-04-02 10:34:04,586 - INFO - 请求报文:{'app_source': '', 'uuid': '201904023155847', 'app_version': '', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:04,587 - INFO - 返回报文:{'code': 100000004, 'msg': '参数错误', 'error': [{'name': 'app_source', 'value': '来源错误'}], 'data': {}}
+2019-04-02 10:34:04,587 - INFO - 预期结果:参数错误
+2019-04-02 10:34:04,587 - INFO - --------tourist--CASE3 end--------
+
+
+2019-04-02 10:34:04,587 - INFO - --------tourist游客注册登录接口CASE 4 start--------
+2019-04-02 10:34:04,711 - INFO - 游客注册登录
+2019-04-02 10:34:04,780 - ERROR - 测试失败
+2019-04-02 10:34:04,780 - INFO - wrong:Undefined offset: 516694;line:448
+2019-04-02 10:34:04,989 - INFO - 请求报文:{'app_source': '2', 'uuid': '201904025402931', 'app_version': '', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:04,989 - INFO - 返回报文:{'code': 8, 'msg': 'wrong:Undefined offset: 516694;line:448'}
+2019-04-02 10:34:04,989 - INFO - 预期结果:wrong:Undefined offset: 516694;line:448
+2019-04-02 10:34:04,989 - INFO - --------tourist--CASE4 end--------
+
+
+2019-04-02 10:34:04,989 - INFO - --------getUserTagList获取用户个性标签CASE 1 start--------
+2019-04-02 10:34:05,035 - INFO - getUserTagList>>>>token=====/user/getUserTagList?no_check=1&&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:34:05,086 - INFO - 是否获取用户个性标签
+2019-04-02 10:34:05,152 - INFO - 测试通过
+2019-04-02 10:34:05,153 - INFO - 成功
+2019-04-02 10:34:05,569 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:05,569 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': [{'id': '82051', 'tag_name': '你好，科界信息'}, {'id': '82050', 'tag_name': '你好，科技'}]}
+2019-04-02 10:34:05,569 - INFO - 预期结果:成功
+2019-04-02 10:34:05,569 - INFO - --------getUserTagList--CASE1 end--------
+
+
+2019-04-02 10:34:05,569 - INFO - --------getUserTagList获取用户个性标签CASE 2 start--------
+2019-04-02 10:34:05,613 - INFO - getUserTagList>>>>token=====/user/getUserTagList?no_check=1&&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:34:05,658 - INFO - 是否获取用户个性标签
+2019-04-02 10:34:05,735 - INFO - 测试通过
+2019-04-02 10:34:05,735 - INFO - 成功
+2019-04-02 10:34:05,959 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:05,959 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': []}
+2019-04-02 10:34:05,959 - INFO - 预期结果:成功
+2019-04-02 10:34:05,959 - INFO - --------getUserTagList--CASE2 end--------
+
+
+2019-04-02 10:34:05,960 - INFO - --------getUserTagList获取用户个性标签CASE 3 start--------
+2019-04-02 10:34:06,006 - INFO - getUserTagList>>>>token为空=====/user/getUserTagList?no_check=1
+2019-04-02 10:34:06,067 - INFO - 是否获取用户个性标签
+2019-04-02 10:34:06,148 - ERROR - 测试失败
+2019-04-02 10:34:06,148 - INFO - wrong:token 不存在;line:93
+2019-04-02 10:34:06,355 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:06,355 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-02 10:34:06,355 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-02 10:34:06,355 - INFO - --------getUserTagList--CASE3 end--------
+
+
+2019-04-02 10:34:06,355 - INFO - --------addusertag添加用户个性标签CASE 1 start--------
+2019-04-02 10:34:06,443 - INFO - addusertag>>>>token=====/user/addusertag?no_check=1&&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:34:06,478 - INFO - 是否添加用户个性标签
+2019-04-02 10:34:06,542 - INFO - 测试通过
+2019-04-02 10:34:06,542 - INFO - 成功
+2019-04-02 10:34:06,749 - INFO - 请求报文:{'tag_name': '你好，科界信息', 'to_uid': '516623', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:06,749 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'rowCount': 1}}
+2019-04-02 10:34:06,749 - INFO - 预期结果:成功
+2019-04-02 10:34:06,749 - INFO - --------addusertag--CASE1 end--------
+
+
+2019-04-02 10:34:06,749 - INFO - --------addusertag添加用户个性标签CASE 2 start--------
+2019-04-02 10:34:06,836 - INFO - addusertag>>>>token=====/user/addusertag?no_check=1&&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:34:06,940 - INFO - 是否添加用户个性标签
+2019-04-02 10:34:07,024 - INFO - 测试通过
+2019-04-02 10:34:07,024 - INFO - 成功
+2019-04-02 10:34:07,245 - INFO - 请求报文:{'tag_name': 'fafafdgg', 'to_uid': '516684', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:07,245 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'rowCount': 1, 'msg': '添加成功，积分+2'}}
+2019-04-02 10:34:07,245 - INFO - 预期结果:成功
+2019-04-02 10:34:07,245 - INFO - --------addusertag--CASE2 end--------
+
+
+2019-04-02 10:34:07,246 - INFO - --------addusertag添加用户个性标签CASE 3 start--------
+2019-04-02 10:34:07,354 - INFO - addusertag>>>>token=====/user/addusertag?no_check=1&&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:34:07,389 - INFO - 是否添加用户个性标签
+2019-04-02 10:34:07,457 - ERROR - 测试失败
+2019-04-02 10:34:07,457 - INFO - 参数错误
+2019-04-02 10:34:07,665 - INFO - 请求报文:{'tag_name': '', 'to_uid': '516622', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:07,665 - INFO - 返回报文:{'code': 100000004, 'msg': '参数错误', 'error': [{'name': 'tag_name', 'value': '标签为1-10个字符'}], 'data': {}}
+2019-04-02 10:34:07,665 - INFO - 预期结果:参数错误
+2019-04-02 10:34:07,665 - INFO - --------addusertag--CASE3 end--------
+
+
+2019-04-02 10:34:07,665 - INFO - --------delusertag删除用户个性标签CASE 1 start--------
+2019-04-02 10:34:07,731 - INFO - delusertag>>>>token=====/user/delusertag?no_check=1 &&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:34:07,766 - INFO - 是否删除用户个性标签
+2019-04-02 10:34:07,834 - INFO - 测试通过
+2019-04-02 10:34:07,834 - INFO - 成功
+2019-04-02 10:34:08,039 - INFO - 请求报文:{'tag_id': '82051', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:08,039 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'rowCount': 82051}}
+2019-04-02 10:34:08,039 - INFO - 预期结果:成功
+2019-04-02 10:34:08,039 - INFO - --------delusertag--CASE1 end--------
+
+
+2019-04-02 10:34:08,039 - INFO - --------delusertag删除用户个性标签CASE 2 start--------
+2019-04-02 10:34:08,105 - INFO - delusertag>>>>token=====/user/delusertag?no_check=1 &&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:34:08,135 - INFO - 是否删除用户个性标签
+2019-04-02 10:34:08,218 - ERROR - 测试失败
+2019-04-02 10:34:08,218 - INFO - 删除标签失败
+2019-04-02 10:34:08,424 - INFO - 请求报文:{'tag_id': '', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:08,424 - INFO - 返回报文:{'code': 20004, 'msg': '删除标签失败'}
+2019-04-02 10:34:08,424 - INFO - 预期结果:删除标签失败
+2019-04-02 10:34:08,424 - INFO - --------delusertag--CASE2 end--------
+
+
+2019-04-02 10:34:08,424 - INFO - --------delusertag删除用户个性标签CASE 3 start--------
+2019-04-02 10:34:08,492 - INFO - delusertag>>>>token=====/user/delusertag?no_check=1 &&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:34:08,521 - INFO - 是否删除用户个性标签
+2019-04-02 10:34:08,589 - ERROR - 测试失败
+2019-04-02 10:34:08,589 - INFO - 删除标签失败
+2019-04-02 10:34:08,794 - INFO - 请求报文:{'tag_id': '', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:08,795 - INFO - 返回报文:{'code': 20004, 'msg': '删除标签失败'}
+2019-04-02 10:34:08,795 - INFO - 预期结果:删除标签失败
+2019-04-02 10:34:08,795 - INFO - --------delusertag--CASE3 end--------
+
+
+2019-04-02 10:34:08,795 - INFO - --------getUserCard获取用户名片二维码CASE 1 start--------
+2019-04-02 10:34:08,845 - INFO - getUserCard>>>>token=====/user/getUserCard?no_check=1  &&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:34:08,891 - INFO - 是否获取用户名片二维码
+2019-04-02 10:34:09,036 - INFO - 测试通过
+2019-04-02 10:34:09,036 - INFO - 成功
+2019-04-02 10:34:09,239 - INFO - 请求报文:{'v': '2.9', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:09,240 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'card_url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516623&t=1554172622', 'user': {'uid': '516623', 'real_name': '小爱', 'avatar': 'https://img.scimall.org.cn/default_active.png?imageMogr2/thumbnail/200x200!', 'user_type': '1'}}}
+2019-04-02 10:34:09,240 - INFO - 预期结果:成功
+2019-04-02 10:34:09,240 - INFO - --------getUserCard--CASE1 end--------
+
+
+2019-04-02 10:34:09,240 - INFO - --------getUserCard获取用户名片二维码CASE 2 start--------
+2019-04-02 10:34:09,285 - INFO - getUserCard>>>>token=====/user/getUserCard?no_check=1 &&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:34:09,320 - INFO - 是否获取用户名片二维码
+2019-04-02 10:34:09,473 - INFO - 测试通过
+2019-04-02 10:34:09,473 - INFO - 成功
+2019-04-02 10:34:09,686 - INFO - 请求报文:{'v': '2.9', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:09,686 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'card_url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516684&t=1554172734', 'user': {'uid': '516684', 'real_name': '赵爱', 'avatar': 'https://img.scimall.org.cn/default_active.png?imageMogr2/thumbnail/200x200!', 'user_type': 1}}}
+2019-04-02 10:34:09,687 - INFO - 预期结果:成功
+2019-04-02 10:34:09,687 - INFO - --------getUserCard--CASE2 end--------
+
+
+2019-04-02 10:34:09,687 - INFO - --------getUserCard获取用户名片二维码CASE 3 start--------
+2019-04-02 10:34:09,733 - INFO - getUserCard>>>>token为空=====/user/getUserCard?no_check=1  
+2019-04-02 10:34:09,750 - INFO - 是否获取用户名片二维码
+2019-04-02 10:34:09,817 - ERROR - 测试失败
+2019-04-02 10:34:09,817 - INFO - wrong:token 不存在;line:93
+2019-04-02 10:34:10,051 - INFO - 请求报文:{'v': '2.9', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:10,051 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-02 10:34:10,051 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-02 10:34:10,051 - INFO - --------getUserCard--CASE3 end--------
+
+
+2019-04-02 10:34:10,051 - INFO - --------getUserCardDetail获取用户名片详情CASE 1 start--------
+2019-04-02 10:34:10,097 - INFO - getUserCardDetail>>>>token=====/user/getUserCardDetail?no_check=1&&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:34:10,133 - INFO - 是否获取用户名片详情
+2019-04-02 10:34:10,211 - INFO - 测试通过
+2019-04-02 10:34:10,211 - INFO - 成功
+2019-04-02 10:34:10,418 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:10,418 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'real_name': '小爱', 'avatar': 'https://img.scimall.org.cn/default_active.png', 'work_unit': '', 'job_name': '', 'work_phone': '', 'work_address': '', 'remark': '', 'email': '', 'mobile': '18211014921'}}
+2019-04-02 10:34:10,418 - INFO - 预期结果:成功
+2019-04-02 10:34:10,418 - INFO - --------getUserCardDetail--CASE1 end--------
+
+
+2019-04-02 10:34:10,418 - INFO - --------getUserCardDetail获取用户名片详情CASE 2 start--------
+2019-04-02 10:34:10,464 - INFO - getUserCardDetail>>>>token=====/user/getUserCardDetail?no_check=1&&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:34:10,496 - INFO - 是否获取用户名片详情
+2019-04-02 10:34:10,580 - INFO - 测试通过
+2019-04-02 10:34:10,580 - INFO - 成功
+2019-04-02 10:34:10,786 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:10,786 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'real_name': '赵爱', 'avatar': 'https://img.scimall.org.cn/default_active.png', 'work_unit': '', 'job_name': '', 'work_phone': '', 'work_address': '', 'remark': '', 'email': '', 'mobile': '13658140355'}}
+2019-04-02 10:34:10,786 - INFO - 预期结果:成功
+2019-04-02 10:34:10,786 - INFO - --------getUserCardDetail--CASE2 end--------
+
+
+2019-04-02 10:34:10,786 - INFO - --------getUserCardDetail获取用户名片详情CASE 3 start--------
+2019-04-02 10:34:10,834 - INFO - getUserCardDetail>>>>token为空=====/user/getUserCardDetail?no_check=1
+2019-04-02 10:34:10,904 - INFO - 是否获取用户名片详情
+2019-04-02 10:34:10,973 - ERROR - 测试失败
+2019-04-02 10:34:10,973 - INFO - wrong:token 不存在;line:93
+2019-04-02 10:34:11,179 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:11,179 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-02 10:34:11,179 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-02 10:34:11,179 - INFO - --------getUserCardDetail--CASE3 end--------
+
+
+2019-04-02 10:34:11,180 - INFO - --------saveUserCard修改用户名片信息CASE 1 start--------
+2019-04-02 10:34:11,266 - INFO - saveUserCard>>>>token=====/user/saveUserCard?no_check=1&&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:34:11,310 - INFO - 是否修改用户名片成功
+2019-04-02 10:34:11,375 - INFO - 测试通过
+2019-04-02 10:34:11,375 - INFO - 成功
+2019-04-02 10:34:11,582 - INFO - 请求报文:{'key': 'mobile', 'val': '18211014921', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:11,582 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'row': 0}}
+2019-04-02 10:34:11,582 - INFO - 预期结果:成功
+2019-04-02 10:34:11,582 - INFO - --------saveUserCard--CASE1 end--------
+
+
+2019-04-02 10:34:11,583 - INFO - --------saveUserCard修改用户名片信息CASE 2 start--------
+2019-04-02 10:34:11,686 - INFO - saveUserCard>>>>token=====/user/saveUserCard?no_check=1&&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:34:11,734 - INFO - 是否修改用户名片成功
+2019-04-02 10:34:11,808 - ERROR - 测试失败
+2019-04-02 10:34:11,808 - INFO - 参数错误
+2019-04-02 10:34:12,054 - INFO - 请求报文:{'key': '', 'val': '18211014921', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:12,055 - INFO - 返回报文:{'code': 100000004, 'msg': '参数错误', 'error': [{'name': 'key', 'value': '不允许修改的内容'}, {'name': 'val', 'value': '没有配置验证规则'}], 'data': {}}
+2019-04-02 10:34:12,055 - INFO - 预期结果:参数错误
+2019-04-02 10:34:12,055 - INFO - --------saveUserCard--CASE2 end--------
+
+
+2019-04-02 10:34:12,055 - INFO - --------saveUserCard修改用户名片信息CASE 3 start--------
+2019-04-02 10:34:12,145 - INFO - saveUserCard>>>>token为空=====/user/saveUserCard
+2019-04-02 10:34:12,186 - INFO - 是否修改用户名片成功
+2019-04-02 10:34:12,253 - ERROR - 测试失败
+2019-04-02 10:34:12,253 - INFO - 参数校验失败！
+2019-04-02 10:34:12,462 - INFO - 请求报文:{'key': 'mobile', 'val': '18211014921', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:12,462 - INFO - 返回报文:{'code': '100000006', 'msg': '参数校验失败！'}
+2019-04-02 10:34:12,462 - INFO - 预期结果:参数校验失败！
+2019-04-02 10:34:12,462 - INFO - --------saveUserCard--CASE3 end--------
+
+
+2019-04-02 10:34:12,462 - INFO - --------doShare用户分享统计CASE 1 start--------
+2019-04-02 10:34:12,591 - INFO - doShare>>>>token=====/user/doShare?no_check=1&&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:34:12,635 - INFO - 是否获取我的页面列表
+2019-04-02 10:34:12,701 - INFO - 测试通过
+2019-04-02 10:34:12,701 - INFO - 成功
+2019-04-02 10:34:12,921 - INFO - 请求报文:{'content_id': 'dd', 'content_type': '1', 'url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516623&t=1554172622', 'share_source': '2', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:12,921 - INFO - 返回报文:{'code': 0, 'msg': '成功'}
+2019-04-02 10:34:12,921 - INFO - 预期结果:成功
+2019-04-02 10:34:12,921 - INFO - --------doShare--CASE1 end--------
+
+
+2019-04-02 10:34:12,921 - INFO - --------doShare用户分享统计CASE 2 start--------
+2019-04-02 10:34:13,050 - INFO - doShare>>>>token=====/user/doShare?no_check=1&&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:34:13,097 - INFO - 是否获取我的页面列表
+2019-04-02 10:34:13,167 - INFO - 测试通过
+2019-04-02 10:34:13,167 - INFO - 成功
+2019-04-02 10:34:13,373 - INFO - 请求报文:{'content_id': '', 'content_type': '2', 'url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516684&t=1554172734', 'share_source': '3', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:13,373 - INFO - 返回报文:{'code': 0, 'msg': '成功'}
+2019-04-02 10:34:13,373 - INFO - 预期结果:成功
+2019-04-02 10:34:13,373 - INFO - --------doShare--CASE2 end--------
+
+
+2019-04-02 10:34:13,373 - INFO - --------doShare用户分享统计CASE 3 start--------
+2019-04-02 10:34:13,521 - INFO - doShare>>>>token为空=====/user/doShare?no_check=1
+2019-04-02 10:34:13,549 - INFO - 是否获取我的页面列表
+2019-04-02 10:34:13,617 - ERROR - 测试失败
+2019-04-02 10:34:13,617 - INFO - wrong:token 不存在;line:93
+2019-04-02 10:34:13,822 - INFO - 请求报文:{'content_id': 'ddf', 'content_type': '', 'url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516623&t=1554111512', 'share_source': '4', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:13,822 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-02 10:34:13,822 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-02 10:34:13,822 - INFO - --------doShare--CASE3 end--------
+
+
+2019-04-02 10:34:13,822 - INFO - --------doShare用户分享统计CASE  start--------
+2019-04-02 10:34:13,968 - INFO - doShare>>>>token为空=====/user/doShare?no_check=1
+2019-04-02 10:34:14,009 - INFO - 是否获取我的页面列表
+2019-04-02 10:34:14,076 - ERROR - 测试失败
+2019-04-02 10:34:14,076 - INFO - wrong:token 不存在;line:93
+2019-04-02 10:34:14,301 - INFO - 请求报文:{'content_id': 'sss', 'content_type': '3', 'url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516623&t=1554111512', 'share_source': '', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:14,301 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-02 10:34:14,301 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-02 10:34:14,301 - INFO - --------doShare--CASE end--------
+
+
+2019-04-02 10:34:14,301 - INFO - --------myinfo我的页面列表CASE 1 start--------
+2019-04-02 10:34:14,387 - INFO - myinfo>>>>token=====/userprofile/myinfo?no_check=1&&token=cddbc4b7-9515-4060-9515-46c80af536b4
+2019-04-02 10:34:14,486 - INFO - 是否获取我的页面列表
+2019-04-02 10:34:14,570 - INFO - 测试通过
+2019-04-02 10:34:14,570 - INFO - 成功
+2019-04-02 10:34:14,775 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:14,775 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'uid': '516623', 'real_name': '小爱', 'avatar': 'https://img.scimall.org.cn/default_active.png', 'description': '', 'user_vip': '1', 'user_type': '1', 'name_type': '1', 'career_addr': '', 'career_job': '', 'career': '暂无职业信息', 'percent': 25, 'list': [[{'title': '我的好友', 'num': 0, 'type': 1, 'icon_type': 1, 'icon': ''}, {'title': '关注的组织', 'num': 0, 'type': 2, 'icon_type': 1, 'icon': ''}, {'title': '我的文章', 'num': '0', 'type': 3, 'icon_type': 1, 'icon': ''}, {'title': '我的动态', 'num': 0, 'type': 4, 'icon_type': 1, 'icon': ''}, {'title': '我的收藏', 'num': '0', 'type': 5, 'icon_type': 1, 'icon': ''}, {'title': '我参与的', 'num': 0, 'type': 6, 'icon_type': 1, 'icon': ''}, {'title': '我的兴趣部落', 'num': 0, 'type': 7, 'icon_type': 1, 'icon': ''}, {'title': '科豆', 'num': 0, 'type': 9, 'icon_type': 1, 'icon': ''}], [{'title': '积分商城', 'num': '11', 'icon_type': 2, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/score.png', 'type': 8}, {'title': '我的钱包', 'num': '0.00', 'icon_type': 2, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/wallet.png', 'type': 21}], [{'title': '赚积分', 'num': 18, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/points.png', 'type': 10}, {'title': '我的订单', 'num': '0', 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/my_order.png', 'type': 11}, {'title': '草稿箱', 'num': 0, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/drafts.png', 'type': 12}, {'title': '系统通知', 'num': 0, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/sys_notification.png', 'type': 23}, {'title': '身份认证', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/identity.png', 'type': 14}, {'title': '扫一扫', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/scan.png', 'type': 15}, {'title': '反馈建议', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/advice.png', 'type': 16}, {'title': '联系客服', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/customer_service.png', 'type': 17}, {'title': '赏金计划', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/bounty_plan.png', 'type': 22}, {'title': '设置', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/setting.png', 'type': 19}, {'title': '关于我们', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/about_us.png', 'type': 20}]]}}
+2019-04-02 10:34:14,775 - INFO - 预期结果:成功
+2019-04-02 10:34:14,775 - INFO - --------myinfo--CASE1 end--------
+
+
+2019-04-02 10:34:14,775 - INFO - --------myinfo我的页面列表CASE 2 start--------
+2019-04-02 10:34:14,821 - INFO - myinfo>>>>token=====/userprofile/myinfo?no_check=1&&token=e91629ac-0869-4daf-ac6f-6265418e7525
+2019-04-02 10:34:14,991 - INFO - 是否获取我的页面列表
+2019-04-02 10:34:15,068 - INFO - 测试通过
+2019-04-02 10:34:15,068 - INFO - 成功
+2019-04-02 10:34:15,271 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:15,271 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'uid': '516684', 'real_name': '赵爱', 'avatar': 'https://img.scimall.org.cn/default_active.png', 'description': '', 'user_vip': '1', 'user_type': '1', 'name_type': '2', 'career_addr': '', 'career_job': '', 'career': '暂无职业信息', 'percent': 25, 'list': [[{'title': '我的好友', 'num': 0, 'type': 1, 'icon_type': 1, 'icon': ''}, {'title': '关注的组织', 'num': 0, 'type': 2, 'icon_type': 1, 'icon': ''}, {'title': '我的文章', 'num': '0', 'type': 3, 'icon_type': 1, 'icon': ''}, {'title': '我的动态', 'num': 0, 'type': 4, 'icon_type': 1, 'icon': ''}, {'title': '我的收藏', 'num': '0', 'type': 5, 'icon_type': 1, 'icon': ''}, {'title': '我参与的', 'num': 0, 'type': 6, 'icon_type': 1, 'icon': ''}, {'title': '我的兴趣部落', 'num': 0, 'type': 7, 'icon_type': 1, 'icon': ''}, {'title': '科豆', 'num': 0, 'type': 9, 'icon_type': 1, 'icon': ''}], [{'title': '积分商城', 'num': '4', 'icon_type': 2, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/score.png', 'type': 8}, {'title': '我的钱包', 'num': '0.00', 'icon_type': 2, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/wallet.png', 'type': 21}], [{'title': '赚积分', 'num': 18, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/points.png', 'type': 10}, {'title': '我的订单', 'num': '0', 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/my_order.png', 'type': 11}, {'title': '草稿箱', 'num': 0, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/drafts.png', 'type': 12}, {'title': '系统通知', 'num': 0, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/sys_notification.png', 'type': 23}, {'title': '身份认证', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/identity.png', 'type': 14}, {'title': '扫一扫', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/scan.png', 'type': 15}, {'title': '反馈建议', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/advice.png', 'type': 16}, {'title': '联系客服', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/customer_service.png', 'type': 17}, {'title': '赏金计划', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/bounty_plan.png', 'type': 22}, {'title': '设置', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/setting.png', 'type': 19}, {'title': '关于我们', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/about_us.png', 'type': 20}]]}}
+2019-04-02 10:34:15,271 - INFO - 预期结果:成功
+2019-04-02 10:34:15,271 - INFO - --------myinfo--CASE2 end--------
+
+
+2019-04-02 10:34:15,272 - INFO - --------myinfo我的页面列表CASE 3 start--------
+2019-04-02 10:34:15,316 - INFO - myinfo>>>>token为空=====/userprofile/myinfo?no_check=1
+2019-04-02 10:34:15,344 - INFO - 是否获取我的页面列表
+2019-04-02 10:34:15,461 - ERROR - 测试失败
+2019-04-02 10:34:15,461 - INFO - wrong:token 不存在;line:93
+2019-04-02 10:34:15,670 - INFO - 请求报文:{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-02 10:34:15,670 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-02 10:34:15,670 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-02 10:34:15,670 - INFO - --------myinfo--CASE3 end--------
+
+
+2019-04-02 10:34:15,686 - INFO - *********TEST END*********
+2019-04-02 10:34:15,716 - ERROR - [Errno 11001] getaddrinfo failed
