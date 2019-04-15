@@ -33,7 +33,6 @@ class 获取用户个性标签(unittest.TestCase):
         self.url = get_excel("url", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-
         self.data = {
             "v": "3.11.0",
             "system": "5",

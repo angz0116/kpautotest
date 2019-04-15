@@ -19,10 +19,11 @@ def getVerifyCode(No,interfaceNo ,mobile):
     response = req.getyz(url)
     try:
         retcode = response["data"]["code"]
-        set_excel(retcode, "verifycode", No, interfaceNo)
+        print(retcode)
+        #set_excel(retcode, "verifycode", No, interfaceNo)
         return retcode
     except Exception as ex:
         print(ex)
         print("获取验证码错误！")
-
+getVerifyCode(1, "register", "18211014921")
 

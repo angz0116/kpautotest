@@ -74,7 +74,7 @@ class 获取省科协列表(unittest.TestCase):
         set_excel(self.data, "请求报文", self.No, interfaceNo)
         set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
-        set_excel(self.crowdid, "crowdid", self.No, interfaceNo)
+        #set_excel(self.crowdid, "crowdid", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

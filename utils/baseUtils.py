@@ -1,4 +1,5 @@
-# -*- coding:utf-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import os ,sys
 from xlrd import open_workbook
@@ -12,8 +13,8 @@ from xml.etree import ElementTree as ElementTree
 
 
 database = {}
-proDir = os.path.split(os.getcwd())[0]
-#proDir = os.path.abspath(os.path.join(os.getcwd(), "../.."))
+#proDir = os.path.split(os.getcwd())[0]
+proDir = os.path.abspath(os.path.join(os.getcwd(), "../.."))
 print(proDir)
 dataPath = os.path.join(proDir, "config", "interfaces.xls")
 sql_path = os.path.join(proDir, "config", "SQL.xml")

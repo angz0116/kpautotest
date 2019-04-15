@@ -6,8 +6,8 @@ getIdCardAuth
 changepass
 sendverify
 tourist
-getUserTagList
 addusertag
+getUserTagList
 delusertag
 getUserCard
 getUserCardDetail
@@ -112,12 +112,12 @@ closeRemind
 openChallenge
 getChallenge
 receiveReward
-addReceiveAddr
+#addReceiveAddr
 getMyPrize
 getRemindStatus
 getHot
 getUserSupport
-getPrizeAddress
+#getPrizeAddress
 getCalendar
 getDefault
 getList
@@ -141,7 +141,7 @@ verifyOrder
 getverifyInfo
 #createorder
 getBindList
-bindThird
+#bindThird
 #authinfo
 #authset
 backloglist
