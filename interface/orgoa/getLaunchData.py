@@ -82,7 +82,7 @@ class 获取菜单及当前组织信息(unittest.TestCase):
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
         if self.retcode==0:
             if(len(self.response["data"]["recommendCrowd"])>0):
-                self.orgid = self.response["data"]["recommendCrowd"][0]["id"]
+                self.orgid = self.response["data"]["recommendCrowd"][1]["id"]
                 set_excel(self.orgid, "crowdid", self.No, "addFollow")
                 set_excel(self.orgid, "crowdid", self.No, "delFollow")
 

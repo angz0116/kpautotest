@@ -59,11 +59,14 @@ class ConfigHttp:
 			return None
 
 	def get(self):
-		#timeout = Config.get_http(self.httpname, "timheaders=self.headers,eout")
+		timeout = Config.get_http(self.httpname, "timeout")
 		try: #json格式时json.dumps(self.data)，form表单的是self.data
-			response = requests.get(self.url, headers=self.headers, params=self.data)
-			res = json.loads(response.content)
-			return res
+			response = requests.get(self.url, headers=self.headers, params=self.data, timeout=float(timeout))
+			if response.content:
+				res = json.loads(response.content)
+				return res
+			else:
+				return None
 		except requests.exceptions.ReadTimeout:
 			self.logger.error("发送接口请求超时，请修改timeout时间")
 			return None

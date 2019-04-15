@@ -6,6 +6,8 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 import datetime
+from datadao.verifyCode import getVerifyCode
+from service.gainPhone import createPhone
 interfaceNo = "bindMobile"
 name = "绑定手机号"
 
@@ -14,12 +16,13 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 绑定手机号(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, type, unionid, nick, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, mobile, flag, countrycode,password, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.type = str(type)
-        self.unionid = str(unionid)
-        self.nick = str(nick)
+        self.countrycode = str(countrycode)
+        self.mobile = str(mobile)
+        self.password = str(password)
+        self.flag = str(flag)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -31,19 +34,29 @@ class 绑定手机号(unittest.TestCase):
     def test_body(self):
         req.httpname = "KPTEST"
         self.url = get_excel("url", self.No, interfaceNo)
-        # 昵称
-        self.nick = get_excel("nick", self.No, interfaceNo)
-        # 三方类型 1=微信，2=微博，3=qq
-        self.type = get_excel("type", self.No, interfaceNo)
-        # 三方账号唯一标识
-        self.unionid = get_excel("unionid", self.No, interfaceNo)
+        # 国家编码
+        self.countrycode = get_excel("countrycode", self.No, interfaceNo)
+        # flag为1时，则重新生成新手机号；flag为2时，则从excel中读取已存在的
+        self.flag = get_excel("flag", self.No, interfaceNo)
+        # 根据flag进行判断，手机号是否生成新手机号
+        if (self.flag == "1"):
+            # 重新生成新手机号
+            self.telphone = createPhone()
+        else:
+            # 从excel中获取手机号
+            self.telphone = get_excel("mobile", self.No, interfaceNo)
+        # 密码
+        self.verify = getVerifyCode(self.No, interfaceNo ,self.telphone)
+        # 密码
+        self.password = get_excel("password", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
 
         self.data = {
-            "type": self.type,
-            "union_id": self.unionid,
-            "nick": self.nick,
+            "country_code": self.countrycode,
+            "mobile": self.mobile,
+            "verify": self.verify,
+            "pass": self.password,
             "system": "5",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",

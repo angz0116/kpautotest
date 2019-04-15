@@ -5,22 +5,20 @@ from utils.baseHttp import ConfigHttp
 from utils.baseUtils import *
 import unittest
 import paramunittest
-import datetime
-from datadao.verifyCode import getVerifyCode
-
 interfaceNo = "bindThird"
-name = "检测第三方账号状态"
+name = "绑定第三方平台"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 检测第三方账号状态(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, verify, pwd, 预期结果):
+class 绑定第三方平台(unittest.TestCase):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, type, unionid, openid, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.verify = str(verify)
-        self.pwd = str(pwd)
+        self.type = str(type)
+        self.unionid = str(unionid)
+        self.openid = str(openid)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -28,31 +26,37 @@ class 检测第三方账号状态(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """检测第三方账号状态"""
+    """绑定第三方平台"""
     def test_body(self):
         req.httpname = "KPTEST"
+        # 获取执行接口的url
         self.url = get_excel("url", self.No, interfaceNo)
-        # 提现金额
-        self.pwd = get_excel("pwd", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-        # 获取验证码
-        self.verify = getVerifyCode(self.No, "login", self.mobile)
+
+        # 平台类型 1=微信 2=微博 3=QQ
+        self.type = get_excel("type", self.No, interfaceNo)
+        # 应用唯一标识
+        self.unionid = get_excel("unionid", self.No, interfaceNo)
+        # 其他页面
+        self.openid = get_excel("openid", self.No, interfaceNo)
         self.data = {
-            "verify" : self.verify,
-            "pass": self.pwd,
+            "type": self.type,
+            "unionid": self.unionid,
+            "openid": self.openid,
+            "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",
             "channel": "5"
         }
         print(self.data)
-        if self.token == "":
+        if self.token=="":
             self.urlq = self.url
-            self.logger.info(interfaceNo + ">>>>token为空=====" + self.urlq)
+            self.logger.info(interfaceNo+">>>>token为空====="+self.urlq)
         else:
-            self.urlq = self.url + "&&token=" + self.token
-            self.logger.info(interfaceNo + ">>>>token=====" + self.urlq)
+            self.urlq = self.url+"&&token="+self.token
+            self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)
         self.response = req.post()
@@ -68,7 +72,7 @@ class 检测第三方账号状态(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否检测第三方账号状态成功"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否绑定第三方平台"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:

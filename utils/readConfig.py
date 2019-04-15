@@ -12,7 +12,7 @@ class ReadConfig:
 	def __init__(self):
 		with open(configPath) as fd:
 			data = fd.read()
-	#BOM对于utf-16和utf-32有用，对于utf-8没啥大用。。所以能去掉就去掉
+			#BOM对于utf-16和utf-32有用，对于utf-8没啥大用。。所以能去掉就去掉
 			#  remove BOM
 			if data[:3] == codecs.BOM_UTF8:
 				data = data[3:]
