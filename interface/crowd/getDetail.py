@@ -12,7 +12,7 @@ req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 组织主页获取组织信息api(unittest.TestCase):
+class 获取组织详情(unittest.TestCase):
     def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, crowdid, 预期结果):
         self.No = str(No)
         self.url = str(url)

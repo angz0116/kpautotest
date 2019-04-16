@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <page>
-		<database name="KQPLUGIN">
+		<database name="KMPLUGIN">
 			<table name="verify_log">
 				<sql id="mobile">
-					select t.content from verify_log t where MOBILE = '%s' ORDER BY t.createTime DESC
-				</sql>
-			</table>
-	</database>
-	<database name="KMUCENTER">
-			<table name="member">
-				<sql id="mobile">
-					select t.* from member t where MOBILE = '%s' ORDER BY t.createTime DESC
+					select t.content from verify_log t where t.MOBILE = '%s' ORDER BY t.createTime DESC
 				</sql>
 			</table>
 	</database>

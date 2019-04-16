@@ -38,6 +38,7 @@ def get_xml_dict(database_name, table_name):
 	set_xml()
 	database_dict = database.get(database_name).get(table_name)
 	return database_dict
+
 #从xml文件中给where条件字段赋值
 def get_sql(database_name, table_name, sql_id):
 	db = get_xml_dict(database_name, table_name)

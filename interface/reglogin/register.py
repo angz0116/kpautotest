@@ -10,6 +10,7 @@ import datetime
 from service.gainPhone import createPhone
 from service.gainName import getFullName
 from datadao.verifyCode import getVerifyCode
+from datadao.queryverify import query_sql
 interfaceNo = "register"
 name = "用户注册register"
 
@@ -52,7 +53,9 @@ class 注册(unittest.TestCase):
 		# 国家编码，86中国，其他国外
 		self.countryCode = get_excel("countrycode", self.No, interfaceNo)
 		# 获取验证码的方法
-		self.virifyCode = getVerifyCode(self.No,interfaceNo,self.telphone)
+		#self.virifyCode = getVerifyCode(self.No,interfaceNo,self.telphone)
+		self.virifyCode = query_sql(self.telphone)
+		print(self.virifyCode)
 		# 根据注册类型判断是输入验证码或密码
 		print("用户注册接口手机号==" + self.telphone)
 		self.data = {
