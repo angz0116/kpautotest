@@ -4,8 +4,8 @@ import os ,sys
 import codecs
 import configparser
 
-#proDir = os.path.split(os.getcwd())[0]
-proDir = os.path.abspath(os.path.join(os.getcwd(), "../.."))
+proDir = os.path.split(os.getcwd())[0]
+#proDir = os.path.abspath(os.path.join(os.getcwd(), "../.."))
 configPath = os.path.join(proDir, "config", "config.ini")
 print(configPath)
 class ReadConfig:

@@ -12,8 +12,8 @@ from xml.etree import ElementTree as ElementTree
 
 
 database = {}
-#proDir = os.path.split(os.getcwd())[0]
-proDir = os.path.abspath(os.path.join(os.getcwd(), "../.."))
+proDir = os.path.split(os.getcwd())[0]
+#proDir = os.path.abspath(os.path.join(os.getcwd(), "../.."))
 print(proDir)
 dataPath = os.path.join(proDir, "config", "interfaces.xls")
 sql_path = os.path.join(proDir, "config", "SQL.xml")
@@ -83,7 +83,7 @@ def set_excel(cellvalue, cellname, pid, sheetname):
 	sheetIndex = fd._sheet_names.index(sheetname)
 	wb = copy(fd)
 	sheet = wb.get_sheet(sheetIndex)
-	sheet.write(row_index, col_index, cellvalue)
+	sheet.write(row_index, col_index, cellvalue)#.encode("utf-8","ignore")
 	wb.save(dataPath)
 #获取sheet页行数
 def get_excelnrows(sheetname):

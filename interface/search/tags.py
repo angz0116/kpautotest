@@ -72,8 +72,8 @@ class 获取搜索标题(unittest.TestCase):
 
     # 写入xls文件中
     def wr_excel(self):
-        set_excel(self.data, "请求报文", self.No, interfaceNo)
-        set_excel(self.response, "返回报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
 
     def tearDown(self):

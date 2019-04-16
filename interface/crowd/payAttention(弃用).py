@@ -5,14 +5,14 @@ from utils.baseHttp import ConfigHttp
 from utils.baseUtils import *
 import unittest
 import paramunittest
-interfaceNo = "delAttention"
-name = "取消关注下属机构列表中的机构"
+interfaceNo = "payAttention"
+name = "关注下属机构列表中的机构"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 取消关注下属机构列表中的机构(unittest.TestCase):
+class 关注下属机构列表中的机构(unittest.TestCase):
     def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, pid, 预期结果):
         self.No = str(No)
         self.url = str(url)
@@ -24,7 +24,7 @@ class 取消关注下属机构列表中的机构(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """取消关注下属机构列表中的机构"""
+    """关注下属机构列表中的机构"""
     def test_body(self):
         req.httpname = "KPTEST"
         # 获取执行接口的url
@@ -63,7 +63,7 @@ class 取消关注下属机构列表中的机构(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否取消关注下属机构列表中的机构成功"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否获取关注下属机构列表中的机构"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:
@@ -75,8 +75,8 @@ class 取消关注下属机构列表中的机构(unittest.TestCase):
 
     # 写入xls文件中
     def wr_excel(self):
-        set_excel(self.data, "请求报文", self.No, interfaceNo)
-        set_excel(self.response, "返回报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
 
     def tearDown(self):
