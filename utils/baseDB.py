@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import utils.readConfig as readConfig
 from utils.baseLog import MyLog as Log
-import py_mysql
+import pymysql
 
 Config = readConfig.ReadConfig()
 
@@ -19,13 +19,13 @@ class ConfigDB:
 		password = Config.get_db(self.dbname, "password")
 		port = Config.get_db(self.dbname, "port")
 		database = Config.get_db(self.dbname, "database")
-		dns = py_mysql.makedsn(str(host), int(port), database)
+		#dns = py_mysql.makedsn(str(host), int(port), database)
 
 		try:
-			self.db = py_mysql.connect(username, password, dns)
+			self.db = pymysql.connect(str(host),username, password, database)
 			self.cursor = self.db.cursor()
 			#print("数据库连接成功")
-		except py_mysql.DatabaseError:
+		except Exception:
 			self.logger.error("账号密码错误，数据库登录失败")
 		except ConnectionError as ex:
 			self.logger.error(str(ex))
@@ -45,7 +45,7 @@ class ConfigDB:
 		try:
 			self.cursor.execute(sql)
 			self.db.commit()
-		except Exception:
+		except:
 			self.db.rollback()
 			self.logger.error("sql为空！")
 		return self.cursor

@@ -6,8 +6,9 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 from utils.baseDB import ConfigDB
-
-from datadao.verifyCode import getVerifyCode
+import time
+from datadao.sendverify import getSendverify
+from datadao.queryverify import query_sql
 
 interfaceNo = "getMobileStatus"
 name = "检测账号是否注册"
@@ -37,15 +38,20 @@ class 检测账号是否注册(unittest.TestCase):
         # 获取手机号
         self.mobile = get_excel("mobile", self.No, interfaceNo)
         # 国家编码，86中国，其他国外
-        self.countryCode = get_excel("countrycode", self.No, "register")
-        # 根据注册类型判断是输入验证码或密码
-        verityCode = getVerifyCode(self.No, "register", self.mobile)
+        self.countrycode = get_excel("countrycode", self.No, "register")
+        # 获取验证码的方法
+        time.sleep(30)
+        self.veresult = getSendverify(self.logger, "login", "mobile", self.mobile, self.countrycode)
+        if self.veresult == 0:
+            time.sleep(10)
+            # 从数据库中查询验证码
+            self.verifycode = query_sql(self.logger, self.mobile, self.countrycode)
         print("用户注册接口手机号==" + self.mobile)
         self.data = {
             "username": self.mobile,
-            "verify": verityCode,
+            "verify": self.verifycode,
             "source": "1",
-            "country_code":self.countryCode,
+            "country_code":self.countrycode,
             "app_version": "8.0.0",
             "system": "3",
             "device_model": "HUAWEI P10",

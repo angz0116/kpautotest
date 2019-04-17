@@ -77,8 +77,9 @@ class 获取部落分类列表(unittest.TestCase):
             if len(self.response["data"])>0:
                 #self.classifyid = self.response["data"][0]["id"]
                 # data中所有key，因为key存储的是元祖，所以list（元祖）可以转化成列表，再从列表中random.choice随机祛除id
-                cidlist = list(self.response["data"].keys())
-                self.classifyid = random.choice(cidlist)
+                cidlist = list(self.response["data"]) #.keys()
+                self.classifyid = random.choice(cidlist)["id"]
+                print(self.classifyid)
                 set_excel(self.classifyid, "classifyid", self.No, "createTribes")
 
     def tearDown(self):

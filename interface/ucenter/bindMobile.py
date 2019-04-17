@@ -5,8 +5,9 @@ from utils.baseHttp import ConfigHttp
 from utils.baseUtils import *
 import unittest
 import paramunittest
-import datetime
-from datadao.verifyCode import getVerifyCode
+import time
+from datadao.sendverify import getSendverify
+from datadao.queryverify import query_sql
 from service.gainPhone import createPhone
 interfaceNo = "bindMobile"
 name = "绑定手机号"
@@ -46,16 +47,18 @@ class 绑定手机号(unittest.TestCase):
             # 从excel中获取手机号
             self.telphone = get_excel("mobile", self.No, interfaceNo)
         # 密码
-        self.verify = getVerifyCode(self.No, interfaceNo ,self.telphone)
-        # 密码
         self.password = get_excel("password", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-
+        # 获取验证码的方法
+        getSendverify(self.logger, "reg", "mobile", self.telphone, self.countrycode)
+        time.sleep(10)
+        # 从数据库中查询验证码
+        self.verifycode = query_sql(self.logger, self.telphone, self.countrycode)
         self.data = {
             "country_code": self.countrycode,
-            "mobile": self.mobile,
-            "verify": self.verify,
+            "mobile": self.telphone,
+            "verify": self.verifycode,
             "pass": self.password,
             "system": "5",
             "device_model": "HUAWEI P10",

@@ -61,7 +61,10 @@ class 添加用户个性标签(unittest.TestCase):
         self.response = req.post()
         print(self.response)
         try:
-            self.retcode = self.response["code"]
+            if len(self.response)>0:
+                self.retcode = self.response["code"]
+            else:
+                self.retcode = 1
         except Exception:
             self.logger.error("报文返回为空！")
             print("报文返回为空！")
@@ -78,8 +81,11 @@ class 添加用户个性标签(unittest.TestCase):
             set_excel("fail", "测试结果", self.No, interfaceNo)
             self.msg = self.response["msg"]
             self.logger.error("测试失败")
-        self.msg = self.response["msg"]
-        self.logger.info(self.msg)
+        if len(self.response)>0:
+            self.msg = self.response["msg"]
+            self.logger.info(self.msg)
+        else:
+            self.msg = "无数据"
 
     # 写入xls文件中
     def wr_excel(self):

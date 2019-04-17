@@ -6,7 +6,7 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 from utils.baseDB import ConfigDB
-from datadao.verifyCode import getVerifyCode
+
 
 interfaceNo = "sendverify"
 name = "发送短信验证码"
@@ -41,8 +41,6 @@ class 发送短信验证码(unittest.TestCase):
         self.action = get_excel("action", self.No, interfaceNo)
         # 手机号或邮箱
         self.account = get_excel("account", self.No, interfaceNo)
-        # token
-        self.token = get_excel("token", self.No, "login")
         # 验证码类型 email，mobile
         self.countrycode = get_excel("countrycode", self.No, interfaceNo)
         print("发送短信验证码接口__sendverify（account）==" + str(self.account))
@@ -50,7 +48,7 @@ class 发送短信验证码(unittest.TestCase):
             "type": self.ftype,
             "action": self.action,
             "account": self.account,
-            "app_version": "8.0.0",
+            "version": "3.11.2",
             "system": "3",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",

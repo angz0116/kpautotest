@@ -69,8 +69,8 @@ class 三方登录(unittest.TestCase):
         req.set_url(self.urlq)
         req.set_data(self.data)
         self.response = req.post()
-        print(self.response)
         try:
+            print(self.response)
             self.retcode = self.response["code"]
         except Exception:
             self.logger.error("报文返回为空！")
