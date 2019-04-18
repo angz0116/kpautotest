@@ -40,7 +40,7 @@ class 检测账号是否注册(unittest.TestCase):
         # 国家编码，86中国，其他国外
         self.countrycode = get_excel("countrycode", self.No, "register")
         # 获取验证码的方法
-        time.sleep(30)
+        time.sleep(10)
         self.veresult = getSendverify(self.logger, "login", "mobile", self.mobile, self.countrycode)
         if self.veresult == 0:
             time.sleep(10)
