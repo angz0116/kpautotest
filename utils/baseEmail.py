@@ -1,4 +1,3 @@
-
 # -*- coding:utf-8 -*-
 import os
 import smtplib
@@ -13,7 +12,7 @@ import glob
 
 Config = readConfig.ReadConfig()
 
-class Email:
+class Email():
 	def __init__(self):
 		global host, user, password, port, sender, title, content
 		host = Config.get_email("mail_host")
@@ -44,7 +43,6 @@ class Email:
 		# 接收者账号列表
 		self.msg['to'] = ",".join(self.receiver)
 
-		print(self.msg['to'] )
 	def config_content(self):
 		# 填写邮件内容
 		content_plain = MIMEText(content, 'plain', 'utf-8')  #html超文本
@@ -97,16 +95,13 @@ class Email:
 		self.config_file()
 		try:
 			# 如果发送者是qq邮箱，则用ssl
-			'''
-						if user.endswith("qq.com"):
-				self.smtp = smtplib.SMTP_SSL(host,port)
+
+			if sender.endswith("qq.com"):
+				smtp = smtplib.SMTP_SSL(host,port)
 			else:
-				self.smtp = smtplib.SMTP(host,port)
-			'''
-			smtp = smtplib.SMTP()
+				smtp = smtplib.SMTP(host,port)
 
-			smtp.connect(host)
-
+			#smtp.connect(host)
 			# 发送邮件服务器对象
 			smtp.login(user, password)
 			smtp.sendmail(sender, self.receiver, self.msg.as_string())
@@ -114,8 +109,8 @@ class Email:
 			self.logger.info("测试报告已发送邮件")
 		except Exception as ex:
 			self.logger.error(str(ex))
-
-class MyEmail:
+			self.logger.info("测试报告发送失败")
+class MyEmail():
 	email = None
 	mutex = threading.Lock()
 
@@ -130,4 +125,5 @@ class MyEmail:
 			MyEmail.email = Email()
 			MyEmail.mutex.release()
 		return MyEmail.email
+
 
