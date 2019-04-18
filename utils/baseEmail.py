@@ -76,7 +76,6 @@ class Email:
 	def check_file(self):
 		reportpath = self.log.get_report_path()
 		if os.path.isfile(reportpath) and not os.stat(reportpath) == 0:
-			print("==========")
 			return True
 		else:
 			return False
