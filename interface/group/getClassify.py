@@ -70,12 +70,17 @@ class 获取部落分类列表(unittest.TestCase):
 
     # 写入xls文件中
     def wr_excel(self):
-        set_excel(self.data, "请求报文", self.No, interfaceNo)
-        set_excel(self.response, "返回报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
         if self.retcode==0:
-            self.classifyid = self.response["data"][0]["id"]
-            set_excel(self.classifyid, "classifyid", self.No, "createTribes")
+            if len(self.response["data"])>0:
+                #self.classifyid = self.response["data"][0]["id"]
+                # data中所有key，因为key存储的是元祖，所以list（元祖）可以转化成列表，再从列表中random.choice随机祛除id
+                cidlist = list(self.response["data"]) #.keys()
+                self.classifyid = random.choice(cidlist)["id"]
+                print(self.classifyid)
+                set_excel(self.classifyid, "classifyid", self.No, "createTribes")
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

@@ -22,6 +22,7 @@ class mytestRun:
 		# 定义结果保存路径
 		resultPath = log.get_report_path()
 		on_off = Config.get_email("on_off")
+		logger.info("发送邮件已打开，状态为"+on_off)
 		# 取得config\caselist.txt文件路径
 		self.caseListFile = os.path.join(readConfig.proDir, "config", "caselist.txt")
 		# 取得test_case文件路径
@@ -44,7 +45,7 @@ class mytestRun:
 		suite_module = []
 
 		for case in self.caseList:
-			print(case + '.py')
+			#print(case + '.py')
 			discover = unittest.defaultTestLoader.discover(self.caseFile, pattern=case + '.py', top_level_dir=None)
 			suite_module.append(discover)
 		if len(suite_module) > 0:
@@ -61,7 +62,7 @@ class mytestRun:
 			if suit is not None:
 				logger.info("********TEST START********")
 				with open(resultPath, 'wb') as fp:
-					runner = HTMLTestRunner(stream=fp, title='科猫接口测试报告', description='详细测试用例结果', tester='赵爱')
+					runner = HTMLTestRunner(stream=fp, title='科界接口测试报告', description='详细测试用例结果', tester='赵爱')
 					runner.run(suit)
 			else:
 				logger.info("没有添加一个用例")
@@ -69,13 +70,14 @@ class mytestRun:
 			logger.error(str(ex))
 		finally:
 			logger.info("*********TEST END*********")
-			if on_off == 'on':
+			logger.info("*********发送邮件 START*********")
+			if on_off == "on":
 				self.email.send_email()
 			elif on_off == 'off':
 				logger.info("不能发送邮件，因为on_off = 'off'")
 			else:
 				logger.info("Unknow state.")
-
+			logger.info("*********发送邮件 END*********")
 if __name__ == '__main__':
 	obj = mytestRun()
 	obj.runAll()

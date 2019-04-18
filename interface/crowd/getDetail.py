@@ -12,7 +12,7 @@ req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 组织主页获取组织信息api(unittest.TestCase):
+class 获取组织详情(unittest.TestCase):
     def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, crowdid, 预期结果):
         self.No = str(No)
         self.url = str(url)
@@ -75,8 +75,8 @@ class 组织主页获取组织信息api(unittest.TestCase):
 
     # 写入xls文件中
     def wr_excel(self):
-        set_excel(self.data, "请求报文", self.No, interfaceNo)
-        set_excel(self.response, "返回报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
         set_excel(self.crowdid, "crowdid", self.No, interfaceNo)
 

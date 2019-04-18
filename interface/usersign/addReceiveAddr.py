@@ -14,12 +14,11 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 添加收货地址(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, rewardid, recipient, mobile, provinceid, cityid, countyid, address, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, rewardid, recipient, provinceid, cityid, countyid, address, 预期结果):
         self.No = str(No)
         self.url = str(url)
         self.rewardid = str(rewardid)
         self.recipient = str(recipient)
-        self.mobile = str(mobile)
         self.provinceid = str(provinceid)
         self.cityid = str(cityid)
         self.countyid = str(countyid)
@@ -101,8 +100,8 @@ class 添加收货地址(unittest.TestCase):
 
     # 写入xls文件中
     def wr_excel(self):
-        set_excel(self.data, "请求报文", self.No, interfaceNo)
-        set_excel(self.response, "返回报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
 
     def tearDown(self):

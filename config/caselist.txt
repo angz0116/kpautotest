@@ -141,7 +141,7 @@ verifyOrder
 getverifyInfo
 #createorder
 getBindList
-#bindThird
+bindThird
 #authinfo
 #authset
 backloglist

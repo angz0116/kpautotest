@@ -74,17 +74,18 @@ class 获取用户个性标签(unittest.TestCase):
 
     # 写入xls文件中
     def wr_excel(self):
-        set_excel(self.data, "请求报文", self.No, interfaceNo)
-        set_excel(self.response, "返回报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
+        set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
         print(self.retcode)
         # 查询到有数据的时，则把tag的ID，name都写入excel中
         if self.retcode==0:
-            self.tagId = self.response["data"][0]["id"]
-            self.tagName = self.response["data"][0]["tag_name"]
-            set_excel(self.tagId , "tagId", self.No, "delusertag")
-            set_excel(self.tagId, "tagId", self.No, interfaceNo)
-            set_excel(self.tagName, "tagName", self.No, interfaceNo)
+            if len(self.response["data"])>0:
+                self.tagId = self.response["data"][0]["id"]
+                self.tagName = self.response["data"][0]["tag_name"]
+                set_excel(self.tagId , "tagId", self.No, "delusertag")
+                set_excel(self.tagId , "tagId", self.No, interfaceNo)
+                set_excel(self.tagName, "tagName", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

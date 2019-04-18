@@ -25,8 +25,11 @@ class Email:
 		content = Config.get_email("content")
 		self.value = Config.get_email("receiver")
 		self.receiver = []
-		for n in str(self.value).split("/"):
-			self.receiver.append(n)
+		if len(self.value)>0:
+			for n in str(self.value).split(";"):
+				self.receiver.append(n)
+		else:
+			self.logger.info("收件人不能为空")
 		date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 		self.subject = title + " " + date
 		self.log = MyLog.get_log()
@@ -34,25 +37,26 @@ class Email:
 		self.msg = MIMEMultipart('mixed') #related,alternative
 
 	def config_header(self):
+		# 邮件主题
 		self.msg['subject'] = self.subject
+		# 发送者账号
 		self.msg['from'] = sender
-		self.msg['to'] = ";".join(self.receiver)
+		# 接收者账号列表
+		self.msg['to'] = ",".join(self.receiver)
 
+		print(self.msg['to'] )
 	def config_content(self):
+		# 填写邮件内容
 		content_plain = MIMEText(content, 'plain', 'utf-8')  #html超文本
 		self.msg.attach(content_plain)
 
 	def config_file(self):
+		# 获取log日志的邮件路径
+		resultpath = self.log.get_result_path()
+		# 处理带附件的情况
 		if self.check_file():
-			reportpath = self.log.get_result_path()
-			#zippath = os.path.join(reportpath, "test.zip")
-			# zip file
-			files = glob.glob(reportpath + '\*')
-			#f = zipfile.ZipFile(zippath, 'w', zipfile.ZIP_DEFLATED)
-			#for file in files:
-			#    f.write(file)
-			#f.close()
-#添加附件1
+			files = glob.glob(resultpath + '\*')
+			#添加附件1
 			with open(files[1], 'rb') as reportfile:
 				filehtml = MIMEText(reportfile.read(), 'base64', 'utf-8')
 				filehtml.add_header('Content-Disposition', 'attachment', filename="测试报告.html")
@@ -60,7 +64,7 @@ class Email:
 				filehtml.add_header('X-Attachment-Id', '0')
 				filehtml.add_header('Content-Type', 'application/octet-stream')
 				self.msg.attach(filehtml)
-#添加附件2
+			#添加附件2
 			with open(files[0], 'rb') as logfile:
 				filelog = MIMEText(logfile.read(), 'base64', 'utf-8')
 				filelog.add_header('Content-Disposition', 'attachment', filename="测试日志.txt")
@@ -72,17 +76,39 @@ class Email:
 	def check_file(self):
 		reportpath = self.log.get_report_path()
 		if os.path.isfile(reportpath) and not os.stat(reportpath) == 0:
+			print("==========")
 			return True
 		else:
 			return False
 
+	'''
+	发送邮件函数
+	:param mail_host: 邮箱服务器，163邮箱host: smtp.163.com
+	:param port: 端口号,163邮箱的默认端口是 25
+	:param username: 邮箱账号 za_ai@163.com
+	:param passwd: 邮箱密码(不是邮箱的登录密码，是邮箱的授权码)
+	:param recv: 邮箱接收人地址，多个账号以逗号隔开
+	:param title: 邮件标题
+	:param content: 邮件内容
+	:return:
+	'''
 	def send_email(self):
 		self.config_header()
 		self.config_content()
 		self.config_file()
 		try:
+			# 如果发送者是qq邮箱，则用ssl
+			'''
+						if user.endswith("qq.com"):
+				self.smtp = smtplib.SMTP_SSL(host,port)
+			else:
+				self.smtp = smtplib.SMTP(host,port)
+			'''
 			smtp = smtplib.SMTP()
+
 			smtp.connect(host)
+
+			# 发送邮件服务器对象
 			smtp.login(user, password)
 			smtp.sendmail(sender, self.receiver, self.msg.as_string())
 			smtp.quit()
