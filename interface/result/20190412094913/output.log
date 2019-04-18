@@ -1,0 +1,33 @@
+2019-04-12 09:49:13,739 - INFO - --------getUserPrivacy获取用户隐私信息CASE 1 start--------
+2019-04-12 09:49:13,962 - INFO - getUserPrivacy>>>>token=====/userprofile/getBindMobile?no_check=1&&token=d849a892-f071-4838-b948-7ca05b716ae6
+2019-04-12 09:49:14,019 - INFO - 是否获取用户隐私信息
+2019-04-12 09:49:14,255 - INFO - 测试通过
+2019-04-12 09:49:14,256 - INFO - 成功
+2019-04-12 09:49:15,148 - INFO - 请求报文:{'id': '516623', 'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:49:15,148 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'mobile': '18211014921'}}
+2019-04-12 09:49:15,148 - INFO - 预期结果:成功
+2019-04-12 09:49:15,155 - INFO - --------getUserPrivacy--CASE1 end--------
+
+
+2019-04-12 09:49:15,172 - INFO - --------getUserPrivacy获取用户隐私信息CASE 2 start--------
+2019-04-12 09:49:15,409 - INFO - getUserPrivacy>>>>token=====/userprofile/getBindMobile?no_check=1&&token=f684035a-1b28-44e7-a7c3-7c5636911b7d
+2019-04-12 09:49:15,449 - INFO - 是否获取用户隐私信息
+2019-04-12 09:49:15,664 - INFO - 测试通过
+2019-04-12 09:49:15,664 - INFO - 成功
+2019-04-12 09:49:16,540 - INFO - 请求报文:{'id': '516684', 'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:49:16,541 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'mobile': '13658140355'}}
+2019-04-12 09:49:16,541 - INFO - 预期结果:成功
+2019-04-12 09:49:16,541 - INFO - --------getUserPrivacy--CASE2 end--------
+
+
+2019-04-12 09:49:16,542 - INFO - --------getUserPrivacy获取用户隐私信息CASE 3 start--------
+2019-04-12 09:49:16,751 - INFO - getUserPrivacy>>>>token为空=====/userprofile/getBindMobile?no_check=1
+2019-04-12 09:49:16,783 - INFO - 是否获取用户隐私信息
+2019-04-12 09:49:16,990 - ERROR - 测试失败
+2019-04-12 09:49:16,990 - INFO - wrong:token 不存在;line:93
+2019-04-12 09:49:17,973 - INFO - 请求报文:{'id': '', 'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:49:17,973 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-12 09:49:17,973 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-12 09:49:17,973 - INFO - --------getUserPrivacy--CASE3 end--------
+
+

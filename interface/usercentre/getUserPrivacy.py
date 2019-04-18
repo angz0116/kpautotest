@@ -6,20 +6,19 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 import datetime
-interfaceNo = "getMobileBindStatus"
-name = "检测手机号绑定状态"
+interfaceNo = "getUserPrivacy"
+name = "获取用户隐私信息"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 检测手机号绑定状态(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, mobile, type, countrycode, 预期结果):
+class 获取用户隐私信息(unittest.TestCase):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, uid, 预期结果):
         self.No = str(No)
         self.url = str(url)
-        self.mobile = str(mobile)
-        self.type = str(type)
-        self.countrycode = str(countrycode)
+        self.uid = str(uid)
+
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -27,23 +26,17 @@ class 检测手机号绑定状态(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """检测手机号绑定状态"""
+    """获取用户隐私信息"""
     def test_body(self):
         req.httpname = "KPTEST"
         self.url = get_excel("url", self.No, interfaceNo)
-        # 手机号
-        self.mobile = get_excel("mobile", self.No, interfaceNo)
-        # 登录平台类型 1=微信，2=微博，3=QQ
-        self.type = get_excel("type", self.No, interfaceNo)
-        # 区域标识
-        self.countrycode = get_excel("countrycode", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-
+        # 用户id
+        self.uid = get_excel("uid", self.No, "login")
         self.data = {
-            "mobile":self.mobile,
-            "type": self.type,
-            "countrycode": self.countrycode,
+            "id": self.uid,
+            "v": "3.11.2",
             "system": "5",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",
@@ -58,7 +51,7 @@ class 检测手机号绑定状态(unittest.TestCase):
             self.logger.info(interfaceNo + ">>>>token=====" + self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)
-        self.response = req.get()
+        self.response = req.post()
         print(self.response)
         try:
             self.retcode = self.response["code"]
@@ -71,7 +64,7 @@ class 检测手机号绑定状态(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否获取检测手机号绑定状态"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否获取用户隐私信息"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:
@@ -83,9 +76,16 @@ class 检测手机号绑定状态(unittest.TestCase):
 
     # 写入xls文件中
     def wr_excel(self):
-        set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
-        set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
+        set_excel(self.data, "请求报文", self.No, interfaceNo)
+        set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        set_excel(self.uid, "uid", self.No, interfaceNo)
+        if self.retcode==0:
+            if len(self.response["data"])>0:
+                self.pritype = self.response["data"]["information_setup"]["privacy_list"][1]["id"]
+                self.privalue = self.response["data"]["msg_setup"]["privacy_value"]
+                set_excel(self.pritype, "privacytype", self.No, "updateUserPrivacy")
+                set_excel(self.privalue, "privacyvalue", self.No, "updateUserPrivacy")
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

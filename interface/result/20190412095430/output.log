@@ -1,0 +1,33 @@
+2019-04-12 09:54:30,187 - INFO - --------getBindMobile获取用户绑定的手机号CASE 1 start--------
+2019-04-12 09:54:30,355 - INFO - getBindMobile>>>>token=====/userprofile/getBindMobile?no_check=1&&token=d849a892-f071-4838-b948-7ca05b716ae6
+2019-04-12 09:54:30,413 - INFO - 是否获取用户绑定的手机号
+2019-04-12 09:54:30,688 - INFO - 测试通过
+2019-04-12 09:54:30,688 - INFO - 成功
+2019-04-12 09:54:31,381 - INFO - 请求报文:{'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:54:31,381 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'mobile': '18211014921'}}
+2019-04-12 09:54:31,382 - INFO - 预期结果:成功
+2019-04-12 09:54:31,382 - INFO - --------getBindMobile--CASE1 end--------
+
+
+2019-04-12 09:54:31,389 - INFO - --------getBindMobile获取用户绑定的手机号CASE 2 start--------
+2019-04-12 09:54:31,552 - INFO - getBindMobile>>>>token=====/userprofile/getBindMobile?no_check=1&&token=f684035a-1b28-44e7-a7c3-7c5636911b7d
+2019-04-12 09:54:31,597 - INFO - 是否获取用户绑定的手机号
+2019-04-12 09:54:31,878 - INFO - 测试通过
+2019-04-12 09:54:31,879 - INFO - 成功
+2019-04-12 09:54:32,563 - INFO - 请求报文:{'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:54:32,563 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'mobile': '13658140355'}}
+2019-04-12 09:54:32,563 - INFO - 预期结果:成功
+2019-04-12 09:54:32,563 - INFO - --------getBindMobile--CASE2 end--------
+
+
+2019-04-12 09:54:32,564 - INFO - --------getBindMobile获取用户绑定的手机号CASE 3 start--------
+2019-04-12 09:54:32,710 - INFO - getBindMobile>>>>token为空=====/userprofile/getBindMobile?no_check=1
+2019-04-12 09:54:32,741 - INFO - 是否获取用户绑定的手机号
+2019-04-12 09:54:32,952 - ERROR - 测试失败
+2019-04-12 09:54:32,952 - INFO - wrong:token 不存在;line:93
+2019-04-12 09:54:33,789 - INFO - 请求报文:{'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:54:33,790 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-12 09:54:33,790 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-12 09:54:33,790 - INFO - --------getBindMobile--CASE3 end--------
+
+

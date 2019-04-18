@@ -1,0 +1,33 @@
+2019-04-12 09:50:13,188 - INFO - --------getUserPrivacy获取用户隐私信息CASE 1 start--------
+2019-04-12 09:50:13,410 - INFO - getUserPrivacy>>>>token=====/user/getUserPrivacy?no_check=1&&token=d849a892-f071-4838-b948-7ca05b716ae6
+2019-04-12 09:50:13,475 - INFO - 是否获取用户隐私信息
+2019-04-12 09:50:13,700 - INFO - 测试通过
+2019-04-12 09:50:13,700 - INFO - 成功
+2019-04-12 09:50:15,011 - INFO - 请求报文:{'id': '516623', 'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:50:15,011 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'information_setup': {'privacy_value': '3', 'privacy_info': '所有人', 'privacy_list': [{'id': 1, 'name': '仅好友'}, {'id': 2, 'name': '仅同组织（学会/科协）人员'}, {'id': 3, 'name': '所有人'}]}, 'msg_setup': {'privacy_value': '3', 'privacy_info': '所有人', 'privacy_list': [{'id': 1, 'name': '仅好友'}, {'id': 2, 'name': '仅同组织（学会/科协）人员'}, {'id': 3, 'name': '所有人'}]}}}
+2019-04-12 09:50:15,017 - INFO - 预期结果:成功
+2019-04-12 09:50:15,017 - INFO - --------getUserPrivacy--CASE1 end--------
+
+
+2019-04-12 09:50:15,018 - INFO - --------getUserPrivacy获取用户隐私信息CASE 2 start--------
+2019-04-12 09:50:15,349 - INFO - getUserPrivacy>>>>token=====/user/getUserPrivacy?no_check=1&&token=f684035a-1b28-44e7-a7c3-7c5636911b7d
+2019-04-12 09:50:15,398 - INFO - 是否获取用户隐私信息
+2019-04-12 09:50:15,625 - INFO - 测试通过
+2019-04-12 09:50:15,626 - INFO - 成功
+2019-04-12 09:50:16,889 - INFO - 请求报文:{'id': '516684', 'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:50:16,889 - INFO - 返回报文:{'code': 0, 'msg': '成功', 'data': {'information_setup': {'privacy_value': '3', 'privacy_info': '所有人', 'privacy_list': [{'id': 1, 'name': '仅好友'}, {'id': 2, 'name': '仅同组织（学会/科协）人员'}, {'id': 3, 'name': '所有人'}]}, 'msg_setup': {'privacy_value': '3', 'privacy_info': '所有人', 'privacy_list': [{'id': 1, 'name': '仅好友'}, {'id': 2, 'name': '仅同组织（学会/科协）人员'}, {'id': 3, 'name': '所有人'}]}}}
+2019-04-12 09:50:16,889 - INFO - 预期结果:成功
+2019-04-12 09:50:16,889 - INFO - --------getUserPrivacy--CASE2 end--------
+
+
+2019-04-12 09:50:16,890 - INFO - --------getUserPrivacy获取用户隐私信息CASE 3 start--------
+2019-04-12 09:50:17,123 - INFO - getUserPrivacy>>>>token为空=====/user/getUserPrivacy?no_check=1
+2019-04-12 09:50:17,158 - INFO - 是否获取用户隐私信息
+2019-04-12 09:50:17,394 - ERROR - 测试失败
+2019-04-12 09:50:17,394 - INFO - wrong:token 不存在;line:93
+2019-04-12 09:50:18,266 - INFO - 请求报文:{'id': '', 'v': '3.11.2', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+2019-04-12 09:50:18,266 - INFO - 返回报文:{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+2019-04-12 09:50:18,267 - INFO - 预期结果:wrong:token 不存在;line:93
+2019-04-12 09:50:18,267 - INFO - --------getUserPrivacy--CASE3 end--------
+
+

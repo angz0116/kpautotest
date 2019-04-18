@@ -33,7 +33,7 @@ class 添加用户个性标签(unittest.TestCase):
 
         # 2. ios, android
         self.tagname = get_excel("tagname", self.No, interfaceNo)
-        # app版本号
+        # 被贴签人ID
         self.touid = get_excel("touid", self.No, interfaceNo)
         # 获取执行接口的url
         self.url = get_excel("url", self.No, interfaceNo)

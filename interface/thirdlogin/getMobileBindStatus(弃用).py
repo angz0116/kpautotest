@@ -6,18 +6,20 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 import datetime
-interfaceNo = "getBindMobile"
-name = "获取用户绑定的手机号"
+interfaceNo = "getMobileBindStatus"
+name = "检测手机号绑定状态"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 获取用户绑定的手机号(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, 预期结果):
+class 检测手机号绑定状态(unittest.TestCase):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, mobile, type, countrycode, 预期结果):
         self.No = str(No)
         self.url = str(url)
-
+        self.mobile = str(mobile)
+        self.type = str(type)
+        self.countrycode = str(countrycode)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -25,14 +27,24 @@ class 获取用户绑定的手机号(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """获取用户绑定的手机号"""
+    """检测手机号绑定状态"""
     def test_body(self):
         req.httpname = "KPTEST"
         self.url = get_excel("url", self.No, interfaceNo)
+        # 手机号
+        self.mobile = get_excel("mobile", self.No, interfaceNo)
+        # 登录平台类型 1=微信，2=微博，3=QQ
+        self.type = get_excel("type", self.No, interfaceNo)
+        # 区域标识
+        self.countrycode = get_excel("countrycode", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
+
         self.data = {
-            "v": "3.11.2",
+            "mobile":self.mobile,
+            "type": self.type,
+            "countrycode": self.countrycode,
+            "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",
@@ -47,7 +59,7 @@ class 获取用户绑定的手机号(unittest.TestCase):
             self.logger.info(interfaceNo + ">>>>token=====" + self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)
-        self.response = req.post()
+        self.response = req.get()
         print(self.response)
         try:
             self.retcode = self.response["code"]
@@ -60,7 +72,7 @@ class 获取用户绑定的手机号(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否获取用户绑定的手机号"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否获取检测手机号绑定状态"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:

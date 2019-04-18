@@ -31,7 +31,7 @@ class 账号合并(unittest.TestCase):
         req.httpname = "KPTEST"
         self.url = get_excel("url", self.No, interfaceNo)
         # 保留账号uid
-        self.retainuid = get_excel("retainuid", self.No, interfaceNo)
+        self.retainuid = get_excel("uid", self.No, "login")
         # 被合并账号uid
         self.mergeduid = get_excel("mergeduid", self.No, interfaceNo)
         # 获取登录sheet页中token
@@ -82,6 +82,7 @@ class 账号合并(unittest.TestCase):
         set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
         set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        set_excel(self.retainuid, "retainuid", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

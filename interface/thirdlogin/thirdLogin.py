@@ -14,13 +14,14 @@ req = ConfigHttp()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 三方登录(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, type, nick, avatar, sex, 预期结果):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, type, nick, avatar, sex, unionid, 预期结果):
         self.No = str(No)
         self.url = str(url)
         self.type = str(type)
         self.nick = str(nick)
         self.avatar = str(avatar)
         self.sex = str(sex)
+        self.unionid = str(unionid)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -46,15 +47,17 @@ class 三方登录(unittest.TestCase):
         self.uuid = now.strftime('%Y%m%d') + str(random.randint(0, 9000000))
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
-
+        # 手机型号
+        self.unionid  = get_excel("unionid", self.No, interfaceNo)
         self.data = {
             "type":self.type,
             "nick": self.nick,
             "avatar": self.avatar,
             "sex": self.sex,
             "uuid": self.uuid,
+            "union_id": self.unionid,
             "app_version": "3.11.0",
-            "system": "5",
+            "system": "3",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",
             "channel": "5"

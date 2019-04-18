@@ -1,4 +1,5 @@
-# -*- coding:utf-8 -*-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 import os ,sys
 import codecs
@@ -14,13 +15,13 @@ class ReadConfig:
 			data = fd.read()
 			#BOM对于utf-16和utf-32有用，对于utf-8没啥大用。。所以能去掉就去掉
 			#  remove BOM
-			if data[:3] == codecs.BOM_UTF8:
-				data = data[3:]
-				with codecs.open(configPath, "w") as file:
-					file.write(data)
+			#if data[:3] == codecs.BOM_UTF8:
+			data = data[3:]
+			with codecs.open(configPath, "w") as file:
+				file.write(data)
 
 		self.cf = configparser.ConfigParser()
-		self.cf.read(configPath, encoding="utf-8-sig")
+		self.cf.read(configPath, encoding="utf-8-sig")#utf-8-sig
 
 	#获取邮箱
 	def get_email(self, name):

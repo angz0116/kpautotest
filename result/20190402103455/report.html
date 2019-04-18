@@ -1,0 +1,1838 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>科猫接口测试报告</title>
+	<meta name="generator" content="HTMLTestRunner interface v2.0"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	
+<style type="text/css" media="screen">
+body        { font-family: Microsoft YaHei,Tahoma,arial,helvetica,sans-serif;padding: 20px; font-size: 150%; }
+table       { font-size: 100%; }
+/* -- heading ---------------------------------------------------------------------- */
+.heading {
+	margin-top: 0ex;
+	margin-bottom: 1ex;
+}
+.heading .description {
+	margin-top: 4ex;
+	margin-bottom: 6ex;
+}
+/* -- report ------------------------------------------------------------------------ */
+#total_row  { font-weight: bold; }
+.passCase   { color: #5cb85c; }
+.failCase   { color: #d9534f; font-weight: bold; }
+.errorCase  { color: #f0ad4e; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+</style>
+
+</head>
+<body >
+<script language="javascript" type="text/javascript">
+output_list = Array();
+/*level 调整增加只显示通过用例的分类 --Findyou
+0:Summary //all hiddenRow
+1:Failed  //pt hiddenRow, ft none
+2:Pass    //pt none, ft hiddenRow
+3:All     //pt none, ft none
+*/
+function showCase(level) {
+	trs = document.getElementsByTagName("tr");
+	for (var i = 0; i < trs.length; i++) {
+		tr = trs[i];
+		id = tr.id;
+		if (id.substr(0,2) == 'ft') {
+			if (level == 2 || level == 0 ) {
+				tr.className = 'hiddenRow';
+			}
+			else {
+				tr.className = '';
+			}
+		}
+		if (id.substr(0,2) == 'pt') {
+			if (level < 2) {
+				tr.className = 'hiddenRow';
+			}
+			else {
+				tr.className = '';
+			}
+		}
+	}
+	//加入【详细】切换文字变化 --Findyou
+	detail_class=document.getElementsByClassName('detail');
+	//console.log(detail_class.length)
+	if (level == 3) {
+		for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="收起"
+		}
+	}
+	else{
+			for (var i = 0; i < detail_class.length; i++){
+			detail_class[i].innerHTML="详细"
+		}
+	}
+}
+function showClassDetail(cid, count) {
+	var id_list = Array(count);
+	var toHide = 1;
+	for (var i = 0; i < count; i++) {
+		//ID修改 点 为 下划线 -Findyou
+		tid0 = 't' + cid.substr(1) + '_' + (i+1);
+		tid = 'f' + tid0;
+		tr = document.getElementById(tid);
+		if (!tr) {
+			tid = 'p' + tid0;
+			tr = document.getElementById(tid);
+		}
+		id_list[i] = tid;
+		if (tr.className) {
+			toHide = 0;
+		}
+	}
+	for (var i = 0; i < count; i++) {
+		tid = id_list[i];
+		//修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
+		if (toHide) {
+			document.getElementById(tid).className = 'hiddenRow';
+			document.getElementById(cid).innerText = "详细"
+		}
+		else {
+			document.getElementById(tid).className = '';
+			document.getElementById(cid).innerText = "收起"
+		}
+	}
+}
+function html_escape(s) {
+	s = s.replace(/&/g,'&amp;');
+	s = s.replace(/</g,'&lt;');
+	s = s.replace(/>/g,'&gt;');
+	return s;
+}
+</script>
+<div class='heading'>
+<h1 style="font-family: Microsoft YaHei">科猫接口测试报告</h1>
+<p class='attribute'><strong>测试人员 : </strong> 赵爱</p>
+<p class='attribute'><strong>开始时间 : </strong> 2019-04-02 10:34:56</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:00:26.488198</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 54，通过 54，通过率= 100.00%</p>
+
+<p class='description'>详细测试用例结果</p>
+</div>
+
+
+<p id='show_detail_line'>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 100.00% }</a>
+<a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 0 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 54 }</a>
+<a class="btn btn-info" href='javascript:showCase(3)'>所有{ 54 }</a>
+</p>
+<table id='result_table' class="table table-condensed table-bordered table-hover">
+<colgroup>
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row' class="text-center success" style="font-weight: bold;font-size: 14px;">
+	<td>用例集/测试用例</td>
+	<td>总计</td>
+	<td>通过</td>
+	<td>失败</td>
+	<td>错误</td>
+	<td>详细</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>注册_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c1',1)" class="detail" id='c1'>详细</a></td>
+</tr>
+
+<tr id='pt1_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+	<div id='div_pt1_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_1'>通过</button>
+	<div id='div_pt1_1' class="collapse in">
+	<pre>
+	
+pt1_1: register用户注册registerCASE 1
+用户注册接口手机号==15042052722
+http://api-test.scimall.org.cn/account/register?no_check=1
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>注册_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c2',1)" class="detail" id='c2'>详细</a></td>
+</tr>
+
+<tr id='pt2_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
+	<div id='div_pt2_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt2_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt2_1'>通过</button>
+	<div id='div_pt2_1' class="collapse in">
+	<pre>
+	
+pt2_1: register用户注册registerCASE 2
+用户注册接口手机号==14766568578
+http://api-test.scimall.org.cn/account/register?no_check=1
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>注册_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c3',1)" class="detail" id='c3'>详细</a></td>
+</tr>
+
+<tr id='pt3_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt3_1'>通过</button>
+	<div id='div_pt3_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt3_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt3_1'>通过</button>
+	<div id='div_pt3_1' class="collapse in">
+	<pre>
+	
+pt3_1: register用户注册registerCASE 3
+用户注册接口手机号==18211014921
+http://api-test.scimall.org.cn/account/register?no_check=1
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>注册_3</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c4',1)" class="detail" id='c4'>详细</a></td>
+</tr>
+
+<tr id='pt4_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt4_1'>通过</button>
+	<div id='div_pt4_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt4_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt4_1'>通过</button>
+	<div id='div_pt4_1' class="collapse in">
+	<pre>
+	
+pt4_1: register用户注册registerCASE 4
+用户注册接口手机号==182110166
+http://api-test.scimall.org.cn/account/register?no_check=1
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>注册_4</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c5',1)" class="detail" id='c5'>详细</a></td>
+</tr>
+
+<tr id='pt5_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt5_1'>通过</button>
+	<div id='div_pt5_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt5_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt5_1'>通过</button>
+	<div id='div_pt5_1' class="collapse in">
+	<pre>
+	
+pt5_1: register用户注册registerCASE 5
+用户注册接口手机号==13628072471
+http://api-test.scimall.org.cn/account/register?no_check=1
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>检测账号是否注册_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c6',1)" class="detail" id='c6'>详细</a></td>
+</tr>
+
+<tr id='pt6_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt6_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt6_1'>通过</button>
+	<div id='div_pt6_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt6_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt6_1'>通过</button>
+	<div id='div_pt6_1' class="collapse in">
+	<pre>
+	
+pt6_1: getMobileStatus检测账号是否注册getMobileStatusCASE 1
+用户注册接口手机号==15042052722
+{'username': '15042052722', 'verify': '5047', 'source': '1', 'country_code': '86', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/account/getMobileStatus?no_check=1
+{'code': 0, 'msg': '成功', 'data': {'status': 1, 'secret_key': '19ac8e2f505edb2f97a7cf82bddde642'}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>检测账号是否注册_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c7',1)" class="detail" id='c7'>详细</a></td>
+</tr>
+
+<tr id='pt7_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt7_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt7_1'>通过</button>
+	<div id='div_pt7_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt7_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt7_1'>通过</button>
+	<div id='div_pt7_1' class="collapse in">
+	<pre>
+	
+pt7_1: getMobileStatus检测账号是否注册getMobileStatusCASE 2
+用户注册接口手机号==14766568578
+{'username': '14766568578', 'verify': '7511', 'source': '1', 'country_code': '86', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/account/getMobileStatus?no_check=1
+{'code': 0, 'msg': '成功', 'data': {'status': 1, 'secret_key': '8b17ade46ba0c93eee10cb1bbec42a7b'}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>检测账号是否注册_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c8',1)" class="detail" id='c8'>详细</a></td>
+</tr>
+
+<tr id='pt8_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt8_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt8_1'>通过</button>
+	<div id='div_pt8_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt8_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt8_1'>通过</button>
+	<div id='div_pt8_1' class="collapse in">
+	<pre>
+	
+pt8_1: getMobileStatus检测账号是否注册getMobileStatusCASE 3
+用户注册接口手机号==13628072471
+{'username': '13628072471', 'verify': '6306', 'source': '1', 'country_code': '86', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/account/getMobileStatus?no_check=1
+{'code': 0, 'msg': '成功', 'data': {'status': 2, 'secret_key': '28dbf2ce5b1c27c76860fce045ea6647'}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>登录_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c9',1)" class="detail" id='c9'>详细</a></td>
+</tr>
+
+<tr id='pt9_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt9_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt9_1'>通过</button>
+	<div id='div_pt9_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt9_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt9_1'>通过</button>
+	<div id='div_pt9_1' class="collapse in">
+	<pre>
+	
+pt9_1: login用户登录CASE 1
+用户登录接口__login手机号==18211014921
+http://api-test.scimall.org.cn/account/login?no_check=1
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>登录_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c10',1)" class="detail" id='c10'>详细</a></td>
+</tr>
+
+<tr id='pt10_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt10_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt10_1'>通过</button>
+	<div id='div_pt10_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt10_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt10_1'>通过</button>
+	<div id='div_pt10_1' class="collapse in">
+	<pre>
+	
+pt10_1: login用户登录CASE 2
+用户登录接口__login手机号==13658140355
+http://api-test.scimall.org.cn/account/login?no_check=1
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>登录_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c11',1)" class="detail" id='c11'>详细</a></td>
+</tr>
+
+<tr id='pt11_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt11_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt11_1'>通过</button>
+	<div id='div_pt11_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt11_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt11_1'>通过</button>
+	<div id='div_pt11_1' class="collapse in">
+	<pre>
+	
+pt11_1: login用户登录CASE 3
+用户登录接口__login手机号==13554682289
+http://api-test.scimall.org.cn/account/login?no_check=1
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>登录_3</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c12',1)" class="detail" id='c12'>详细</a></td>
+</tr>
+
+<tr id='pt12_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt12_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt12_1'>通过</button>
+	<div id='div_pt12_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt12_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt12_1'>通过</button>
+	<div id='div_pt12_1' class="collapse in">
+	<pre>
+	
+pt12_1: login用户登录CASE 4
+用户登录接口__login手机号==
+http://api-test.scimall.org.cn/account/login?no_check=1
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>实名认证_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c13',1)" class="detail" id='c13'>详细</a></td>
+</tr>
+
+<tr id='pt13_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt13_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt13_1'>通过</button>
+	<div id='div_pt13_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt13_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt13_1'>通过</button>
+	<div id='div_pt13_1' class="collapse in">
+	<pre>
+	
+pt13_1: idCardAuth实名认证CASE 1
+{'real_name': '爱诺', 'id_card': '130434198701244843', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/userauth/idCardAuth?no_check=1&amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 10163, 'msg': '身份证号已被认证'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>实名认证_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c14',1)" class="detail" id='c14'>详细</a></td>
+</tr>
+
+<tr id='pt14_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt14_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt14_1'>通过</button>
+	<div id='div_pt14_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt14_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt14_1'>通过</button>
+	<div id='div_pt14_1' class="collapse in">
+	<pre>
+	
+pt14_1: idCardAuth实名认证CASE 2
+{'real_name': '赵爱', 'id_card': '130434198701244843', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/userauth/idCardAuth?no_check=1&amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 0, 'msg': '成功', 'data': []}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>实名认证_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c15',1)" class="detail" id='c15'>详细</a></td>
+</tr>
+
+<tr id='pt15_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt15_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt15_1'>通过</button>
+	<div id='div_pt15_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt15_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt15_1'>通过</button>
+	<div id='div_pt15_1' class="collapse in">
+	<pre>
+	
+pt15_1: idCardAuth实名认证CASE 3
+{'real_name': '', 'id_card': '', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/userauth/idCardAuth?no_check=1
+{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取实名认证信息_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c16',1)" class="detail" id='c16'>详细</a></td>
+</tr>
+
+<tr id='pt16_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt16_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt16_1'>通过</button>
+	<div id='div_pt16_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt16_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt16_1'>通过</button>
+	<div id='div_pt16_1' class="collapse in">
+	<pre>
+	
+pt16_1: 获取实名认证信息CASE 1
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/userauth/?no_check=1&amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 0, 'msg': '成功', 'data': {'name_type': 1, 'real_name': '', 'id_card': '', 'create_time': '', 'bind_mobile': 1}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取实名认证信息_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c17',1)" class="detail" id='c17'>详细</a></td>
+</tr>
+
+<tr id='pt17_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt17_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt17_1'>通过</button>
+	<div id='div_pt17_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt17_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt17_1'>通过</button>
+	<div id='div_pt17_1' class="collapse in">
+	<pre>
+	
+pt17_1: getIdCardAuth获取实名认证信息CASE 2
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/userauth/getIdCardAuth?no_check=1&amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 0, 'msg': '成功', 'data': {'name_type': 2, 'real_name': '赵爱', 'id_card': '1****************3', 'create_time': '1554169609', 'bind_mobile': 1}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取实名认证信息_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c18',1)" class="detail" id='c18'>详细</a></td>
+</tr>
+
+<tr id='pt18_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt18_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt18_1'>通过</button>
+	<div id='div_pt18_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt18_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt18_1'>通过</button>
+	<div id='div_pt18_1' class="collapse in">
+	<pre>
+	
+pt18_1: getIdCardAuth获取实名认证信息CASE 3
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/userauth/getIdCardAuth?no_check=1
+{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>修改密码_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c19',1)" class="detail" id='c19'>详细</a></td>
+</tr>
+
+<tr id='pt19_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt19_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt19_1'>通过</button>
+	<div id='div_pt19_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt19_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt19_1'>通过</button>
+	<div id='div_pt19_1' class="collapse in">
+	<pre>
+	
+pt19_1: changepass修改密码CASE 1
+{'changetype': '1', 'pass_new': 'Abc#123456', 'pass_old': 'abc123456', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+http://api-test.scimall.org.cn/ucenter/changepass?no_check=1&amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 10004, 'msg': '原始密码错误', 'data': []}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>修改密码_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c20',1)" class="detail" id='c20'>详细</a></td>
+</tr>
+
+<tr id='pt20_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt20_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt20_1'>通过</button>
+	<div id='div_pt20_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt20_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt20_1'>通过</button>
+	<div id='div_pt20_1' class="collapse in">
+	<pre>
+	
+pt20_1: changepass修改密码CASE 2
+{'changetype': '1', 'pass_new': 'abc123456', 'pass_old': 'abc123456', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+http://api-test.scimall.org.cn/ucenter/changepass?no_check=1&amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 100000004, 'msg': '参数错误', 'error': [{'name': 'pass_new', 'value': '新旧密码不能一致'}], 'data': {}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>修改密码_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c21',1)" class="detail" id='c21'>详细</a></td>
+</tr>
+
+<tr id='pt21_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt21_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt21_1'>通过</button>
+	<div id='div_pt21_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt21_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt21_1'>通过</button>
+	<div id='div_pt21_1' class="collapse in">
+	<pre>
+	
+pt21_1: changepass修改密码CASE 3
+{'changetype': '2', 'pass_new': '', 'pass_old': '', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+http://api-test.scimall.org.cn/ucenter/changepass?no_check=1
+{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>修改密码_3</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c22',1)" class="detail" id='c22'>详细</a></td>
+</tr>
+
+<tr id='pt22_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt22_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt22_1'>通过</button>
+	<div id='div_pt22_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt22_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt22_1'>通过</button>
+	<div id='div_pt22_1' class="collapse in">
+	<pre>
+	
+pt22_1: changepass修改密码CASE 4
+{'changetype': '2', 'pass_new': 'abc12345', 'pass_old': 'abc123456', 'app_version': '8.0.0', 'system': '3', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'country_code': '86', 'channel': '5'}
+http://api-test.scimall.org.cn/ucenter/changepass?no_check=1
+{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>发送短信验证码_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c23',1)" class="detail" id='c23'>详细</a></td>
+</tr>
+
+<tr id='pt23_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt23_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt23_1'>通过</button>
+	<div id='div_pt23_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt23_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt23_1'>通过</button>
+	<div id='div_pt23_1' class="collapse in">
+	<pre>
+	
+pt23_1: sendverify发送短信验证码CASE 1
+发送短信验证码接口__sendverify（account）==za@163.com
+http://api-test.scimall.org.cn/account/sendverify?no_check=1 &amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 10021, 'msg': '验证码发送失败'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>发送短信验证码_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c24',1)" class="detail" id='c24'>详细</a></td>
+</tr>
+
+<tr id='pt24_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt24_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt24_1'>通过</button>
+	<div id='div_pt24_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt24_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt24_1'>通过</button>
+	<div id='div_pt24_1' class="collapse in">
+	<pre>
+	
+pt24_1: sendverify发送短信验证码CASE 2
+发送短信验证码接口__sendverify（account）==18211014921
+http://api-test.scimall.org.cn/account/sendverify?no_check=1 &amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 0, 'msg': '成功'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>发送短信验证码_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c25',1)" class="detail" id='c25'>详细</a></td>
+</tr>
+
+<tr id='pt25_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt25_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt25_1'>通过</button>
+	<div id='div_pt25_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt25_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt25_1'>通过</button>
+	<div id='div_pt25_1' class="collapse in">
+	<pre>
+	
+pt25_1: sendverify发送短信验证码CASE 3
+发送短信验证码接口__sendverify（account）==18211014921
+http://api-test.scimall.org.cn/account/sendverify?no_check=1 
+{'code': 0, 'msg': '成功'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>游客注册登录_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c26',1)" class="detail" id='c26'>详细</a></td>
+</tr>
+
+<tr id='pt26_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt26_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt26_1'>通过</button>
+	<div id='div_pt26_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt26_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt26_1'>通过</button>
+	<div id='div_pt26_1' class="collapse in">
+	<pre>
+	
+pt26_1: tourist游客注册登录接口CASE 1
+{'app_source': '2', 'uuid': '201904028845123', 'app_version': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/account/tourist?no_check=1
+{'code': 8, 'msg': 'wrong:Undefined offset: 516698;line:448'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>游客注册登录_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c27',1)" class="detail" id='c27'>详细</a></td>
+</tr>
+
+<tr id='pt27_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt27_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt27_1'>通过</button>
+	<div id='div_pt27_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt27_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt27_1'>通过</button>
+	<div id='div_pt27_1' class="collapse in">
+	<pre>
+	
+pt27_1: tourist游客注册登录接口CASE 2
+{'app_source': '3', 'uuid': '201904026722634', 'app_version': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/account/tourist?no_check=1 
+{'code': 8, 'msg': 'wrong:Undefined offset: 516699;line:448'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>游客注册登录_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c28',1)" class="detail" id='c28'>详细</a></td>
+</tr>
+
+<tr id='pt28_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt28_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt28_1'>通过</button>
+	<div id='div_pt28_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt28_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt28_1'>通过</button>
+	<div id='div_pt28_1' class="collapse in">
+	<pre>
+	
+pt28_1: tourist游客注册登录接口CASE 3
+{'app_source': '', 'uuid': '201904027119256', 'app_version': '', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/account/tourist?no_check=1
+{'code': 100000004, 'msg': '参数错误', 'error': [{'name': 'app_source', 'value': '来源错误'}], 'data': {}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>游客注册登录_3</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c29',1)" class="detail" id='c29'>详细</a></td>
+</tr>
+
+<tr id='pt29_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt29_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt29_1'>通过</button>
+	<div id='div_pt29_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt29_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt29_1'>通过</button>
+	<div id='div_pt29_1' class="collapse in">
+	<pre>
+	
+pt29_1: tourist游客注册登录接口CASE 4
+{'app_source': '2', 'uuid': '201904027978218', 'app_version': '', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/account/tourist?no_check=1
+{'code': 0, 'msg': '成功', 'data': {'uid': '516700', 'real_name': '游客191011', 'avatar': 'https://img.scimall.org.cn/default_active.png', 'id': '516700', 'is_tourist': '1', 'tourist_token': '18aa825a-88f6-4852-acc8-b1c935f25265', 'expires_in': 1559356510}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取用户个性标签_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c30',1)" class="detail" id='c30'>详细</a></td>
+</tr>
+
+<tr id='pt30_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt30_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt30_1'>通过</button>
+	<div id='div_pt30_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt30_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt30_1'>通过</button>
+	<div id='div_pt30_1' class="collapse in">
+	<pre>
+	
+pt30_1: getUserTagList获取用户个性标签CASE 1
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/getUserTagList?no_check=1&amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 0, 'msg': '成功', 'data': [{'id': '82050', 'tag_name': '你好，科技'}]}
+0
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取用户个性标签_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c31',1)" class="detail" id='c31'>详细</a></td>
+</tr>
+
+<tr id='pt31_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt31_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt31_1'>通过</button>
+	<div id='div_pt31_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt31_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt31_1'>通过</button>
+	<div id='div_pt31_1' class="collapse in">
+	<pre>
+	
+pt31_1: getUserTagList获取用户个性标签CASE 2
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/getUserTagList?no_check=1&amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 0, 'msg': '成功', 'data': [{'id': '82052', 'tag_name': 'fafafdgg'}]}
+0
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取用户个性标签_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c32',1)" class="detail" id='c32'>详细</a></td>
+</tr>
+
+<tr id='pt32_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt32_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt32_1'>通过</button>
+	<div id='div_pt32_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt32_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt32_1'>通过</button>
+	<div id='div_pt32_1' class="collapse in">
+	<pre>
+	
+pt32_1: getUserTagList获取用户个性标签CASE 3
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/getUserTagList?no_check=1
+{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+100000003
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>添加用户个性标签_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c33',1)" class="detail" id='c33'>详细</a></td>
+</tr>
+
+<tr id='pt33_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt33_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt33_1'>通过</button>
+	<div id='div_pt33_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt33_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt33_1'>通过</button>
+	<div id='div_pt33_1' class="collapse in">
+	<pre>
+	
+pt33_1: addusertag添加用户个性标签CASE 1
+{'tag_name': '你好，科界信息', 'to_uid': '516623', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/addusertag?no_check=1&amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 0, 'msg': '成功', 'data': {'rowCount': 1, 'msg': ''}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>添加用户个性标签_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c34',1)" class="detail" id='c34'>详细</a></td>
+</tr>
+
+<tr id='pt34_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt34_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt34_1'>通过</button>
+	<div id='div_pt34_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt34_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt34_1'>通过</button>
+	<div id='div_pt34_1' class="collapse in">
+	<pre>
+	
+pt34_1: addusertag添加用户个性标签CASE 2
+{'tag_name': 'fafafdgg', 'to_uid': '516684', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/addusertag?no_check=1&amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 0, 'msg': '成功', 'data': {'rowCount': 1}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>添加用户个性标签_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c35',1)" class="detail" id='c35'>详细</a></td>
+</tr>
+
+<tr id='pt35_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt35_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt35_1'>通过</button>
+	<div id='div_pt35_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt35_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt35_1'>通过</button>
+	<div id='div_pt35_1' class="collapse in">
+	<pre>
+	
+pt35_1: addusertag添加用户个性标签CASE 3
+{'tag_name': '', 'to_uid': '516622', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/addusertag?no_check=1&amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 100000004, 'msg': '参数错误', 'error': [{'name': 'tag_name', 'value': '标签为1-10个字符'}], 'data': {}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>删除用户个性标签_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c36',1)" class="detail" id='c36'>详细</a></td>
+</tr>
+
+<tr id='pt36_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt36_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt36_1'>通过</button>
+	<div id='div_pt36_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt36_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt36_1'>通过</button>
+	<div id='div_pt36_1' class="collapse in">
+	<pre>
+	
+pt36_1: delusertag删除用户个性标签CASE 1
+{'tag_id': '82050', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/delusertag?no_check=1 &amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 0, 'msg': '成功', 'data': {'rowCount': 82050}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>删除用户个性标签_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c37',1)" class="detail" id='c37'>详细</a></td>
+</tr>
+
+<tr id='pt37_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt37_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt37_1'>通过</button>
+	<div id='div_pt37_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt37_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt37_1'>通过</button>
+	<div id='div_pt37_1' class="collapse in">
+	<pre>
+	
+pt37_1: delusertag删除用户个性标签CASE 2
+{'tag_id': '82052', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/delusertag?no_check=1 &amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 0, 'msg': '成功', 'data': {'rowCount': 82052}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>删除用户个性标签_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c38',1)" class="detail" id='c38'>详细</a></td>
+</tr>
+
+<tr id='pt38_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt38_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt38_1'>通过</button>
+	<div id='div_pt38_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt38_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt38_1'>通过</button>
+	<div id='div_pt38_1' class="collapse in">
+	<pre>
+	
+pt38_1: delusertag删除用户个性标签CASE 3
+{'tag_id': '', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/delusertag?no_check=1 &amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 20004, 'msg': '删除标签失败'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取用户名片二维码_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c39',1)" class="detail" id='c39'>详细</a></td>
+</tr>
+
+<tr id='pt39_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt39_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt39_1'>通过</button>
+	<div id='div_pt39_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt39_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt39_1'>通过</button>
+	<div id='div_pt39_1' class="collapse in">
+	<pre>
+	
+pt39_1: getUserCard获取用户名片二维码CASE 1
+{'v': '2.9', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/getUserCard?no_check=1  &amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 0, 'msg': '成功', 'data': {'card_url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516623&amp;t=1554173371', 'user': {'uid': '516623', 'real_name': '小爱', 'avatar': 'https://img.scimall.org.cn/default_active.png?imageMogr2/thumbnail/200x200!', 'user_type': '1'}}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取用户名片二维码_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c40',1)" class="detail" id='c40'>详细</a></td>
+</tr>
+
+<tr id='pt40_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt40_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt40_1'>通过</button>
+	<div id='div_pt40_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt40_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt40_1'>通过</button>
+	<div id='div_pt40_1' class="collapse in">
+	<pre>
+	
+pt40_1: getUserCard获取用户名片二维码CASE 2
+{'v': '2.9', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/getUserCard?no_check=1 &amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 0, 'msg': '成功', 'data': {'card_url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516684&amp;t=1554173046', 'user': {'uid': '516684', 'real_name': '赵爱', 'avatar': 'https://img.scimall.org.cn/default_active.png?imageMogr2/thumbnail/200x200!', 'user_type': '1'}}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取用户名片二维码_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c41',1)" class="detail" id='c41'>详细</a></td>
+</tr>
+
+<tr id='pt41_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt41_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt41_1'>通过</button>
+	<div id='div_pt41_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt41_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt41_1'>通过</button>
+	<div id='div_pt41_1' class="collapse in">
+	<pre>
+	
+pt41_1: getUserCard获取用户名片二维码CASE 3
+{'v': '2.9', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/getUserCard?no_check=1  
+{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取用户名片详情_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c42',1)" class="detail" id='c42'>详细</a></td>
+</tr>
+
+<tr id='pt42_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt42_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt42_1'>通过</button>
+	<div id='div_pt42_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt42_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt42_1'>通过</button>
+	<div id='div_pt42_1' class="collapse in">
+	<pre>
+	
+pt42_1: getUserCardDetail获取用户名片详情CASE 1
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/getUserCardDetail?no_check=1&amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 0, 'msg': '成功', 'data': {'real_name': '小爱', 'avatar': 'https://img.scimall.org.cn/default_active.png', 'work_unit': '', 'job_name': '', 'work_phone': '', 'work_address': '', 'remark': '', 'email': '', 'mobile': '18211014921'}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取用户名片详情_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c43',1)" class="detail" id='c43'>详细</a></td>
+</tr>
+
+<tr id='pt43_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt43_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt43_1'>通过</button>
+	<div id='div_pt43_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt43_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt43_1'>通过</button>
+	<div id='div_pt43_1' class="collapse in">
+	<pre>
+	
+pt43_1: getUserCardDetail获取用户名片详情CASE 2
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/getUserCardDetail?no_check=1&amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 0, 'msg': '成功', 'data': {'real_name': '赵爱', 'avatar': 'https://img.scimall.org.cn/default_active.png', 'work_unit': '', 'job_name': '', 'work_phone': '', 'work_address': '', 'remark': '', 'email': '', 'mobile': '13658140355'}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>获取用户名片详情_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c44',1)" class="detail" id='c44'>详细</a></td>
+</tr>
+
+<tr id='pt44_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt44_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt44_1'>通过</button>
+	<div id='div_pt44_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt44_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt44_1'>通过</button>
+	<div id='div_pt44_1' class="collapse in">
+	<pre>
+	
+pt44_1: getUserCardDetail获取用户名片详情CASE 3
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/getUserCardDetail?no_check=1
+{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>修改用户名片信息_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c45',1)" class="detail" id='c45'>详细</a></td>
+</tr>
+
+<tr id='pt45_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt45_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt45_1'>通过</button>
+	<div id='div_pt45_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt45_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt45_1'>通过</button>
+	<div id='div_pt45_1' class="collapse in">
+	<pre>
+	
+pt45_1: saveUserCard修改用户名片信息CASE 1
+{'key': 'mobile', 'val': '18211014921', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/saveUserCard?no_check=1&amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 0, 'msg': '成功', 'data': {'row': 0}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>修改用户名片信息_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c46',1)" class="detail" id='c46'>详细</a></td>
+</tr>
+
+<tr id='pt46_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt46_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt46_1'>通过</button>
+	<div id='div_pt46_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt46_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt46_1'>通过</button>
+	<div id='div_pt46_1' class="collapse in">
+	<pre>
+	
+pt46_1: saveUserCard修改用户名片信息CASE 2
+{'key': '', 'val': '18211014921', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/saveUserCard?no_check=1&amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 100000004, 'msg': '参数错误', 'error': [{'name': 'key', 'value': '不允许修改的内容'}, {'name': 'val', 'value': '没有配置验证规则'}], 'data': {}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>修改用户名片信息_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c47',1)" class="detail" id='c47'>详细</a></td>
+</tr>
+
+<tr id='pt47_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt47_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt47_1'>通过</button>
+	<div id='div_pt47_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt47_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt47_1'>通过</button>
+	<div id='div_pt47_1' class="collapse in">
+	<pre>
+	
+pt47_1: saveUserCard修改用户名片信息CASE 3
+{'key': 'mobile', 'val': '18211014921', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/saveUserCard
+{'code': '100000006', 'msg': '参数校验失败！'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>用户分享统计_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c48',1)" class="detail" id='c48'>详细</a></td>
+</tr>
+
+<tr id='pt48_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt48_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt48_1'>通过</button>
+	<div id='div_pt48_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt48_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt48_1'>通过</button>
+	<div id='div_pt48_1' class="collapse in">
+	<pre>
+	
+pt48_1: doShare用户分享统计CASE 1
+{'content_id': 'dd', 'content_type': '1', 'url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516623&amp;t=1554173371', 'share_source': '2', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/doShare?no_check=1&amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 0, 'msg': '成功'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>用户分享统计_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c49',1)" class="detail" id='c49'>详细</a></td>
+</tr>
+
+<tr id='pt49_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt49_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt49_1'>通过</button>
+	<div id='div_pt49_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt49_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt49_1'>通过</button>
+	<div id='div_pt49_1' class="collapse in">
+	<pre>
+	
+pt49_1: doShare用户分享统计CASE 2
+{'content_id': '', 'content_type': '2', 'url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516684&amp;t=1554173046', 'share_source': '3', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/doShare?no_check=1&amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 0, 'msg': '成功'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>用户分享统计_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c50',1)" class="detail" id='c50'>详细</a></td>
+</tr>
+
+<tr id='pt50_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt50_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt50_1'>通过</button>
+	<div id='div_pt50_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt50_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt50_1'>通过</button>
+	<div id='div_pt50_1' class="collapse in">
+	<pre>
+	
+pt50_1: doShare用户分享统计CASE 3
+{'content_id': 'ddf', 'content_type': '', 'url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516623&amp;t=1554111512', 'share_source': '4', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/doShare?no_check=1
+{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>用户分享统计_3</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c51',1)" class="detail" id='c51'>详细</a></td>
+</tr>
+
+<tr id='pt51_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt51_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt51_1'>通过</button>
+	<div id='div_pt51_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt51_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt51_1'>通过</button>
+	<div id='div_pt51_1' class="collapse in">
+	<pre>
+	
+pt51_1: doShare用户分享统计CASE 
+{'content_id': 'sss', 'content_type': '3', 'url': 'https://h5-test.scimall.org.cn/user/getUserMaxCard?uid=516623&amp;t=1554111512', 'share_source': '', 'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/user/doShare?no_check=1
+{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>我的页面列表_0</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c52',1)" class="detail" id='c52'>详细</a></td>
+</tr>
+
+<tr id='pt52_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt52_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt52_1'>通过</button>
+	<div id='div_pt52_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt52_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt52_1'>通过</button>
+	<div id='div_pt52_1' class="collapse in">
+	<pre>
+	
+pt52_1: myinfo我的页面列表CASE 1
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/userprofile/myinfo?no_check=1&amp;&amp;token=cddbc4b7-9515-4060-9515-46c80af536b4
+{'code': 0, 'msg': '成功', 'data': {'uid': '516623', 'real_name': '小爱', 'avatar': 'https://img.scimall.org.cn/default_active.png', 'description': '', 'user_vip': '1', 'user_type': '1', 'name_type': '1', 'career_addr': '', 'career_job': '', 'career': '暂无职业信息', 'percent': 25, 'list': [[{'title': '我的好友', 'num': 0, 'type': 1, 'icon_type': 1, 'icon': ''}, {'title': '关注的组织', 'num': 0, 'type': 2, 'icon_type': 1, 'icon': ''}, {'title': '我的文章', 'num': '0', 'type': 3, 'icon_type': 1, 'icon': ''}, {'title': '我的动态', 'num': 0, 'type': 4, 'icon_type': 1, 'icon': ''}, {'title': '我的收藏', 'num': '0', 'type': 5, 'icon_type': 1, 'icon': ''}, {'title': '我参与的', 'num': 0, 'type': 6, 'icon_type': 1, 'icon': ''}, {'title': '我的兴趣部落', 'num': 0, 'type': 7, 'icon_type': 1, 'icon': ''}, {'title': '科豆', 'num': 0, 'type': 9, 'icon_type': 1, 'icon': ''}], [{'title': '积分商城', 'num': '11', 'icon_type': 2, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/score.png', 'type': 8}, {'title': '我的钱包', 'num': '0.00', 'icon_type': 2, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/wallet.png', 'type': 21}], [{'title': '赚积分', 'num': 18, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/points.png', 'type': 10}, {'title': '我的订单', 'num': '0', 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/my_order.png', 'type': 11}, {'title': '草稿箱', 'num': 0, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/drafts.png', 'type': 12}, {'title': '系统通知', 'num': 0, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/sys_notification.png', 'type': 23}, {'title': '身份认证', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/identity.png', 'type': 14}, {'title': '扫一扫', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/scan.png', 'type': 15}, {'title': '反馈建议', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/advice.png', 'type': 16}, {'title': '联系客服', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/customer_service.png', 'type': 17}, {'title': '赏金计划', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/bounty_plan.png', 'type': 22}, {'title': '设置', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/setting.png', 'type': 19}, {'title': '关于我们', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/about_us.png', 'type': 20}]]}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>我的页面列表_1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c53',1)" class="detail" id='c53'>详细</a></td>
+</tr>
+
+<tr id='pt53_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt53_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt53_1'>通过</button>
+	<div id='div_pt53_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt53_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt53_1'>通过</button>
+	<div id='div_pt53_1' class="collapse in">
+	<pre>
+	
+pt53_1: myinfo我的页面列表CASE 2
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/userprofile/myinfo?no_check=1&amp;&amp;token=98517e58-9bc2-4dbf-a813-2838bdc4e2b2
+{'code': 0, 'msg': '成功', 'data': {'uid': '516684', 'real_name': '赵爱', 'avatar': 'https://img.scimall.org.cn/default_active.png', 'description': '', 'user_vip': '1', 'user_type': '1', 'name_type': '2', 'career_addr': '', 'career_job': '', 'career': '暂无职业信息', 'percent': 20, 'list': [[{'title': '我的好友', 'num': 0, 'type': 1, 'icon_type': 1, 'icon': ''}, {'title': '关注的组织', 'num': 0, 'type': 2, 'icon_type': 1, 'icon': ''}, {'title': '我的文章', 'num': '0', 'type': 3, 'icon_type': 1, 'icon': ''}, {'title': '我的动态', 'num': 0, 'type': 4, 'icon_type': 1, 'icon': ''}, {'title': '我的收藏', 'num': '0', 'type': 5, 'icon_type': 1, 'icon': ''}, {'title': '我参与的', 'num': 0, 'type': 6, 'icon_type': 1, 'icon': ''}, {'title': '我的兴趣部落', 'num': 0, 'type': 7, 'icon_type': 1, 'icon': ''}, {'title': '科豆', 'num': 0, 'type': 9, 'icon_type': 1, 'icon': ''}], [{'title': '积分商城', 'num': '4', 'icon_type': 2, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/score.png', 'type': 8}, {'title': '我的钱包', 'num': '0.00', 'icon_type': 2, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/wallet.png', 'type': 21}], [{'title': '赚积分', 'num': 18, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/points.png', 'type': 10}, {'title': '我的订单', 'num': '0', 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/my_order.png', 'type': 11}, {'title': '草稿箱', 'num': 0, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/drafts.png', 'type': 12}, {'title': '系统通知', 'num': 0, 'icon_type': 3, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/sys_notification.png', 'type': 23}, {'title': '身份认证', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/identity.png', 'type': 14}, {'title': '扫一扫', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/scan.png', 'type': 15}, {'title': '反馈建议', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/advice.png', 'type': 16}, {'title': '联系客服', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/customer_service.png', 'type': 17}, {'title': '赏金计划', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/bounty_plan.png', 'type': 22}, {'title': '设置', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/setting.png', 'type': 19}, {'title': '关于我们', 'num': '0', 'icon_type': 4, 'icon': 'https://img.scimall.org.cn/image/v_3_4_0/userCenter/icon/about_us.png', 'type': 20}]]}}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr class='passClass warning'>
+	<td>我的页面列表_2</td>
+	<td class="text-center">1</td>
+	<td class="text-center">1</td>
+	<td class="text-center">0</td>
+	<td class="text-center">0</td>
+	<td class="text-center"><a href="javascript:showClassDetail('c54',1)" class="detail" id='c54'>详细</a></td>
+</tr>
+
+<tr id='pt54_1' class='hiddenRow'>
+	<td class='passCase'><div class='testcase'>test_body</div></td>
+	<td colspan='5' align='center'>
+	<!--默认收起错误信息 -Findyou
+	<button id='btn_pt54_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt54_1'>通过</button>
+	<div id='div_pt54_1' class="collapse">  -->
+	<!-- 默认展开错误信息 -Findyou -->
+	<button id='btn_pt54_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt54_1'>通过</button>
+	<div id='div_pt54_1' class="collapse in">
+	<pre>
+	
+pt54_1: myinfo我的页面列表CASE 3
+{'v': '3.11.0', 'system': '5', 'device_model': 'HUAWEI P10', 'system_version': 'V1.0.0', 'channel': '5'}
+http://api-test.scimall.org.cn/userprofile/myinfo?no_check=1
+{'code': 100000003, 'msg': 'wrong:token 不存在;line:93'}
+
+
+	</pre>
+	</div>
+	</td>
+</tr>
+
+<tr id='total_row' class="text-center active">
+	<td>总计</td>
+	<td>54</td>
+	<td>54</td>
+	<td>0</td>
+	<td>0</td>
+	<td>通过率：100.00%</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+	<div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
+	<a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
+	</span></a></div>
+	
+</body>
+</html>

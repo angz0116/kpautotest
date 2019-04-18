@@ -6,18 +6,18 @@ from utils.baseUtils import *
 import unittest
 import paramunittest
 import datetime
-interfaceNo = "getBindMobile"
-name = "获取用户绑定的手机号"
+interfaceNo = "getSpeciallist"
+name = "获取专题列表信息"
 
 req = ConfigHttp()
 
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
-class 获取用户绑定的手机号(unittest.TestCase):
-    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, 预期结果):
+class 获取专题列表信息(unittest.TestCase):
+    def setParameters(self, No, 测试结果, 请求报文, 返回报文, 测试用例, url, page, 预期结果):
         self.No = str(No)
         self.url = str(url)
-
+        self.page = str(page)
 
     def setUp(self):
         self.log = MyLog.get_log()
@@ -25,13 +25,18 @@ class 获取用户绑定的手机号(unittest.TestCase):
         self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
         print(interfaceNo + name + "CASE " + self.No)
 
-    """获取用户绑定的手机号"""
+    """获取专题列表信息"""
     def test_body(self):
         req.httpname = "KPTEST"
+        # 获取执行接口的url
         self.url = get_excel("url", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
+        # 页码
+        self.page = get_excel("page", self.No, interfaceNo)
+
         self.data = {
+            "page" : self.page,
             "v": "3.11.2",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -39,6 +44,7 @@ class 获取用户绑定的手机号(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
+        req.set_data(self.data)
         if self.token == "":
             self.urlq = self.url
             self.logger.info(interfaceNo + ">>>>token为空=====" + self.urlq)
@@ -46,8 +52,7 @@ class 获取用户绑定的手机号(unittest.TestCase):
             self.urlq = self.url + "&&token=" + self.token
             self.logger.info(interfaceNo + ">>>>token=====" + self.urlq)
         req.set_url(self.urlq)
-        req.set_data(self.data)
-        self.response = req.post()
+        self.response = req.get()
         print(self.response)
         try:
             self.retcode = self.response["code"]
@@ -60,7 +65,7 @@ class 获取用户绑定的手机号(unittest.TestCase):
     # 检查数据结果
     def check_result(self):
         try:
-            self.assertEqual(self.retcode, 0, self.logger.info("是否获取用户绑定的手机号"))
+            self.assertEqual(self.retcode, 0, self.logger.info("是否获取专题列表信息"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
         except AssertionError:
@@ -72,9 +77,14 @@ class 获取用户绑定的手机号(unittest.TestCase):
 
     # 写入xls文件中
     def wr_excel(self):
-        set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
-        set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
+        set_excel(self.data, "请求报文", self.No, interfaceNo)
+        set_excel(self.response, "返回报文", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        if self.retcode ==0:
+            if len(self.response["data"])>0:
+                self.specialid = self.response["data"][0]["id"]
+                set_excel(self.specialid, "specialid", self.No, "getSpecialDetailByChildId")
+                set_excel(self.specialid, "specialid", self.No, "getSpecialinfo")
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)
