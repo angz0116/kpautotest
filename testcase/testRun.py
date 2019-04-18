@@ -22,7 +22,7 @@ class mytestRun:
 		# 定义结果保存路径
 		resultPath = log.get_report_path()
 		on_off = Config.get_email("on_off")
-		logger.info("发送邮件已打开，状态为"+on_off)
+		#logger.info("发送邮件已打开，状态为"+on_off)
 		# 取得config\caselist.txt文件路径
 		self.caseListFile = os.path.join(readConfig.proDir, "config", "caselist.txt")
 		# 取得test_case文件路径
@@ -62,7 +62,7 @@ class mytestRun:
 			if suit is not None:
 				logger.info("********TEST START********")
 				with open(resultPath, 'wb') as fp:
-					runner = HTMLTestRunner(stream=fp, title='科界接口测试报告', description='详细测试用例结果', tester='赵爱')
+					runner = HTMLTestRunner(stream=fp, title='科界APP接口测试报告', description='详细测试用例结果', tester='赵爱')
 					runner.run(suit)
 			else:
 				logger.info("没有添加一个用例")

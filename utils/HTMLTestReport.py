@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-__version__ = "interface v2.0"
+__version__ = "interface v3.0"
 # TODO: color stderr
 # TODO: simplify javascript using ,ore than 1 class in the class attribute?
 
@@ -50,9 +50,9 @@ class Template_mixin(object):
 	2: '错误',
 	}
 
-	DEFAULT_TITLE = '接口测试报告'
-	DEFAULT_DESCRIPTION = '接口测试'
-	DEFAULT_TESTER='科猫测试部'
+	DEFAULT_TITLE = '科界APP接口测试报告'
+	DEFAULT_DESCRIPTION = '科界APP接口测试'
+	DEFAULT_TESTER='科界测试部'
 
 	# ------------------------------------------------------------------------
 	# HTML Template

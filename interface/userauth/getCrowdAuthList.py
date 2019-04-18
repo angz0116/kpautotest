@@ -52,9 +52,14 @@ class 获取当前用户已认证学会列表(unittest.TestCase):
         req.set_url(self.urlq)
         req.set_data(self.data)
         self.response = req.get()
-        print(self.response)
+
         try:
-            self.retcode = self.response["code"]
+            if self.response is None:
+                self.retcode = 1
+                self.msg = "报文返回为空！"
+            else:
+                self.retcode = self.response["code"]
+                self.msg = self.response["msg"]
         except Exception:
             self.logger.error("报文返回为空！")
             print("报文返回为空！")
@@ -69,9 +74,8 @@ class 获取当前用户已认证学会列表(unittest.TestCase):
             self.logger.info("测试通过")
         except AssertionError:
             set_excel("fail", "测试结果", self.No, interfaceNo)
-            self.msg = self.response["msg"]
             self.logger.error("测试失败")
-        self.msg = self.response["msg"]
+
         self.logger.info(self.msg)
 
     # 写入xls文件中
