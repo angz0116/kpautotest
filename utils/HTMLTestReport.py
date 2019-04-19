@@ -185,7 +185,7 @@ table       { font-size: 100%; }
 .failCase   { color: #d9534f; font-weight: bold; }
 .errorCase  { color: #f0ad4e; font-weight: bold; }
 .hiddenRow  { display: none; }
-.testcase   { margin-left: 2em; }
+.bin   { margin-left: 2em; }
 </style>
 """
 
@@ -259,7 +259,7 @@ table       { font-size: 100%; }
 	#失败 的样式，去掉原来JS效果，美化展示效果  -Findyou
 	REPORT_TEST_WITH_OUTPUT_TMPL = r"""
 <tr id='%(tid)s' class='%(Class)s'>
-	<td class='%(style)s'><div class='testcase'>%(desc)s</div></td>
+	<td class='%(style)s'><div class='bin'>%(desc)s</div></td>
 	<td colspan='5' align='center'>
 	<!--默认收起错误信息 -Findyou
 	<button id='btn_%(tid)s' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_%(tid)s'>%(status)s</button>
@@ -278,7 +278,7 @@ table       { font-size: 100%; }
 	# 通过 的样式，加标签效果  -Findyou
 	REPORT_TEST_NO_OUTPUT_TMPL = r"""
 <tr id='%(tid)s' class='%(Class)s'>
-	<td class='%(style)s'><div class='testcase'>%(desc)s</div></td>
+	<td class='%(style)s'><div class='bin'>%(desc)s</div></td>
 	<td colspan='5' align='center'><span class="label label-success success">%(status)s</span></td>
 </tr>
 """ # variables: (tid, Class, style, desc, status)

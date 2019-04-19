@@ -8,7 +8,6 @@ from utils.HTMLTestReport import HTMLTestRunner
 from utils.baseEmail import MyEmail
 
 Config = readConfig.ReadConfig()
-
 class mytestRun:
 	def __init__(self):
 		"""
@@ -25,8 +24,10 @@ class mytestRun:
 		#logger.info("发送邮件已打开，状态为"+on_off)
 		# 取得config\caselist.txt文件路径
 		self.caseListFile = os.path.join(readConfig.proDir, "config", "caselist.txt")
+		print(self.caseListFile)
 		# 取得test_case文件路径
 		self.caseFile = os.path.join(readConfig.proDir, "interface")
+		print(self.caseFile)
 		# 定义一个空里列表，用于保存类名
 		self.caseList = []
 		self.email = MyEmail.get_email()
