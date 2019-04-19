@@ -11,7 +11,7 @@ configPath = os.path.join(proDir, "config", "config.ini")
 print(configPath)
 class ReadConfig:
 	def __init__(self):
-		with open(configPath) as fd:
+		with open(configPath, 'rb') as fd:
 			data = fd.read()
 			#BOM对于utf-16和utf-32有用，对于utf-8没啥大用。。所以能去掉就去掉
 			#  remove BOM

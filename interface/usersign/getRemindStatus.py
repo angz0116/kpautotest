@@ -72,8 +72,10 @@ class 获取签到提醒开关状态(unittest.TestCase):
 
     # 写入xls文件中
     def wr_excel(self):
+        '''
         set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
         set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
+        '''
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
         if self.retcode==0:
             # 每日签到提醒开关      1=开启签到提醒 2=关闭签到提醒

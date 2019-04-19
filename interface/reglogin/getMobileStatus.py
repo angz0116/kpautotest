@@ -40,7 +40,7 @@ class 检测账号是否注册(unittest.TestCase):
         # 国家编码，86中国，其他国外
         self.countrycode = get_excel("countrycode", self.No, "register")
         # 获取验证码的方法
-        time.sleep(10)
+        #time.sleep(10)
         self.veresult = getSendverify(self.logger, "login", "mobile", self.mobile, self.countrycode)
         if self.veresult == 0:
             time.sleep(10)
@@ -92,8 +92,10 @@ class 检测账号是否注册(unittest.TestCase):
             self.logger.error("测试失败")
     # 写入xls文件中
     def wr_excel(self):
+        '''
         set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
         set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
+        '''
         set_excel(self.status, "status", self.No, interfaceNo)
         set_excel(self.secretkey, "secretkey", self.No, interfaceNo)
         set_excel(self.msg, "预期结果", self.No, interfaceNo)

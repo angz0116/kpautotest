@@ -57,9 +57,14 @@ class 开启签到提醒(unittest.TestCase):
         req.set_url(self.urlq)
         req.set_data(self.data)
         self.response = req.post()
-        print(self.response)
+
         try:
-            self.retcode = self.response["code"]
+            if self.response is None:
+                self.retcode =1
+                self.msg = "报文返回为空"
+            else:
+                self.retcode = self.response["code"]
+                self.msg = self.response["msg"]
         except Exception:
             self.logger.error("报文返回为空！")
             print("报文返回为空！")
@@ -74,15 +79,16 @@ class 开启签到提醒(unittest.TestCase):
             self.logger.info("测试通过")
         except AssertionError:
             set_excel("fail", "测试结果", self.No, interfaceNo)
-            self.msg = self.response["msg"]
             self.logger.error("测试失败")
-        self.msg = self.response["msg"]
+
         self.logger.info(self.msg)
 
     # 写入xls文件中
     def wr_excel(self):
+        '''
         set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
         set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
+        '''
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
         if self.flag == "1":
             self.remindtime = date.today().strftime("%H:%M:%S")

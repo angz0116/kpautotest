@@ -75,8 +75,10 @@ class 获取会议列表(unittest.TestCase):
 
     # 写入xls文件中
     def wr_excel(self):
+        '''
         set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
         set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
+        '''
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
         if self.retcode==0:
             if len(self.response["data"])>0:

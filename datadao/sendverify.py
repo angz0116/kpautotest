@@ -35,7 +35,7 @@ def getSendverify(logger,action ,ftype, account, countrycode):
             logger.info("注册账号已经存在")
         else:
             logger.info("发送短信失败")
-        logger.info("==========获取发送验证码 end=======")
+        logger.info("==========获取发送验证码 END=======")
         return retcode
 
     except Exception as ex:
