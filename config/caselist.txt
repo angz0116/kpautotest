@@ -98,7 +98,7 @@ selectHot
 selectDynamic
 getRecommendData
 meetingList
-detail
+mdetail
 getTicketInfo
 getAuthlist
 tlist

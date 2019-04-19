@@ -25,8 +25,7 @@ def query_sql(logger, mobile,countrycode):
             tupres = content[0]
             # 再从字符串中，通过切片得到短信验证码
             result =tupres[6:10]
-            logger.info(result)
-            logger.info("==========查询验证码 end=======")
+            logger.info("==========查询验证码 END=======")
             return result
         else:
             logger.info("==========查询到该手机号的验证码信息=======")
