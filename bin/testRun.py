@@ -2,7 +2,7 @@
 
 import os
 import unittest
-from utils.baseLog import MyLog as Log
+from  utils.baseLog import MyLog as Log
 import utils.readConfig as readConfig
 from utils.HTMLTestReport import HTMLTestRunner
 from utils.baseEmail import MyEmail
