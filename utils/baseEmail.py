@@ -54,22 +54,25 @@ class Email():
 		# 处理带附件的情况
 		if self.check_file():
 			files = glob.glob(resultpath + '\*')
-			#添加附件1
-			with open(files[1], 'rb') as reportfile:
-				filehtml = MIMEText(reportfile.read(), 'base64', 'utf-8')
-				filehtml.add_header('Content-Disposition', 'attachment', filename="测试报告.html")
-				filehtml.add_header('Content-ID', '<0>')
-				filehtml.add_header('X-Attachment-Id', '0')
-				filehtml.add_header('Content-Type', 'application/octet-stream')
-				self.msg.attach(filehtml)
-			#添加附件2
-			with open(files[0], 'rb') as logfile:
-				filelog = MIMEText(logfile.read(), 'base64', 'utf-8')
-				filelog.add_header('Content-Disposition', 'attachment', filename="测试日志.txt")
-				filelog.add_header('Content-ID', '<0>')
-				filelog.add_header('X-Attachment-Id', '0')
-				filelog.add_header('Content-Type', 'application/octet-stream')
-				self.msg.attach(filelog)
+			if len(files)>0:
+				#添加附件1
+				with open(files[1], 'rb') as reportfile:
+					filehtml = MIMEText(reportfile.read(), 'base64', 'utf-8')
+					filehtml.add_header('Content-Disposition', 'attachment', filename="测试报告.html")
+					filehtml.add_header('Content-ID', '<0>')
+					filehtml.add_header('X-Attachment-Id', '0')
+					filehtml.add_header('Content-Type', 'application/octet-stream')
+					self.msg.attach(filehtml)
+				#添加附件2
+				with open(files[0], 'rb') as logfile:
+					filelog = MIMEText(logfile.read(), 'base64', 'utf-8')
+					filelog.add_header('Content-Disposition', 'attachment', filename="测试日志.txt")
+					filelog.add_header('Content-ID', '<0>')
+					filelog.add_header('X-Attachment-Id', '0')
+					filelog.add_header('Content-Type', 'application/octet-stream')
+					self.msg.attach(filelog)
+			else:
+				print("未查询到测试附件信息！")
 
 	def check_file(self):
 		reportpath = self.log.get_report_path()
@@ -106,9 +109,11 @@ class Email():
 			smtp.login(user, password)
 			smtp.sendmail(sender, self.receiver, self.msg.as_string())
 			smtp.quit()
+			print("测试报告已发送邮件!!!")
 			self.logger.info("测试报告已发送邮件")
 		except Exception as ex:
 			self.logger.error(str(ex))
+			print("测试报告发送失败!!!")
 			self.logger.info("测试报告发送失败")
 class MyEmail():
 	email = None

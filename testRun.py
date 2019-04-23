@@ -59,6 +59,7 @@ class mytestRun:
 		try:
 			suit = self.set_case_suite()
 			if suit is not None:
+				print("********TEST START********")
 				logger.info("********TEST START********")
 				with open(resultPath, 'wb') as fp:
 					runner = HTMLTestRunner(stream=fp, title='科界APP接口测试报告', description='详细测试用例结果', tester='赵爱')
@@ -68,6 +69,8 @@ class mytestRun:
 		except Exception as ex:
 			logger.error(str(ex))
 		finally:
+			print("*********TEST END*********")
+			print("*********发送邮件 START*********")
 			logger.info("*********TEST END*********")
 			logger.info("*********发送邮件 START*********")
 			if on_off == "on":
@@ -76,6 +79,7 @@ class mytestRun:
 				logger.info("不能发送邮件，因为on_off = 'off'")
 			else:
 				logger.info("Unknow state.")
+			print("*********发送邮件 END*********")
 			logger.info("*********发送邮件 END*********")
 if __name__ == '__main__':
 	obj = mytestRun()
