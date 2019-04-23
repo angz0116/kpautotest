@@ -80,7 +80,7 @@ class 注册(unittest.TestCase):
 			"channel": "5"
 		}
 		print(self.data)
-		self.sn = req.md5(self.data ,self.url)
+		self.sn = req.md5utils(self.data ,self.url)
 		self.urlq = self.url+"?sn="+self.sn
 		req.set_url(self.urlq)
 		req.set_data(self.data)

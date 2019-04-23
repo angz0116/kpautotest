@@ -22,7 +22,7 @@ def getSendverify(logger,action ,ftype, account, countrycode):
         "v": "3.11.2",
         "channel": "5"
     }
-    sn = req.md5(data, url)
+    sn = req.md5utils(data, url)
     urlq = url + "?sn=" + sn
     req.set_data(data)
     req.set_url(urlq)

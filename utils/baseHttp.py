@@ -89,8 +89,8 @@ class ConfigHttp:
 		strparams += "&serchay=" + secretkey
 		hl = hashlib.md5()
 		hl.update(strparams.encode(encoding='utf-8'))
-		t = hl.hexdigest()
-		h2 = hashlib.md5()
-		h2.update(t.encode(encoding='utf-8'))
-		return h2.hexdigest()
+		fristmd5 = hl.hexdigest()
+		#h2 = hashlib.md5()
+		hl.update(fristmd5.encode(encoding='utf-8'))
+		return hl.hexdigest()
 
