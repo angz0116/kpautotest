@@ -4,6 +4,7 @@ import utils.readConfig as readConfig
 from utils.baseLog import MyLog as Log
 import json
 import hashlib
+import operator
 
 Config = readConfig.ReadConfig()
 
@@ -20,11 +21,13 @@ class ConfigHttp:
 		self.moduletype = None
 
 	#接口时用该url
-	def set_url(self, url):
+	def set_url(self, url, sn, token):
 		host = Config.get_http(self.httpname, "url")
-		#port = Config.get_http(self.httpname, "port")
-		#self.url = host + ":" + port + url
-		self.url = host + url
+		if token == "":
+			self.urlq = url + "?sn=" + sn
+		else:
+			self.urlq = url + "?sn=" + sn + "&token=" + token
+		self.url = host + self.urlq
 		print(self.url)
 
 	def set_headers(self):
@@ -72,14 +75,19 @@ class ConfigHttp:
 			self.logger.error("发送接口请求超时，请修改timeout时间")
 			return None
 
-	def md5utils(self,paramdic, url):
+	def md5utils(self,paramdic, url, token):
 		secretkey = "PC3937!@*&YZF"
-		urldict = {"path": url}
+		if token =="":
+			urldict = {"path": url}
+		else:
+			urldict = {"path": url, "token": token}
 		newparams = dict(paramdic, **urldict)
-		sorted(newparams.items(), key=lambda item: item[0])
+		# 得到拼接参数后，进行升序排列reverse=Flase默认是升序，True时是降序
+		sortparams = sorted(newparams.items(), key=lambda x: x[0])
+		# 升序后把每个参数都拼接在一起，进行md5双重加密
 		strparams = ""
 		i = 0
-		for key, value in newparams.items():
+		for key, value in sortparams:
 			if (i > 0):
 				strparams += "&"
 			strparams += key
@@ -87,11 +95,11 @@ class ConfigHttp:
 			strparams += value
 			i += 1
 		strparams += "&secretkey=" + secretkey
-		print(strparams)
+		# md5加密，双重加密
 		hl = hashlib.md5()
 		hl.update(strparams.encode(encoding='utf-8'))
 		fristmd5 = hl.hexdigest()
-		#h2 = hashlib.md5()
-		hl.update(fristmd5.encode(encoding='utf-8'))
-		return hl.hexdigest()
+		h2 = hashlib.md5()
+		h2.update(fristmd5.encode(encoding='utf-8'))
+		return h2.hexdigest()
 

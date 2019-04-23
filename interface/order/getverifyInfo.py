@@ -38,8 +38,8 @@ class 获取扫码会场信息(unittest.TestCase):
         self.sign = get_excel("sign", self.No, interfaceNo)
 
         self.data = {
-            "type": self.type,
-            "sign": self.sign,
+            "type": str(self.type),
+            "sign": str(self.sign),
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -47,13 +47,8 @@ class 获取扫码会场信息(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
-        if self.token=="":
-            self.urlq = self.url
-            self.logger.info(interfaceNo+">>>>token为空====="+self.urlq)
-        else:
-            self.urlq = self.url+"&token="+self.token
-            self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
-        req.set_url(self.urlq)
+        self.sn = req.md5utils(self.data, self.url, self.token)
+        req.set_url(self.url, self.sn, self.token)
         req.set_data(self.data)
         self.response = req.get()
         print(self.response)

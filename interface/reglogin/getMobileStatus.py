@@ -58,9 +58,9 @@ class 检测账号是否注册(unittest.TestCase):
             "system_version": "V1.0.0",
             "channel": "5"
         }
-        print(self.data)
         req.set_data(self.data)
-        req.set_url(self.url)
+        self.sn = req.md5utils(self.data, self.url, token="")
+        req.set_url(self.url, self.sn, token="")
         self.response = req.post()
         try:
             print(self.response)

@@ -79,10 +79,9 @@ class 注册(unittest.TestCase):
 			"system_version": "V1.0.0",
 			"channel": "5"
 		}
-		print(self.data)
-		self.sn = req.md5utils(self.data ,self.url)
-		self.urlq = self.url+"?sn="+self.sn
-		req.set_url(self.urlq)
+		#print(self.data)
+		self.sn = req.md5utils(self.data, self.url, token="")
+		req.set_url(self.url, self.sn, token="")
 		req.set_data(self.data)
 		self.response = req.post()
 		try:

@@ -40,13 +40,8 @@ class 获取首页组织推荐列表(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
-        if self.token=="":
-            self.urlq = self.url
-            self.logger.info(interfaceNo+">>>>token为空====="+self.urlq)
-        else:
-            self.urlq = self.url+"&token="+self.token
-            self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
-        req.set_url(self.urlq)
+        self.sn = req.md5utils(self.data, self.url, self.token)
+        req.set_url(self.url, self.sn, self.token)
         req.set_data(self.data)
         self.response = req.post()
         print(self.response)
