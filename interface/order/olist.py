@@ -39,7 +39,7 @@ class 获取所有订单列表(unittest.TestCase):
 
         self.data = {
             "type": str(self.type),
-            "page": self.page,
+            "page": str(self.page),
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
