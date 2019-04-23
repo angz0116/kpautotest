@@ -8,7 +8,6 @@ class Log:
 	def __init__(self):
 		global logPath, resultPath, proDir
 		proDir = os.path.dirname(os.path.dirname(__file__))
-		print(proDir)
 		resultPath = os.path.join(proDir, "result")
 		if not os.path.exists(resultPath):
 			os.mkdir(resultPath)

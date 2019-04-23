@@ -74,9 +74,9 @@ class ConfigHttp:
 
 	def md5utils(self,paramdic, url):
 		secretkey = "PC3937!@*&YZF"
-		urldict = {"url": url}
+		urldict = {"path": url}
 		newparams = dict(paramdic, **urldict)
-		sorted(newparams.items(), key=lambda item: item[0], reverse=True)
+		sorted(newparams.items(), key=lambda item: item[0])
 		strparams = ""
 		i = 0
 		for key, value in newparams.items():
@@ -86,7 +86,8 @@ class ConfigHttp:
 			strparams += "="
 			strparams += value
 			i += 1
-		strparams += "&serchay=" + secretkey
+		strparams += "&secretkey=" + secretkey
+		print(strparams)
 		hl = hashlib.md5()
 		hl.update(strparams.encode(encoding='utf-8'))
 		fristmd5 = hl.hexdigest()

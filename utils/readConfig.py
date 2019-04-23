@@ -6,8 +6,6 @@ import configparser
 
 # 获取当前文件路径
 proDir = os.path.dirname(os.path.dirname(__file__))
-print(proDir)
-
 configPath = os.path.join(proDir, "config", "config.ini")
 class ReadConfig:
 	def __init__(self):
