@@ -11,20 +11,21 @@ req = ConfigHttp()
 def getSendverify(logger,action ,ftype, account, countrycode):
     logger.info("==========获取发送验证码 START=======")
     req.httpname = "KPTEST"
-    url = "/account/sendverify?no_check=1"
+    url = "/account/sendverify"
     data = {
         "type": ftype,
         "action": action,
         "account": account,
         "country_code": countrycode,
-        "version": "3.11.2",
         "system": "3",
         "device_model": "HUAWEI P10",
         "v": "3.11.2",
         "channel": "5"
     }
+    sn = req.md5(data, url)
+    urlq = url + "?sn=" + sn
     req.set_data(data)
-    req.set_url(url)
+    req.set_url(urlq)
     response = req.post()
 
     try:

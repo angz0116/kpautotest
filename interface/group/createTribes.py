@@ -62,7 +62,7 @@ class 添加部落(unittest.TestCase):
             self.urlq = self.url
             self.logger.info(interfaceNo + ">>>>token为空=====" + self.urlq)
         else:
-            self.urlq = self.url + "&&token=" + self.token
+            self.urlq = self.url + "&token=" + self.token
             self.logger.info(interfaceNo + ">>>>token=====" + self.urlq)
         req.set_url(self.urlq)
         req.set_data(self.data)

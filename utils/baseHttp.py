@@ -3,6 +3,7 @@ import requests
 import utils.readConfig as readConfig
 from utils.baseLog import MyLog as Log
 import json
+import hashlib
 
 Config = readConfig.ReadConfig()
 
@@ -70,4 +71,26 @@ class ConfigHttp:
 		except requests.exceptions.ReadTimeout:
 			self.logger.error("发送接口请求超时，请修改timeout时间")
 			return None
+
+	def md5utils(self,paramdic, url):
+		secretkey = "PC3937!@*&YZF"
+		urldict = {"url": url}
+		newparams = dict(paramdic, **urldict)
+		sorted(newparams.items(), key=lambda item: item[0], reverse=True)
+		strparams = ""
+		i = 0
+		for key, value in newparams.items():
+			if (i > 0):
+				strparams += "&"
+			strparams += key
+			strparams += "="
+			strparams += value
+			i += 1
+		strparams += "&serchay=" + secretkey
+		hl = hashlib.md5()
+		hl.update(strparams.encode(encoding='utf-8'))
+		t = hl.hexdigest()
+		h2 = hashlib.md5()
+		h2.update(t.encode(encoding='utf-8'))
+		return h2.hexdigest()
 
