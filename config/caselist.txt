@@ -21,8 +21,8 @@ getUserPrivacy
 updateUserPrivacy
 getCatBanner
 newInformation
-getcategoryarticlelist
 category
+getcategoryarticlelist
 index
 hgedit
 getIndustryList
@@ -72,15 +72,15 @@ getBindingInfo
 bindingAliPayAccount
 isPopBox
 getSignInfo
-getChatInfoById
+getClassify
 getInterestTribeList
+getChatInfoById
 getAllGroup
 getTribeInfo
 isHavaTribe
 createTribes
 getTribesmanList
 updateTribeInfo
-getClassify
 applyJoin
 joinGroup
 exitTribe
@@ -88,8 +88,8 @@ getDuibaUrl
 getUserPoint
 getPointList
 addPoint
-searchList
 autoComplete
+searchList
 tags
 favourite
 getChannelList
@@ -124,8 +124,8 @@ checkinSign
 getVideoBackList
 videoList
 videoInfo
-getOneArticle
 getUserArticleList
+getOneArticle
 configuration
 configTabInfo
 getprivacyInfo

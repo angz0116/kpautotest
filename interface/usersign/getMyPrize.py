@@ -62,7 +62,6 @@ class 我的奖品(unittest.TestCase):
             self.logger.info("测试通过")
         except AssertionError:
             set_excel("fail", "测试结果", self.No, interfaceNo)
-            self.msg = self.response["msg"]
             self.logger.error("测试失败")
         self.msg = self.response["msg"]
         self.logger.info(self.msg)

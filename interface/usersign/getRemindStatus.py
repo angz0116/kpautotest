@@ -59,7 +59,6 @@ class 获取签到提醒开关状态(unittest.TestCase):
             self.logger.info("测试通过")
         except AssertionError:
             set_excel("fail", "测试结果", self.No, interfaceNo)
-            self.msg = self.response["msg"]
             self.logger.error("测试失败")
         self.msg = self.response["msg"]
         self.logger.info(self.msg)
@@ -72,9 +71,10 @@ class 获取签到提醒开关状态(unittest.TestCase):
         '''
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
         if self.retcode==0:
-            # 每日签到提醒开关      1=开启签到提醒 2=关闭签到提醒
-            self.restatus = self.response["data"]["remind_status"]
-            set_excel(self.restatus, "remindstauts", self.No, interfaceNo)
+            if "data" in self.response:
+                # 每日签到提醒开关      1=开启签到提醒 2=关闭签到提醒
+                self.restatus = self.response["data"]["remind_status"]
+                set_excel(self.restatus, "remindstauts", self.No, interfaceNo)
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

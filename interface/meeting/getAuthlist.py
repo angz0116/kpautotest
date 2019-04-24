@@ -60,7 +60,6 @@ class 获取待支付会议列表(unittest.TestCase):
             self.logger.info("测试通过")
         except AssertionError:
             set_excel("fail", "测试结果", self.No, interfaceNo)
-            self.msg = self.response["msg"]
             self.logger.error("测试失败")
         self.msg = self.response["msg"]
         self.logger.info(self.msg)
@@ -72,11 +71,6 @@ class 获取待支付会议列表(unittest.TestCase):
         set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         '''
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
-        if self.retcode==0:
-            if len(self.response["data"])>0:
-                self.mid = self.response["data"][0]["id"]
-                set_excel(self.mid, "mid", self.No, "mdetail")
-                set_excel(self.mid, "mid", self.No, "getTicketInfo")
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

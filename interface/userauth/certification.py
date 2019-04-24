@@ -76,7 +76,6 @@ class 申请认证(unittest.TestCase):
             self.logger.info("测试通过")
         except AssertionError:
             set_excel("fail", "测试结果", self.No, interfaceNo)
-            self.msg = self.response["msg"]
             self.logger.error("测试失败")
         self.msg = self.response["msg"]
         self.logger.info(self.msg)
@@ -87,6 +86,10 @@ class 申请认证(unittest.TestCase):
         set_excel(r'"'+str(self.data)+'"', "请求报文", self.No, interfaceNo)
         set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         '''
+        if "data" in self.response:
+            self.authid = self.response["data"]["auth_id"]
+            set_excel(self.authid, "authid", self.No, "cancelCrowdAuth")
+            set_excel(self.authid, "authid", self.No, "cancelAuth")
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
 
     def tearDown(self):

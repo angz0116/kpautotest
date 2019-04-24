@@ -31,6 +31,7 @@ class 获取文章详情(unittest.TestCase):
         self.url = get_excel("url", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
+        #
         self.aid = get_excel("aid", self.No, interfaceNo)
         self.data = {
             "aid": self.aid,

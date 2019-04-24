@@ -70,7 +70,7 @@ class 获取部落分类列表(unittest.TestCase):
         '''
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
         if self.retcode==0:
-            if len(self.response["data"])>0:
+            if "data" in self.response:
                 #self.classifyid = self.response["data"][0]["id"]
                 # data中所有key，因为key存储的是元祖，所以list（元祖）可以转化成列表，再从列表中random.choice随机祛除id
                 cidlist = list(self.response["data"]) #.keys()
