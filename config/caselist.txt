@@ -133,7 +133,7 @@ getSpeciallist
 getSpecialDetailByChildId
 getSpecialinfo
 addfriend
-addSupport
+#addSupport
 olist
 odetail
 verifyOrder
