@@ -129,8 +129,8 @@ getOneArticle
 configuration
 configTabInfo
 getprivacyInfo
-getSpecialDetailByChildId
 getSpeciallist
+getSpecialDetailByChildId
 getSpecialinfo
 addfriend
 addSupport
