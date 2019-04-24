@@ -37,8 +37,7 @@ class 获取部落分类列表(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
-        self.sn = req.md5utils(self.data, self.url, self.token)
-        req.set_url(self.url, self.sn, self.token)
+        req.set_url(self.url, self.data, self.token)
         req.set_data(self.data)
         self.response = req.get()
         print(self.response)

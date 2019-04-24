@@ -46,8 +46,7 @@ class 获取搜索信息(unittest.TestCase):
         }
         print(self.data)
         req.set_data(self.data)
-        self.sn = req.md5utils(self.data, self.url, self.token)
-        req.set_url(self.url, self.sn, self.token)
+        req.set_url(self.url, self.data, self.token)
         self.response = req.post()
         print(self.response)
         try:

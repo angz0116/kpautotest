@@ -43,7 +43,7 @@ class 检测账号是否注册(unittest.TestCase):
         #time.sleep(10)
         self.veresult = getSendverify(self.logger, "login", "mobile", self.mobile, self.countrycode)
         if self.veresult == 0:
-            #time.sleep(10)
+            time.sleep(10)
             # 从数据库中查询验证码
             self.verifycode = query_sql(self.logger, self.mobile, self.countrycode)
         print("用户注册接口手机号==" + self.mobile)
