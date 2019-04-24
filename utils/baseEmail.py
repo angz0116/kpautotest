@@ -53,7 +53,7 @@ class Email():
 		resultpath = self.log.get_result_path()
 		# 处理带附件的情况
 		if self.check_file():
-			files = glob.glob(resultpath + '\*')
+			files = glob.glob(resultpath + '/*')
 			#添加附件1
 			with open(files[1], 'rb') as reportfile:
 				filehtml = MIMEText(reportfile.read(), 'base64', 'utf-8')

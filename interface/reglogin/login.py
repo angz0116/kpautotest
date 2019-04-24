@@ -61,9 +61,7 @@ class 登录(unittest.TestCase):
 			"country_code": self.countrycode,
 			"channel": "5"
 		}
-
-		self.sn = req.md5utils(self.data, self.url, token="")
-		req.set_url(self.url, self.sn, token="")
+		req.set_url(self.url, self.data, token="")
 		req.set_data(self.data)
 		self.response = req.post()
 		try:
