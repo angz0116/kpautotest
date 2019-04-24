@@ -4,7 +4,6 @@ login
 idCardAuth
 getIdCardAuth
 changepass
-sendverify
 tourist
 addusertag
 getUserTagList
