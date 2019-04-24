@@ -43,8 +43,8 @@ class 获取视频列表(unittest.TestCase):
         req.set_url(self.url, self.data, self.token)
         req.set_data(self.data)
         self.response = req.get()
-        print(self.response)
         try:
+            print(self.response)
             self.retcode = self.response["code"]
         except Exception:
             self.logger.error("报文返回为空！")
@@ -73,7 +73,7 @@ class 获取视频列表(unittest.TestCase):
         '''
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
         if self.retcode==0:
-            if len(self.response["data"])>0:
+            if self.response["data"] is not None:
                 self.vid = self.response["data"][0]["id"]
                 set_excel(self.vid, "vid", self.No, "videoInfo")
 

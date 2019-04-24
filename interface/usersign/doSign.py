@@ -55,12 +55,12 @@ class 用户签到补签(unittest.TestCase):
         req.set_url(self.url, self.data, self.token)
         req.set_data(self.data)
         self.response = req.post()
-
         try:
             if self.response is None:
                 self.retcode = 1
                 self.msg = "报文返回为空！"
             else:
+                print(self.response)
                 self.retcode = self.response["code"]
                 self.msg = self.response["msg"]
         except Exception:

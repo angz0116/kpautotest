@@ -32,6 +32,7 @@ class 获取频道导航列表(unittest.TestCase):
         self.token = get_excel("token", self.No, "login")
         self.data = {
             "system": "5",
+            "v": "3.11.0",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",
             "channel": "5"
@@ -39,7 +40,7 @@ class 获取频道导航列表(unittest.TestCase):
         print(self.data)
         req.set_url(self.url, self.data, self.token)
         req.set_data(self.data)
-        self.response = req.post()
+        self.response = req.get()
         print(self.response)
         try:
             self.retcode = self.response["code"]
