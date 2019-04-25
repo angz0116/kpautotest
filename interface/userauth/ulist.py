@@ -86,13 +86,10 @@ class 获取学会列表(unittest.TestCase):
         if self.retcode == 0:
             typedata = self.response["data"]["data"]
             if typedata != "":
-                for i in range(len(typedata)):
-                    self.typeid = typedata[i]["id"]
-                    break
-        else:
-            self.typeid = 0
-        # 组织ID
-        set_excel(self.typeid, "typeid", self.No, "certification")
+                self.crowdid = random.choice(typedata)["id"]
+                # 组织ID
+                set_excel(self.crowdid, "typeid", self.No, "certification")
+                set_excel(self.crowdid, "crowdid", self.No, "getCrowdAuthDetail")
 
         '''
           # 当type=2，学会会员，职位必填
