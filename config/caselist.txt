@@ -25,6 +25,7 @@ category
 getcategoryarticlelist
 index
 hgedit
+hupdate
 getIndustryList
 getMainCrowdRecList
 getMainRecGroupList
