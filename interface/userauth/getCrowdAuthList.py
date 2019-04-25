@@ -52,6 +52,7 @@ class 获取当前用户已认证学会列表(unittest.TestCase):
                 self.retcode = 1
                 self.msg = "报文返回为空！"
             else:
+                print(self.response)
                 self.retcode = self.response["code"]
                 self.msg = self.response["msg"]
         except Exception:

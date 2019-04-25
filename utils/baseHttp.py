@@ -25,6 +25,7 @@ class ConfigHttp:
 	def set_url(self, url, paramdic, token):
 		host = Config.get_http(self.httpname, "url")
 		self.secretkey = Config.get_http(self.httpname, "secretkey")
+		self.v = Config.get_http(self.httpname, "v")
 		if token == "":
 			self.urldict = {"path": url}
 		else:

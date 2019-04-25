@@ -78,6 +78,12 @@ class 根据类目获取文章(unittest.TestCase):
         set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         '''
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        if self.retcode ==0:
+            if "data" in self.response:
+                if len(self.response["data"])>0:
+                   self.itemid = random.choice(self.response["data"])["id"]
+                   set_excel(self.itemid, "itemId", self.No, "addPoint")
+
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)
