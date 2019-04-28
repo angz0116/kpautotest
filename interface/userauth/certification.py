@@ -87,7 +87,7 @@ class 申请认证(unittest.TestCase):
         set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         '''
         if "data" in self.response:
-            if len(self.response["data"])>0:
+            if "auth_id" in self.response["data"]:
                 self.authid = self.response["data"]["auth_id"]
                 set_excel(self.authid, "authid", self.No, "cancelCrowdAuth")
                 set_excel(self.authid, "authid", self.No, "cancelAuth")
