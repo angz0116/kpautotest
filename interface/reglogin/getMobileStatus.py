@@ -72,7 +72,7 @@ class 检测账号是否注册(unittest.TestCase):
     def check_result(self):
         try:
             self.assertEqual(self.retcode, 0, self.logger.info("是否注册成功"))
-            self.assertEqual(self.secretkey, "",self.logger.info("登录授权码为空"))
+            #self.assertEqual(self.secretkey, "",self.logger.info("登录授权码为空"))
             if self.retcode==0:
                 self.status = self.response["data"]["status"]
                 # 登录授权码
