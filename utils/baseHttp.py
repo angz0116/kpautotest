@@ -25,7 +25,6 @@ class ConfigHttp:
 	def set_url(self, url, paramdic, token):
 		host = Config.get_http(self.httpname, "url")
 		self.secretkey = Config.get_http(self.httpname, "secretkey")
-		self.v = Config.get_http(self.httpname, "v")
 		if token == "":
 			self.urldict = {"path": url}
 		else:
@@ -82,7 +81,6 @@ class ConfigHttp:
 			return None
 
 	def getyz(self,url):
-		#timeout = Config.get_http(self.httpname, "timheaders=self.headers,eout")
 		try: #json格式时json.dumps(self.data)，form表单的是self.data
 			response = requests.get(url, headers=self.headers, params=self.data)
 			res = json.loads(response.content)
@@ -103,32 +101,3 @@ class ConfigHttp:
 		except requests.exceptions.ReadTimeout:
 			self.logger.error("发送接口请求超时，请修改timeout时间")
 			return None
-	'''
-	def md5utils(self,paramdic, url, token):
-		if token =="":
-			urldict = {"path": url}
-		else:
-			urldict = {"path": url, "token": token}
-		newparams = dict(paramdic, **urldict)
-		# 得到拼接参数后，进行升序排列reverse=Flase默认是升序，True时是降序
-		sortparams = sorted(newparams.items(), key=lambda x: x[0])
-		# 升序后把每个参数都拼接在一起，进行md5双重加密
-		strparams = ""
-		i = 0
-		for key, value in sortparams:
-			if (i > 0):
-				strparams += "&"
-			strparams += key
-			strparams += "="
-			strparams += value
-			i += 1
-		strparams += "&secretkey=" + secretkey
-		# md5加密，双重加密
-		hl = hashlib.md5()
-		hl.update(strparams.encode(encoding='utf-8'))
-		fristmd5 = hl.hexdigest()
-		h2 = hashlib.md5()
-		h2.update(fristmd5.encode(encoding='utf-8'))
-		return h2.hexdigest()
-	'''
-

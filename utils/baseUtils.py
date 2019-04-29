@@ -26,10 +26,10 @@ def set_xml():
 		for db in tree.findall("database"):
 			db_name = db.get("name")
 			table = {}
-			for tb in db.getchildren():
+			for tb in list(db.getchildren()):
 				table_name = tb.get("name")
 				sql = {}
-				for data in tb.getchildren():
+				for data in list(tb.getchildren()):
 					sql_id = data.get("id")
 					sql[sql_id] = data.text.strip()
 				table[table_name] = sql

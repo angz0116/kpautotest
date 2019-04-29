@@ -72,7 +72,7 @@ class Template_mixin(object):
 <body >
 <script language="javascript" type="text/javascript">
 output_list = Array();
-/*level 调整增加只显示通过用例的分类 --Findyou
+/*level 调整增加只显示通过用例的分类
 0:Summary //all hiddenRow
 1:Failed  //pt hiddenRow, ft none
 2:Pass    //pt none, ft hiddenRow
@@ -100,7 +100,7 @@ function showCase(level) {
 			}
 		}
 	}
-	//加入【详细】切换文字变化 --Findyou
+	//加入【详细】切换文字变化
 	detail_class=document.getElementsByClassName('detail');
 	//console.log(detail_class.length)
 	if (level == 3) {
@@ -118,7 +118,6 @@ function showClassDetail(cid, count) {
 	var id_list = Array(count);
 	var toHide = 1;
 	for (var i = 0; i < count; i++) {
-		//ID修改 点 为 下划线 -Findyou
 		tid0 = 't' + cid.substr(1) + '_' + (i+1);
 		tid = 'f' + tid0;
 		tr = document.getElementById(tid);
@@ -133,7 +132,6 @@ function showClassDetail(cid, count) {
 	}
 	for (var i = 0; i < count; i++) {
 		tid = id_list[i];
-		//修改点击无法收起的BUG，加入【详细】切换文字变化 --Findyou
 		if (toHide) {
 			document.getElementById(tid).className = 'hiddenRow';
 			document.getElementById(cid).innerText = "详细"
@@ -208,7 +206,7 @@ table       { font-size: 100%; }
 	# ------------------------------------------------------------------------
 	# Report
 	#
-	# 汉化,加美化效果 --Findyou
+	# 汉化,加美化效果
 	REPORT_TMPL = """
 <p id='show_detail_line'>
 <a class="btn btn-primary" href='javascript:showCase(0)'>概要{ %(passrate)s }</a>
@@ -256,7 +254,7 @@ table       { font-size: 100%; }
 </tr>
 """ # variables: (style, desc, count, Pass, fail, error, cid)
 
-	#失败 的样式，去掉原来JS效果，美化展示效果  -Findyou
+	#失败 的样式，去掉原来JS效果，美化展示效果
 	REPORT_TEST_WITH_OUTPUT_TMPL = r"""
 <tr id='%(tid)s' class='%(Class)s'>
 	<td class='%(style)s'><div class='bin'>%(desc)s</div></td>
@@ -275,7 +273,7 @@ table       { font-size: 100%; }
 </tr>
 """ # variables: (tid, Class, style, desc, status)
 
-	# 通过 的样式，加标签效果  -Findyou
+	# 通过 的样式，加标签效果
 	REPORT_TEST_NO_OUTPUT_TMPL = r"""
 <tr id='%(tid)s' class='%(Class)s'>
 	<td class='%(style)s'><div class='bin'>%(desc)s</div></td>
@@ -290,7 +288,7 @@ table       { font-size: 100%; }
 	# ------------------------------------------------------------------------
 	# ENDING
 	#
-	# 增加返回顶部按钮  --Findyou
+	# 增加返回顶部按钮
 	ENDING_TMPL = """<div id='ending'>&nbsp;</div>
 	<div style=" position:fixed;right:50px; bottom:30px; width:20px; height:20px;cursor:pointer">
 	<a href="#"><span class="glyphicon glyphicon-eject" style = "font-size:30px;" aria-hidden="true">
@@ -323,7 +321,7 @@ class _TestResult(TestResult):
 		#   stack trace,
 		# )
 		self.result = []
-		#增加一个测试通过率 --Findyou
+		#增加一个测试通过率
 		self.passrate=float(0)
 
 
@@ -444,7 +442,7 @@ class HTMLTestRunner(Template_mixin):
 		r = [(cls, rmap[cls]) for cls in classes]
 		return r
 
-	#替换测试结果status为通过率 --Findyou
+	#替换测试结果status为通过率
 	def getReportAttributes(self, result):
 		"""
 		Return report attributes as a list of (name, value).
@@ -492,7 +490,7 @@ class HTMLTestRunner(Template_mixin):
 	def _generate_stylesheet(self):
 		return self.STYLESHEET_TMPL
 
-	#增加Tester显示 -Findyou
+	#增加Tester显示
 	def _generate_heading(self, report_attrs):
 		a_lines = []
 		for name, value in report_attrs:
@@ -509,7 +507,7 @@ class HTMLTestRunner(Template_mixin):
 		)
 		return heading
 
-	#生成报告  --Findyou添加注释
+	#生成报告
 	def _generate_report(self, result):
 		rows = []
 		sortedResult = self.sortResult(result.result)
@@ -528,7 +526,6 @@ class HTMLTestRunner(Template_mixin):
 				name = "%s" % (cls.__name__)
 			doc = cls.__doc__ and cls.__doc__.split("\n")[0] or ""
 			desc = doc and '%s: %s' % (name, doc) or name
-
 			row = self.REPORT_CLASS_TMPL % dict(
 				style = ne > 0 and 'errorClass' or nf > 0 and 'failClass' or 'passClass',
 				desc = desc,
@@ -557,14 +554,14 @@ class HTMLTestRunner(Template_mixin):
 	def _generate_report_test(self, rows, cid, tid, n, t, o, e):
 		# e.g. 'pt1.1', 'ft1.1', etc
 		has_output = bool(o or e)
-		# ID修改点为下划线,支持Bootstrap折叠展开特效 - Findyou
+		# ID修改点为下划线,支持Bootstrap折叠展开特效
 		tid = (n == 0 and 'p' or 'f') + 't%s_%s' % (cid+1,tid+1)
 		name = t.id().split('.')[-1]
 		doc = t.shortDescription() or ""
 		desc = doc and ('%s: %s' % (name, doc)) or name
 		tmpl = has_output and self.REPORT_TEST_WITH_OUTPUT_TMPL or self.REPORT_TEST_NO_OUTPUT_TMPL
 
-		# utf-8 支持中文 - Findyou
+		# utf-8 支持中文
 		 # o and e should be byte string because they are collected from stdout and stderr?
 		if isinstance(o, str):
 			# TODO: some problem with 'string_escape': it escape \n and mess up formating

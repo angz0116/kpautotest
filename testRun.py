@@ -77,7 +77,7 @@ class mytestRun:
 			elif on_off == 'off':
 				logger.info("不能发送邮件，因为on_off = 'off'")
 			else:
-				logger.info("Unknow state.")
+				logger.info("无状态.")
 			print("*********发送邮件 END*********")
 			logger.info("*********发送邮件 END*********")
 if __name__ == '__main__':
