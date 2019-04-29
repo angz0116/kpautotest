@@ -57,7 +57,7 @@ class ConfigHttp:
 		else:
 			self.urlq = url + "?sn=" + self.sn + "&token=" + token
 		self.url = host + self.urlq
-		print(self.url)
+		#print(self.url)
 
 	def set_headers(self):
 		self.headers = {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
