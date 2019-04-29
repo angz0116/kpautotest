@@ -39,8 +39,8 @@ class 获取扫码核销(unittest.TestCase):
         self.orderid = get_excel("orderid", self.No, interfaceNo)
 
         self.data = {
-            "venue_id": self.venueid,
-            "order_id": self.orderid,
+            "venue_id": str(self.venueid),
+            "order_id": str(self.orderid),
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -48,13 +48,7 @@ class 获取扫码核销(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
-        if self.token=="":
-            self.urlq = self.url
-            self.logger.info(interfaceNo+">>>>token为空====="+self.urlq)
-        else:
-            self.urlq = self.url+"&&token="+self.token
-            self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
-        req.set_url(self.urlq)
+        req.set_url(self.url, self.data, self.token)
         req.set_data(self.data)
         self.response = req.post()
         print(self.response)

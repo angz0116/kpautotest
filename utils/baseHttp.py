@@ -3,6 +3,8 @@ import requests
 import utils.readConfig as readConfig
 from utils.baseLog import MyLog as Log
 import json
+import hashlib
+import operator
 
 Config = readConfig.ReadConfig()
 
@@ -17,14 +19,45 @@ class ConfigHttp:
 		self.url = None
 		self.files = {}
 		self.moduletype = None
+		self.secretkey = None
 
 	#接口时用该url
-	def set_url(self, url):
+	def set_url(self, url, paramdic, token):
 		host = Config.get_http(self.httpname, "url")
-		#port = Config.get_http(self.httpname, "port")
-		#self.url = host + ":" + port + url
-		self.url = host + url
-		print(self.url)
+		self.secretkey = Config.get_http(self.httpname, "secretkey")
+		self.v = Config.get_http(self.httpname, "v")
+		if token == "":
+			self.urldict = {"path": url}
+		else:
+			self.urldict = {"path": url, "token": token}
+		self.newparams = dict(paramdic, **self.urldict)
+		# 得到拼接参数后，进行升序排列reverse=Flase默认是升序，True时是降序
+		self.sortparams = sorted(self.newparams.items(), key=lambda x: x[0])
+		# 升序后把每个参数都拼接在一起，进行md5双重加密
+		self.strparams = ""
+		i = 0
+		for key, value in self.sortparams:
+			if (i > 0):
+				self.strparams += "&"
+			self.strparams += key
+			self.strparams += "="
+			self.strparams += value
+			i += 1
+		self.strparams += "&secretkey=" + self.secretkey
+		# md5加密，双重加密
+		hl = hashlib.md5()
+		hl.update(self.strparams.encode(encoding='utf-8'))
+		fristmd5 = hl.hexdigest()
+		h2 = hashlib.md5()
+		h2.update(fristmd5.encode(encoding='utf-8'))
+		# 获取到md5加密后的sn
+		self.sn = h2.hexdigest()
+		if token == "":
+			self.urlq = url + "?sn=" + self.sn
+		else:
+			self.urlq = url + "?sn=" + self.sn + "&token=" + token
+		self.url = host + self.urlq
+		#print(self.url)
 
 	def set_headers(self):
 		self.headers = {"Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"}
@@ -70,4 +103,32 @@ class ConfigHttp:
 		except requests.exceptions.ReadTimeout:
 			self.logger.error("发送接口请求超时，请修改timeout时间")
 			return None
+	'''
+	def md5utils(self,paramdic, url, token):
+		if token =="":
+			urldict = {"path": url}
+		else:
+			urldict = {"path": url, "token": token}
+		newparams = dict(paramdic, **urldict)
+		# 得到拼接参数后，进行升序排列reverse=Flase默认是升序，True时是降序
+		sortparams = sorted(newparams.items(), key=lambda x: x[0])
+		# 升序后把每个参数都拼接在一起，进行md5双重加密
+		strparams = ""
+		i = 0
+		for key, value in sortparams:
+			if (i > 0):
+				strparams += "&"
+			strparams += key
+			strparams += "="
+			strparams += value
+			i += 1
+		strparams += "&secretkey=" + secretkey
+		# md5加密，双重加密
+		hl = hashlib.md5()
+		hl.update(strparams.encode(encoding='utf-8'))
+		fristmd5 = hl.hexdigest()
+		h2 = hashlib.md5()
+		h2.update(fristmd5.encode(encoding='utf-8'))
+		return h2.hexdigest()
+	'''
 

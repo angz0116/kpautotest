@@ -51,13 +51,7 @@ class 添加用户个性标签(unittest.TestCase):
         }
         print(self.data)
         req.set_data(self.data)
-        if self.token == "":
-            self.urlq = self.url
-            self.logger.info(interfaceNo + ">>>>token为空=====" + self.urlq)
-        else:
-            self.urlq = self.url + "&&token=" + self.token
-            self.logger.info(interfaceNo + ">>>>token=====" + self.urlq)
-        req.set_url(self.urlq)
+        req.set_url(self.url, self.data, self.token)
         self.response = req.post()
 
         try:
@@ -65,6 +59,7 @@ class 添加用户个性标签(unittest.TestCase):
                 self.retcode = 1
                 self.msg = "报文返回为空！"
             else:
+                print(self.response)
                 self.retcode = self.response["code"]
                 self.msg = self.response["msg"]
         except Exception:

@@ -32,20 +32,15 @@ class 获取频道导航列表(unittest.TestCase):
         self.token = get_excel("token", self.No, "login")
         self.data = {
             "system": "5",
+            "v": "3.11.0",
             "device_model": "HUAWEI P10",
             "system_version": "V1.0.0",
             "channel": "5"
         }
         print(self.data)
-        if self.token == "":
-            self.urlq = self.url
-            self.logger.info(interfaceNo + ">>>>token为空=====" + self.urlq)
-        else:
-            self.urlq = self.url + "&&token=" + self.token
-            self.logger.info(interfaceNo + ">>>>token=====" + self.urlq)
-        req.set_url(self.urlq)
+        req.set_url(self.url, self.data, self.token)
         req.set_data(self.data)
-        self.response = req.post()
+        self.response = req.get()
         print(self.response)
         try:
             self.retcode = self.response["code"]

@@ -53,7 +53,7 @@ class Email():
 		resultpath = self.log.get_result_path()
 		# 处理带附件的情况
 		if self.check_file():
-			files = glob.glob(resultpath + '\*')
+			files = glob.glob(resultpath + '/*')
 			#添加附件1
 			with open(files[1], 'rb') as reportfile:
 				filehtml = MIMEText(reportfile.read(), 'base64', 'utf-8')
@@ -70,7 +70,6 @@ class Email():
 				filelog.add_header('X-Attachment-Id', '0')
 				filelog.add_header('Content-Type', 'application/octet-stream')
 				self.msg.attach(filelog)
-
 	def check_file(self):
 		reportpath = self.log.get_report_path()
 		if os.path.isfile(reportpath) and not os.stat(reportpath) == 0:
@@ -106,9 +105,11 @@ class Email():
 			smtp.login(user, password)
 			smtp.sendmail(sender, self.receiver, self.msg.as_string())
 			smtp.quit()
+			print("测试报告已发送邮件!!!")
 			self.logger.info("测试报告已发送邮件")
 		except Exception as ex:
 			self.logger.error(str(ex))
+			print("测试报告发送失败!!!")
 			self.logger.info("测试报告发送失败")
 class MyEmail():
 	email = None

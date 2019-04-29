@@ -45,6 +45,8 @@ class 三方登录(unittest.TestCase):
         # 获取当前时间
         now = datetime.datetime.now()
         self.uuid = now.strftime('%Y%m%d') + str(random.randint(0, 9000000))
+        # unionid
+        self.unionid = get_excel("unionid", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
         # 手机型号
@@ -63,13 +65,7 @@ class 三方登录(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
-        if self.token == "":
-            self.urlq = self.url
-            self.logger.info(interfaceNo + ">>>>token为空=====" + self.urlq)
-        else:
-            self.urlq = self.url + "&&token=" + self.token
-            self.logger.info(interfaceNo + ">>>>token=====" + self.urlq)
-        req.set_url(self.urlq)
+        req.set_url(self.url, self.data, self.token)
         req.set_data(self.data)
         self.response = req.post()
         try:

@@ -48,7 +48,7 @@ class 游客注册登录(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
-        req.set_url(self.url)
+        req.set_url(self.url, self.data, token="")
         req.set_data(self.data)
         self.response = req.post()
         print(self.response)

@@ -42,13 +42,7 @@ class 首页类目(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
-        if self.token=="":
-            self.urlq = self.url
-            self.logger.info(interfaceNo+">>>>token为空====="+self.urlq)
-        else:
-            self.urlq = self.url+"&&token="+self.token
-            self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
-        req.set_url(self.urlq)
+        req.set_url(self.url, self.data, self.token)
         req.set_data(self.data)
         self.response = req.post()
         print(self.response)
@@ -65,10 +59,11 @@ class 首页类目(unittest.TestCase):
         try:
             self.assertEqual(self.retcode, 0, self.logger.info("是否获取首页类目"))
             if self.retcode==0:
-                self.gcategory = self.response["data"][1]["categoryID"]
-                for i in range(len(self.response["data"])):
-                    self.gcategory = self.response["data"][i]["categoryID"]
-                    set_excel(self.gcategory, "gcategory", self.No, "getcategoryarticlelist")
+                if self.response["data"] is not  None:
+                    self.gcategory = self.response["data"][1]["categoryID"]
+                    for i in range(len(self.response["data"])):
+                        self.gcategory = self.response["data"][i]["categoryID"]
+                        set_excel(self.gcategory, "gcategory", self.No, "getcategoryarticlelist")
 
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")

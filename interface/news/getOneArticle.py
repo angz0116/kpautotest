@@ -31,6 +31,7 @@ class 获取文章详情(unittest.TestCase):
         self.url = get_excel("url", self.No, interfaceNo)
         # 获取登录sheet页中token
         self.token = get_excel("token", self.No, "login")
+        #
         self.aid = get_excel("aid", self.No, interfaceNo)
         self.data = {
             "aid": self.aid,
@@ -41,13 +42,7 @@ class 获取文章详情(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
-        if self.token=="":
-            self.urlq = self.url
-            self.logger.info(interfaceNo+">>>>token为空====="+self.urlq)
-        else:
-            self.urlq = self.url+"&&token="+self.token
-            self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
-        req.set_url(self.urlq)
+        req.set_url(self.url, self.data, self.token)
         req.set_data(self.data)
         self.response = req.get()
         print(self.response)

@@ -40,13 +40,7 @@ class 获取行业方向列表(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
-        if self.token=="":
-            self.urlq = self.url
-            self.logger.info(interfaceNo+">>>>token为空====="+self.urlq)
-        else:
-            self.urlq = self.url+"&&token="+self.token
-            self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
-        req.set_url(self.urlq)
+        req.set_url(self.url, self.data, self.token)
         req.set_data(self.data)
         self.response = req.post()
         print(self.response)
@@ -78,6 +72,11 @@ class 获取行业方向列表(unittest.TestCase):
         set_excel(r'"'+str(self.response)+'"', "返回报文", self.No, interfaceNo)
         '''
         set_excel(self.msg, "预期结果", self.No, interfaceNo)
+        if self.retcode==0:
+            if "data" in self.response:
+                if len(self.response["data"])>0:
+                    self.orgval = random.choice(self.response["data"])["id"]
+                    set_excel(self.orgval, "orgval", self.No, "hupdate")
 
     def tearDown(self):
         self.log.build_case_line("请求报文", self.data)

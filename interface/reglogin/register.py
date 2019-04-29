@@ -79,11 +79,12 @@ class 注册(unittest.TestCase):
 			"system_version": "V1.0.0",
 			"channel": "5"
 		}
-		print(self.data)
-		req.set_url(self.url)
+		#print(self.data)
+		req.set_url(self.url, self.data, token="")
 		req.set_data(self.data)
 		self.response = req.post()
 		try:
+			print(self.response)
 			self.retcode = self.response["code"]
 		except Exception:
 			self.logger.error("报文返回为空！")
@@ -94,7 +95,6 @@ class 注册(unittest.TestCase):
 	def check_result(self):
 		try:
 			self.assertEqual(self.retcode, 0, self.logger.info("检查是否注册成功"))
-
 			set_excel("pass", "测试结果", self.No, interfaceNo)
 			self.logger.info("测试通过")
 		except AssertionError:

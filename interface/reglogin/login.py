@@ -61,11 +61,11 @@ class 登录(unittest.TestCase):
 			"country_code": self.countrycode,
 			"channel": "5"
 		}
-
-		req.set_url(self.url)
+		req.set_url(self.url, self.data, token="")
 		req.set_data(self.data)
 		self.response = req.post()
 		try:
+			print(self.response)
 			self.retcode = self.response["code"]
 		except Exception:
 			self.logger.error("报文返回为空！")

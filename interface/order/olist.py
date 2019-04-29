@@ -38,8 +38,8 @@ class 获取所有订单列表(unittest.TestCase):
         self.page = get_excel("page", self.No, interfaceNo)
 
         self.data = {
-            "type": self.type,
-            "page": self.page,
+            "type": str(self.type),
+            "page": str(self.page),
             "v": "3.11.0",
             "system": "5",
             "device_model": "HUAWEI P10",
@@ -47,13 +47,7 @@ class 获取所有订单列表(unittest.TestCase):
             "channel": "5"
         }
         print(self.data)
-        if self.token=="":
-            self.urlq = self.url
-            self.logger.info(interfaceNo+">>>>token为空====="+self.urlq)
-        else:
-            self.urlq = self.url+"&&token="+self.token
-            self.logger.info(interfaceNo + ">>>>token====="+self.urlq)
-        req.set_url(self.urlq)
+        req.set_url(self.url, self.data, self.token)
         req.set_data(self.data)
         self.response = req.get()
         print(self.response)
