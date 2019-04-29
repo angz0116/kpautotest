@@ -101,7 +101,7 @@ class 注册(unittest.TestCase):
 	
 	def check_result(self):
 		try:
-			self.assertEqual(self.retcode, "0", self.logger.info("检查是否注册成功"))
+			self.assertEqual(self.retcode, 0, self.logger.info("检查是否注册成功"))
 			set_excel("pass", "测试结果", self.No, interfaceNo)
 			self.logger.info("测试通过")
 		except AssertionError as ex:
