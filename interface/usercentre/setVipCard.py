@@ -63,7 +63,9 @@ class 我的设置会员证(unittest.TestCase):
                 set_excel(self.cardurl, "hurl", self.No, "doShare")
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
-        except AssertionError:
+        except AssertionError as ex:
+            print("实际结果！=预期结果：")
+            print(ex)
             set_excel("fail", "测试结果", self.No, interfaceNo)
             self.msg = self.response["msg"]
             self.logger.error("测试失败")
