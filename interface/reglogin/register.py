@@ -19,6 +19,8 @@ sqldb = ConfigDB()
 
 @paramunittest.parametrized(*get_xls("interfaces.xls", interfaceNo))
 class 注册(unittest.TestCase):
+	"""注册已存在的用户"""
+
 	def setParameters(self, No, 测试结果, 测试用例, 请求报文, 返回报文,url, mobile, regtype, countrycode, verifycode,password, flag, 预期结果):
 		self.No = str(No)
 		self.url = str(url)
@@ -29,15 +31,20 @@ class 注册(unittest.TestCase):
 		self.password = str(password)
 		self.flag = str(flag)
 
-
 	def setUp(self):
 		self.log = MyLog.get_log()
 		self.logger = self.log.logger
 		self.log.build_start_line(interfaceNo + name + "CASE " + self.No)
+		self.tcase = get_excel("测试用例", self.No, interfaceNo)
 		print(interfaceNo + name + "CASE " + self.No)
 
+
 	def test_body(self):
+		"""
+		self.tcase
+		"""
 		req.httpname = "KPTEST"
+		self.logger.info(self.tcase)
 		self.url = get_excel("url", self.No, interfaceNo)
 		# flag为1时，则重新生成新手机号；flag为2时，则从excel中读取已存在的
 		self.flag = get_excel("flag", self.No, interfaceNo)
@@ -97,7 +104,9 @@ class 注册(unittest.TestCase):
 			self.assertEqual(self.retcode, 0, self.logger.info("检查是否注册成功"))
 			set_excel("pass", "测试结果", self.No, interfaceNo)
 			self.logger.info("测试通过")
-		except AssertionError:
+		except AssertionError as ex:
+			print("实际结果！=预期结果：")
+			print(ex)
 			set_excel("fail", "测试结果", self.No, interfaceNo)
 			self.logger.error("测试失败")
 		self.msg = self.response["msg"]
@@ -120,7 +129,7 @@ class 注册(unittest.TestCase):
 		self.log.build_case_line("返回报文", self.response)
 		self.log.build_case_line("预期结果", self.msg)
 		self.log.build_end_line(interfaceNo + "--CASE" + self.No)
-
 if __name__ =='__main__':
 	unittest.main()
+
 

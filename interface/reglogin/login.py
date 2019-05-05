@@ -66,7 +66,12 @@ class 登录(unittest.TestCase):
 		self.response = req.post()
 		try:
 			print(self.response)
-			self.retcode = self.response["code"]
+			if len(self.response)>0:
+				self.retcode = self.response["code"]
+				self.msg = self.response["msg"]
+			else:
+				self.retcode =1
+				self.msg = "报文返回为空"
 		except Exception:
 			self.logger.error("报文返回为空！")
 			print("报文返回为空！")
@@ -76,7 +81,7 @@ class 登录(unittest.TestCase):
 	def check_result(self):
 		try:
 			self.assertEqual(self.retcode, 0, self.logger.info("检查是否登录成功"))
-			if self.retcode==0:
+			if self.retcode == 0:
 				if len(self.response["data"])>0:
 					self.tokenp = self.response["data"]["token"]
 					self.uid = self.response["data"]["uid"]
@@ -88,11 +93,12 @@ class 登录(unittest.TestCase):
 
 			set_excel("pass", "测试结果", self.No, interfaceNo)
 			self.logger.info("测试通过")
-		except AssertionError:
+		except AssertionError as ex:
+			print("实际结果！=预期结果：")
+			print(ex)
 			set_excel("fail", "测试结果", self.No, interfaceNo)
-			self.msg = self.response["msg"]
 			self.logger.error("测试失败")
-		self.msg = self.response["msg"]
+
 		self.logger.info(self.msg)
 	# 写入xls文件中
 	def wr_excel(self):

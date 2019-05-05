@@ -64,7 +64,9 @@ class 账号合并(unittest.TestCase):
             self.assertEqual(self.retcode, 0, self.logger.info("是否账号合并成功"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
-        except AssertionError:
+        except AssertionError as ex:
+            print("实际结果！=预期结果：")
+            print(ex)
             set_excel("fail", "测试结果", self.No, interfaceNo)
             self.msg = self.response["msg"]
             self.logger.error("测试失败")

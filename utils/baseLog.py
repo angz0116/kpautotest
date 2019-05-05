@@ -37,6 +37,10 @@ class Log:
 	def get_result_path(self):
 		return logPath
 
+	def get_img_path(self):
+		img_path = os.path.join(logPath, "screenImg.png")
+		return img_path
+
 
 class MyLog:
 	log = None

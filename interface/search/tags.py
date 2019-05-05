@@ -42,8 +42,9 @@ class 获取搜索标题(unittest.TestCase):
         req.set_data(self.data)
         req.set_url(self.url, self.data, self.token)
         self.response = req.get()
-        print(self.response)
+
         try:
+            print(self.response)
             self.retcode = self.response["code"]
         except Exception:
             self.logger.error("报文返回为空！")
@@ -57,7 +58,9 @@ class 获取搜索标题(unittest.TestCase):
             self.assertEqual(self.retcode, 0, self.logger.info("是否获取搜索标题"))
             set_excel("pass", "测试结果", self.No, interfaceNo)
             self.logger.info("测试通过")
-        except AssertionError:
+        except AssertionError as ex:
+            print("实际结果！=预期结果：")
+            print(ex)
             set_excel("fail", "测试结果", self.No, interfaceNo)
             self.logger.error("测试失败")
         self.msg = self.response["msg"]
