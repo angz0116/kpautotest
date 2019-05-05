@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import os
 import smtplib
+from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import datetime
@@ -42,11 +43,27 @@ class Email():
 		self.msg['from'] = sender
 		# 接收者账号列表
 		self.msg['to'] = ",".join(self.receiver)
-
+	# 填写邮件内容
 	def config_content(self):
-		# 填写邮件内容
-		content_plain = MIMEText(content, 'plain', 'utf-8')  #html超文本
-		self.msg.attach(content_plain)
+		#content_plain = MIMEText(content, 'plain', 'utf-8')
+		#self.msg.attach(content_plain)
+		# 保存图片的path
+		self.imgpath = self.log.get_img_path()
+		# 填写邮件内容，html超文本
+		mail_msg = '''
+		<p>\n\t '''+content+'''</p>
+		<p>测试结果如下图：</p>
+		<p><img src="cid:image1"></p>
+		'''
+		self.msg.attach(MIMEText(mail_msg, 'html', 'utf-8'))
+		# 指定图片为当前目录
+		self.imgfile = open(self.imgpath, 'rb')
+		self.msgImage = MIMEImage(self.imgfile.read())
+		self.imgfile.close()
+		# 定义图片 ID，在 HTML 文本中引用
+		self.msgImage.add_header('Content-ID', '<image1>')
+		self.msg.attach(self.msgImage)
+
 
 	def config_file(self):
 		# 获取log日志的邮件路径
@@ -54,6 +71,7 @@ class Email():
 		# 处理带附件的情况
 		if self.check_file():
 			files = glob.glob(resultpath + '/*')
+
 			#添加附件1
 			with open(files[1], 'rb') as reportfile:
 				filehtml = MIMEText(reportfile.read(), 'base64', 'utf-8')
@@ -70,6 +88,7 @@ class Email():
 				filelog.add_header('X-Attachment-Id', '0')
 				filelog.add_header('Content-Type', 'application/octet-stream')
 				self.msg.attach(filelog)
+
 	def check_file(self):
 		reportpath = self.log.get_report_path()
 		if os.path.isfile(reportpath) and not os.stat(reportpath) == 0:
