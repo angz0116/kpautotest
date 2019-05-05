@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 from selenium import webdriver
 import time
+from utils import readConfig
 
-#获取html
+#获取html, 得到chrome
 def getdriver():
 	# 创建chrome参数对象
 	option = webdriver.ChromeOptions()
 	# 把chrome设置成无界面模式
 	option.add_argument('--headless')
-	driver = webdriver.Chrome(executable_path="C:\\Users\\admin\\AppData\\Local\\Google\\Chrome\\Application\\chromedriver.exe",options=option)
+	driver = webdriver.Chrome(executable_path=readConfig.proDir+"\\chromedriver.exe", options=option)
 	driver.maximize_window()
 	return driver
 #打开html
@@ -30,4 +31,3 @@ def savescreenimg(resultpath):
 		driver.save_screenshot(imgpath + "screenImg.png")
 		#pic = ImageGrab.grab()
 		#pic.save(imgpath + "screenImg.png")
-
