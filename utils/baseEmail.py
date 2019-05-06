@@ -10,6 +10,7 @@ import utils.readConfig as readConfig
 from utils.baseLog import MyLog
 import zipfile
 import glob
+import imghdr
 
 Config = readConfig.ReadConfig()
 
@@ -56,14 +57,17 @@ class Email():
 		<p><img src="cid:image1"></p>
 		'''
 		self.msg.attach(MIMEText(mail_msg, 'html', 'utf-8'))
-		# 指定图片为当前目录
-		self.imgfile = open(self.imgpath, 'rb')
-		self.msgImage = MIMEImage(self.imgfile.read())
-		self.imgfile.close()
-		# 定义图片 ID，在 HTML 文本中引用
-		self.msgImage.add_header('Content-ID', '<image1>')
-		self.msg.attach(self.msgImage)
-
+		try:
+			# 指定图片为当前目录
+			self.imgfile = open(self.imgpath, 'rb')
+			self.msgImage = MIMEImage(self.imgfile.read())
+			self.imgfile.close()
+			# 定义图片 ID，在 HTML 文本中引用
+			self.msgImage.add_header('Content-ID', '<image1>')
+			self.msg.attach(self.msgImage)
+		except FileExistsError:
+			print("********未获取到截图信息********")
+			self.logger.info("********未获取到截图信息********")
 
 	def config_file(self):
 		# 获取log日志的邮件路径
