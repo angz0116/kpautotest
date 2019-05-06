@@ -8,9 +8,7 @@ from datetime import datetime
 import threading
 import utils.readConfig as readConfig
 from utils.baseLog import MyLog
-import zipfile
 import glob
-import imghdr
 
 Config = readConfig.ReadConfig()
 
